@@ -1,7 +1,10 @@
-interface Marker {
-  coordinates: [number, number];
-}
+import { Festival } from "../types";
 
-export const getMarkers = (): Marker[] => {
-  return [{ coordinates: [-74.006, 40.7128] }];
+export const getFestivals = (): Festival[] => {
+  return [
+    {
+      title: "Mamquam Meltdown",
+      coordinates: { lat: 45.4215, lng: -75.6972 },
+    },
+  ];
 };

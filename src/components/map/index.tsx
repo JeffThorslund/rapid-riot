@@ -1,8 +1,12 @@
 import React from "react";
 import Map, { Marker } from "react-map-gl";
+import { Festival } from "../../types";
 
-export const MapGL = () => {
-  console.log(process.env);
+interface Props {
+  festivals: Festival[];
+}
+
+export const MapGL = (props: Props) => {
   return (
     <Map
       mapboxAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
@@ -14,7 +18,16 @@ export const MapGL = () => {
       //style={{ width: 600, height: 400 }}
       mapStyle="mapbox://styles/mapbox/streets-v9"
     >
-      <Marker longitude={-75} latitude={45} anchor="center" />
+      {props.festivals.map((fest) => {
+        return (
+          <Marker
+            longitude={fest.coordinates.lng}
+            latitude={fest.coordinates.lat}
+            anchor="center"
+            key={fest.title}
+          />
+        );
+      })}
     </Map>
   );
 };
