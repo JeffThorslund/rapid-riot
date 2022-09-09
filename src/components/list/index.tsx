@@ -1,5 +1,5 @@
 import React from "react";
-import { Box } from "grommet";
+import { Box, Grid } from "grommet";
 import { Festival } from "../../types";
 
 interface Props {
@@ -8,10 +8,29 @@ interface Props {
 
 export const List = (props: Props) => {
   return (
-    <Box>
-      {props.festivals.map((fest) => {
-        return <div key={fest.title}>{fest.title}</div>;
-      })}
+    <Box pad={"small"}>
+      <Grid
+        columns={{
+          count: 2,
+          size: "auto",
+        }}
+        gap={"small"}
+      >
+        {props.festivals.map((festival) => (
+          <FestivalCard key={festival.title} festival={festival} />
+        ))}
+      </Grid>
+    </Box>
+  );
+};
+
+interface IFestivalCardProps {
+  festival: Festival;
+}
+export const FestivalCard = (props: IFestivalCardProps) => {
+  return (
+    <Box border={{ color: "brand", size: "xsmall" }}>
+      {props.festival.title}
     </Box>
   );
 };
