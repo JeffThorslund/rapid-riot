@@ -1,4 +1,4 @@
-import { Festival } from "./types";
+import { Festival } from "../../types";
 import { MapRef } from "react-map-gl";
 
 export function getVisibleFestivalMarkers(

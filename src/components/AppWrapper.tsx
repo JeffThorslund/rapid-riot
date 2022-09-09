@@ -1,5 +1,5 @@
 import { Grommet } from "grommet";
-import { theme } from "./grommetTheme";
+import { theme } from "../grommetTheme";
 import { MapProvider } from "react-map-gl";
 import React from "react";
 

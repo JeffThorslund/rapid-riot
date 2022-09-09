@@ -1,26 +1,19 @@
 import React from "react";
-import Map, { Marker } from "react-map-gl";
+import { Marker, ViewState } from "react-map-gl";
 import { Festival } from "../../types";
+import { CustomMapWrapper } from "./CustomMapWrapper";
 
 type Props = {
   festivals: Festival[];
   viewState: ViewState;
-  setViewState: (viewState: ViewState) => void;
+  setViewState: React.Dispatch<React.SetStateAction<ViewState>>;
 };
 
-interface ViewState {
-  longitude: number;
-  latitude: number;
-  zoom: number;
-}
-
-export const MapGL = (props: Props) => {
+export const MapElement: React.FC<Props> = (props) => {
   return (
-    <Map
+    <CustomMapWrapper
       {...props.viewState}
       onMove={(evt) => props.setViewState(evt.viewState)}
-      mapboxAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
-      mapStyle="mapbox://styles/mapbox/streets-v9"
     >
       {props.festivals.map((fest) => {
         return (
@@ -32,6 +25,6 @@ export const MapGL = (props: Props) => {
           />
         );
       })}
-    </Map>
+    </CustomMapWrapper>
   );
 };
