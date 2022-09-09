@@ -1,26 +1,14 @@
 import React from "react";
-import { Grommet, Box } from "grommet";
-import { theme } from "./grommetTheme";
 import { PageHeader } from "./components/PageHeader";
-import { MapGL } from "./components/map";
-import { List } from "./components/list";
-import { getFestivals } from "./database";
+import { AppWrapper } from "./AppWrapper";
+import { FestivalInterface } from "./components/FestivalInterface";
 
 const App = () => {
-  const festivals = getFestivals();
-
   return (
-    <Grommet theme={theme}>
+    <AppWrapper>
       <PageHeader />
-      <Box direction="row" height={"500px"}>
-        <Box width={"50%"}>
-          <MapGL festivals={festivals} />
-        </Box>
-        <Box width={"50%"}>
-          <List festivals={festivals} />
-        </Box>
-      </Box>
-    </Grommet>
+      <FestivalInterface />
+    </AppWrapper>
   );
 };
 

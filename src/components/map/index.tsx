@@ -2,20 +2,24 @@ import React from "react";
 import Map, { Marker } from "react-map-gl";
 import { Festival } from "../../types";
 
-interface Props {
+type Props = {
   festivals: Festival[];
+  viewState: ViewState;
+  setViewState: (viewState: ViewState) => void;
+};
+
+interface ViewState {
+  longitude: number;
+  latitude: number;
+  zoom: number;
 }
 
 export const MapGL = (props: Props) => {
   return (
     <Map
+      {...props.viewState}
+      onMove={(evt) => props.setViewState(evt.viewState)}
       mapboxAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
-      initialViewState={{
-        longitude: -122.4,
-        latitude: 37.8,
-        zoom: 14,
-      }}
-      //style={{ width: 600, height: 400 }}
       mapStyle="mapbox://styles/mapbox/streets-v9"
     >
       {props.festivals.map((fest) => {
@@ -31,14 +35,3 @@ export const MapGL = (props: Props) => {
     </Map>
   );
 };
-
-/**
- * const mapRef = useRef<MapRef>();
- *
- * const checkIfPositionInViewport = (lat, lng) => {
- *     const bounds = mapRef.current.getMap().getBounds();
- *     return (lat >= bounds._sw.lat && lat <= bounds._nw.lat && lng >= bounds._sw.lng && lng <= bounds._nw.lng);
- * }
- *
- * return <Map ref={mapRef} [..]/>
- */
