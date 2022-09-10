@@ -1,16 +1,15 @@
 import { titles } from "./mockData";
-import { getRandomTitles } from "./mock/titles";
-import { getRandomCoordinate } from "./mock/coordinates";
-import { getRandomDate } from "./mock/date";
+import { randomGenerator as randomGen } from "./mock/randomGenerator";
 
 export const createMockFestivals = (numberOfElements: number) => {
-  const randomNames = getRandomTitles(titles, numberOfElements);
+  const randomNames = randomGen.titles(titles, numberOfElements);
 
   return randomNames.map((title) => {
     return {
-      title: title,
-      coordinates: getRandomCoordinate([30, 50], [-120, -80]),
-      date: getRandomDate(new Date(2012, 0, 1), new Date()),
+      id: randomGen.id(),
+      title,
+      coordinates: randomGen.coordinate([30, 50], [-120, -80]),
+      date: randomGen.date(new Date(2012, 0, 1), new Date()),
     };
   });
 };
