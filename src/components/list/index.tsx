@@ -30,7 +30,8 @@ interface IFestivalCardProps {
 export const FestivalCard = (props: IFestivalCardProps) => {
   return (
     <Box border={{ color: "brand", size: "xsmall" }}>
-      {props.festival.title}
+      <div>{props.festival.title}</div>
+      <div>{props.festival.date.toDateString()}</div>
     </Box>
   );
 };
