@@ -4,9 +4,9 @@ import React, { useEffect, useState } from "react";
 import { Box } from "grommet";
 import { MapElement } from "./map";
 import { List } from "./list";
-import { getAndSortVisibleFestivalMarkers } from "./_utils/getAndSortVisibleFestivalMarkers";
 import { useViewState } from "./_utils/useViewState";
 import { Festival, HoveredMarkerState } from "../types";
+import { prepareFestivalData } from "./_utils/prepareFestivalData";
 
 export const FestivalInterface = () => {
   const mapRef = useMap();
@@ -21,9 +21,10 @@ export const FestivalInterface = () => {
     setFestivals(festivals);
   }, []);
 
-  const sortedFilteredFestivals = mapRef.default
-    ? getAndSortVisibleFestivalMarkers(festivals, mapRef.default)
-    : festivals;
+  const sortedFilteredFestivals = prepareFestivalData(
+    mapRef.default,
+    festivals
+  );
 
   return (
     <Box direction="row" height={"500px"}>
