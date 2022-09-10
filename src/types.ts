@@ -8,3 +8,5 @@ export interface Coordinate {
   lat: number;
   lng: number;
 }
+
+export type HoveredMarkerState = string | undefined;

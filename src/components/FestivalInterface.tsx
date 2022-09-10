@@ -6,12 +6,14 @@ import { MapElement } from "./map";
 import { List } from "./list";
 import { getAndSortVisibleFestivalMarkers } from "./_utils/getAndSortVisibleFestivalMarkers";
 import { useViewState } from "./_utils/useViewState";
-import { Festival } from "../types";
+import { Festival, HoveredMarkerState } from "../types";
 
 export const FestivalInterface = () => {
   const mapRef = useMap();
   const [viewState, setViewState] = useViewState();
   const [festivals, setFestivals] = useState<Festival[]>([]);
+  const [hoveredMarker, setHoveredMarker] =
+    useState<HoveredMarkerState>(undefined);
 
   useEffect(() => {
     const festivals = getMockData();
@@ -19,25 +21,28 @@ export const FestivalInterface = () => {
     setFestivals(festivals);
   }, []);
 
+  const sortedFilteredFestivals = mapRef.default
+    ? getAndSortVisibleFestivalMarkers(festivals, mapRef.default)
+    : festivals;
+
   return (
     <Box direction="row" height={"500px"}>
       <Box width={"50%"}>
         <MapElement
-          festivals={festivals}
+          festivals={sortedFilteredFestivals}
           viewState={viewState}
           setViewState={setViewState}
+          hoveredMarker={hoveredMarker}
         />
       </Box>
-      {mapRef.default ? (
-        <Box width={"50%"}>
-          <List
-            festivals={getAndSortVisibleFestivalMarkers(
-              festivals,
-              mapRef.default
-            )}
-          />
-        </Box>
-      ) : null}
+      <Box width={"50%"}>
+        <List
+          festivals={sortedFilteredFestivals}
+          hoveredMarker={hoveredMarker}
+          setHoveredMarker={setHoveredMarker}
+        />
+      </Box>
+      )
     </Box>
   );
 };

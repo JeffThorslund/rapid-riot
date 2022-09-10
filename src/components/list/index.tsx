@@ -1,9 +1,11 @@
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import { Box, Grid } from "grommet";
-import { Festival } from "../../types";
+import { Festival, HoveredMarkerState } from "../../types";
 
 interface Props {
   festivals: Festival[];
+  hoveredMarker: HoveredMarkerState;
+  setHoveredMarker: Dispatch<SetStateAction<HoveredMarkerState>>;
 }
 
 export const List = (props: Props) => {
@@ -17,7 +19,12 @@ export const List = (props: Props) => {
         gap={"small"}
       >
         {props.festivals.map((festival) => (
-          <FestivalCard key={festival.title} festival={festival} />
+          <FestivalCard
+            key={festival.title}
+            festival={festival}
+            isCardHovered={props.hoveredMarker === festival.title}
+            setHoveredMarker={props.setHoveredMarker}
+          />
         ))}
       </Grid>
     </Box>
@@ -26,10 +33,17 @@ export const List = (props: Props) => {
 
 interface IFestivalCardProps {
   festival: Festival;
+  isCardHovered: boolean;
+  setHoveredMarker: Dispatch<SetStateAction<HoveredMarkerState>>;
 }
 export const FestivalCard = (props: IFestivalCardProps) => {
   return (
-    <Box border={{ color: "brand", size: "xsmall" }}>
+    <Box
+      background={props.isCardHovered ? "red" : "white"}
+      border={{ color: "brand", size: "xsmall" }}
+      onMouseEnter={() => props.setHoveredMarker(props.festival.title)}
+      onMouseLeave={() => props.setHoveredMarker(undefined)}
+    >
       <div>{props.festival.title}</div>
       <div>{props.festival.date.toDateString()}</div>
     </Box>
