@@ -2,7 +2,7 @@ import React from "react";
 import { Marker, ViewState } from "react-map-gl";
 import { Festival } from "../../types";
 import { CustomMapWrapper } from "./CustomMapWrapper";
-import { CircleAlert } from "grommet-icons";
+import { Location } from "grommet-icons";
 import { HoverStateMethods } from "../_utils/useHoverState";
 
 type Props = {
@@ -26,7 +26,7 @@ export const MapElement = (props: Props) => {
             anchor="center"
             key={fest.title}
           >
-            <CircleAlert
+            <Location
               color={
                 props.hoverStateMethods.isHovered(fest.id) ? "red" : "black"
               }
