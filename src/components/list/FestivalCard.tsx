@@ -1,12 +1,13 @@
 import { Festival } from "../../types";
-import { HoverStateMethods } from "../_utils/useHoverState";
 import { Box } from "grommet";
 import React from "react";
 import { createSemiTransparentBackgroundImage } from "./_utils/createSemiTransparentBackgroundImage";
 
 interface Props {
   festival: Festival;
-  hoverStateMethods: HoverStateMethods;
+  onMouseEnter: () => void;
+  onMouseLeave: () => void;
+  isCardHovered: boolean;
 }
 
 export const FestivalCard = (props: Props) => {
@@ -23,14 +24,12 @@ export const FestivalCard = (props: Props) => {
 
   return (
     <Box
-      {...(props.hoverStateMethods.isHovered(props.festival.id)
-        ? hoveredStyle
-        : standardStyle)}
+      {...(props.isCardHovered ? hoveredStyle : standardStyle)}
       border={{ color: "brand", size: "small" }}
       round={"small"}
       pad={"small"}
-      onMouseEnter={() => props.hoverStateMethods.set(props.festival.id)}
-      onMouseLeave={() => props.hoverStateMethods.reset()}
+      onMouseEnter={props.onMouseEnter}
+      onMouseLeave={props.onMouseLeave}
     >
       <div>{props.festival.title}</div>
       <div>{props.festival.date.toDateString()}</div>

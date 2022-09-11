@@ -18,17 +18,19 @@ export const MapElement = (props: Props) => {
       {...props.viewState}
       onMove={(evt) => props.setViewState(evt.viewState)}
     >
-      {props.festivals.map((fest) => {
+      {props.festivals.map((festival) => {
         return (
           <Marker
-            longitude={fest.coordinates.lng}
-            latitude={fest.coordinates.lat}
+            longitude={festival.coordinates.lng}
+            latitude={festival.coordinates.lat}
             anchor="center"
-            key={fest.title}
+            key={festival.title}
           >
             <Location
+              onMouseEnter={() => props.hoverStateMethods.set(festival.id)}
+              onMouseLeave={() => props.hoverStateMethods.reset()}
               size={
-                props.hoverStateMethods.isHovered(fest.id) ? "30px" : "20px"
+                props.hoverStateMethods.isHovered(festival.id) ? "30px" : "20px"
               }
             />
           </Marker>

@@ -23,7 +23,9 @@ export const List = (props: Props) => {
           <FestivalCard
             key={festival.title}
             festival={festival}
-            hoverStateMethods={props.hoverStateMethods}
+            onMouseEnter={() => props.hoverStateMethods.set(festival.id)}
+            onMouseLeave={() => props.hoverStateMethods.reset()}
+            isCardHovered={props.hoverStateMethods.isHovered(festival.id)}
           />
         ))}
       </Grid>
