@@ -5,19 +5,18 @@ import { Box } from "grommet";
 import { MapElement } from "./map";
 import { List } from "./list";
 import { useViewState } from "./_utils/useViewState";
-import { Festival, HoveredMarkerState } from "../types";
+import { Festival } from "../types";
 import { prepareFestivalData } from "./_utils/prepareFestivalData";
+import { useHoverState } from "./_utils/useHoverState";
 
 export const FestivalInterface = () => {
   const mapRef = useMap();
   const [viewState, setViewState] = useViewState();
   const [festivals, setFestivals] = useState<Festival[]>([]);
-  const [hoveredMarker, setHoveredMarker] =
-    useState<HoveredMarkerState>(undefined);
+  const hoverStateMethods = useHoverState();
 
   useEffect(() => {
     const festivals = getMockData();
-
     setFestivals(festivals);
   }, []);
 
@@ -33,14 +32,13 @@ export const FestivalInterface = () => {
           festivals={sortedFilteredFestivals}
           viewState={viewState}
           setViewState={setViewState}
-          hoveredMarker={hoveredMarker}
+          hoverStateMethods={hoverStateMethods}
         />
       </Box>
       <Box width={"50%"}>
         <List
           festivals={sortedFilteredFestivals}
-          hoveredMarker={hoveredMarker}
-          setHoveredMarker={setHoveredMarker}
+          hoverStateMethods={hoverStateMethods}
         />
       </Box>
     </Box>

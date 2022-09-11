@@ -1,18 +1,18 @@
 import React from "react";
 import { Marker, ViewState } from "react-map-gl";
-import { Festival, HoveredMarkerState } from "../../types";
+import { Festival } from "../../types";
 import { CustomMapWrapper } from "./CustomMapWrapper";
 import { CircleAlert } from "grommet-icons";
-import { isFestivalHighlighted } from "../_utils/isFestivalHighlighted";
+import { HoverStateMethods } from "../_utils/useHoverState";
 
 type Props = {
   festivals: Festival[];
   viewState: ViewState;
   setViewState: React.Dispatch<React.SetStateAction<ViewState>>;
-  hoveredMarker: HoveredMarkerState;
+  hoverStateMethods: HoverStateMethods;
 };
 
-export const MapElement: React.FC<Props> = (props) => {
+export const MapElement = (props: Props) => {
   return (
     <CustomMapWrapper
       {...props.viewState}
@@ -28,9 +28,7 @@ export const MapElement: React.FC<Props> = (props) => {
           >
             <CircleAlert
               color={
-                isFestivalHighlighted(fest.id, props.hoveredMarker)
-                  ? "red"
-                  : "black"
+                props.hoverStateMethods.isHovered(fest.id) ? "red" : "black"
               }
               size={"medium"}
             />
