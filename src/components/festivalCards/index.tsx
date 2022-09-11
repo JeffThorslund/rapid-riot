@@ -11,13 +11,14 @@ interface Props {
 
 export const FestivalCards = (props: Props) => {
   return (
-    <Box pad={"small"}>
+    <Box>
       <Grid
         columns={{
-          count: 3,
+          count: 2,
           size: "auto",
         }}
         gap={"small"}
+        pad={"small"}
       >
         {props.festivals.map((festival) => (
           <FestivalCard
