@@ -3,7 +3,7 @@ import { useMap } from "react-map-gl";
 import React, { useEffect, useState } from "react";
 import { Box } from "grommet";
 import { MapElement } from "./map";
-import { List } from "./list";
+import { FestivalCards } from "./list";
 import { useViewState } from "./_utils/useViewState";
 import { Festival } from "../types";
 import { prepareFestivalData } from "./_utils/prepareFestivalData";
@@ -36,7 +36,7 @@ export const FestivalInterface = () => {
         />
       </Box>
       <Box width={"60%"} overflow={"scroll"}>
-        <List
+        <FestivalCards
           festivals={sortedFilteredFestivals}
           hoverStateMethods={hoverStateMethods}
         />

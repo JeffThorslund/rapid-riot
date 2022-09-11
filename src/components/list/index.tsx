@@ -9,12 +9,12 @@ interface Props {
   hoverStateMethods: HoverStateMethods;
 }
 
-export const List = (props: Props) => {
+export const FestivalCards = (props: Props) => {
   return (
     <Box pad={"small"}>
       <Grid
         columns={{
-          count: 2,
+          count: 3,
           size: "auto",
         }}
         gap={"small"}
