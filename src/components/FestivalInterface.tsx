@@ -43,7 +43,6 @@ export const FestivalInterface = () => {
           setHoveredMarker={setHoveredMarker}
         />
       </Box>
-      )
     </Box>
   );
 };

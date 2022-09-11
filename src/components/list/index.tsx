@@ -1,6 +1,7 @@
 import React, { Dispatch, SetStateAction } from "react";
 import { Box, Grid } from "grommet";
 import { Festival, HoveredMarkerState } from "../../types";
+import { isFestivalHighlighted } from "../_utils/isFestivalHighlighted";
 
 interface Props {
   festivals: Festival[];
@@ -22,7 +23,10 @@ export const List = (props: Props) => {
           <FestivalCard
             key={festival.title}
             festival={festival}
-            isCardHovered={props.hoveredMarker === festival.title}
+            isCardHovered={isFestivalHighlighted(
+              festival.id,
+              props.hoveredMarker
+            )}
             setHoveredMarker={props.setHoveredMarker}
           />
         ))}
@@ -41,7 +45,7 @@ export const FestivalCard = (props: IFestivalCardProps) => {
     <Box
       background={props.isCardHovered ? "red" : "white"}
       border={{ color: "brand", size: "xsmall" }}
-      onMouseEnter={() => props.setHoveredMarker(props.festival.title)}
+      onMouseEnter={() => props.setHoveredMarker(props.festival.id)}
       onMouseLeave={() => props.setHoveredMarker(undefined)}
     >
       <div>{props.festival.title}</div>

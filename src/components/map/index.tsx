@@ -3,6 +3,7 @@ import { Marker, ViewState } from "react-map-gl";
 import { Festival, HoveredMarkerState } from "../../types";
 import { CustomMapWrapper } from "./CustomMapWrapper";
 import { CircleAlert } from "grommet-icons";
+import { isFestivalHighlighted } from "../_utils/isFestivalHighlighted";
 
 type Props = {
   festivals: Festival[];
@@ -26,7 +27,11 @@ export const MapElement: React.FC<Props> = (props) => {
             key={fest.title}
           >
             <CircleAlert
-              color={props.hoveredMarker === fest.title ? "red" : "black"}
+              color={
+                isFestivalHighlighted(fest.id, props.hoveredMarker)
+                  ? "red"
+                  : "black"
+              }
               size={"medium"}
             />
           </Marker>
