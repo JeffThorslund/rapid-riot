@@ -5,15 +5,10 @@ export const prepareFestivalData = (
   mapRef: MapRef | undefined,
   festivals: Festival[]
 ) => {
-  if (!isMapMounted(mapRef)) {
+  if (!mapRef) {
     return festivals;
   }
-
-  return getAndSortVisibleFestivalMarkers(festivals, mapRef as MapRef);
-};
-
-const isMapMounted = (mapRef: MapRef | undefined) => {
-  return !!mapRef;
+  return getAndSortVisibleFestivalMarkers(festivals, mapRef);
 };
 
 const getAndSortVisibleFestivalMarkers = (

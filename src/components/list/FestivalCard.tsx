@@ -9,11 +9,19 @@ interface Props {
 }
 
 export const FestivalCard = (props: Props) => {
+  const standardStyle = {
+    background: "white",
+  };
+
+  const hoveredStyle = {
+    background: "light-2",
+  };
+
   return (
     <Box
-      background={
-        props.hoverStateMethods.isHovered(props.festival.id) ? "red" : "white"
-      }
+      {...(props.hoverStateMethods.isHovered(props.festival.id)
+        ? hoveredStyle
+        : standardStyle)}
       border={{ color: "brand", size: "small" }}
       round={"small"}
       pad={"small"}
