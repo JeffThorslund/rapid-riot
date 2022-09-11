@@ -2,6 +2,7 @@ import { Festival } from "../../types";
 import { HoverStateMethods } from "../_utils/useHoverState";
 import { Box } from "grommet";
 import React from "react";
+import { createSemiTransparentBackgroundImage } from "./_utils/createSemiTransparentBackgroundImage";
 
 interface Props {
   festival: Festival;
@@ -10,7 +11,10 @@ interface Props {
 
 export const FestivalCard = (props: Props) => {
   const standardStyle = {
-    background: "white",
+    background: createSemiTransparentBackgroundImage(
+      "http://placekitten.com/200/300",
+      "rgba(255,255,255,0.8)"
+    ),
   };
 
   const hoveredStyle = {
