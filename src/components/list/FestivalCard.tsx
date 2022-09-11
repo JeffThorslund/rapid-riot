@@ -30,6 +30,7 @@ export const FestivalCard = (props: Props) => {
     >
       <div>{props.festival.title}</div>
       <div>{props.festival.date.toDateString()}</div>
+      <div>{props.festival.link}</div>
     </Box>
   );
 };

@@ -10,6 +10,7 @@ export const createMockFestivals = (numberOfElements: number) => {
       title,
       coordinates: randomGen.coordinate([30, 50], [-120, -80]),
       date: randomGen.date(new Date(2012, 0, 1), new Date()),
+      link: randomGen.link(),
     };
   });
 };

@@ -2,6 +2,7 @@ export interface Festival {
   title: string;
   coordinates: Coordinate;
   date: Date;
+  link: string;
   id: string;
 }
 
