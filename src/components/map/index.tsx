@@ -27,10 +27,9 @@ export const MapElement = (props: Props) => {
             key={fest.title}
           >
             <Location
-              color={
-                props.hoverStateMethods.isHovered(fest.id) ? "red" : "black"
+              size={
+                props.hoverStateMethods.isHovered(fest.id) ? "30px" : "20px"
               }
-              size={"medium"}
             />
           </Marker>
         );
