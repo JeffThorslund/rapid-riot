@@ -14,7 +14,9 @@ export const FestivalCard = (props: Props) => {
       background={
         props.hoverStateMethods.isHovered(props.festival.id) ? "red" : "white"
       }
-      border={{ color: "brand", size: "xsmall" }}
+      border={{ color: "brand", size: "small" }}
+      round={"small"}
+      pad={"small"}
       onMouseEnter={() => props.hoverStateMethods.set(props.festival.id)}
       onMouseLeave={() => props.hoverStateMethods.reset()}
     >
