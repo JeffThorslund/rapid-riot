@@ -20,7 +20,6 @@ export const FestivalCard = (props: Props) => {
       justify={"center"}
     >
       <Text size={"medium"}>{props.festival.title}</Text>
-      <Text size={"small"}>{props.festival.date.toDateString()}</Text>
       <Text size={"small"}>{props.festival.link}</Text>
     </Box>
   );

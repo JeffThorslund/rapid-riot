@@ -15,11 +15,9 @@ const getAndSortVisibleFestivalMarkers = (
   festivals: Festival[],
   mapRef: MapRef
 ) =>
-  festivals
-    .filter((f) =>
-      mapRef
-        .getMap()
-        .getBounds()
-        .contains({ lat: f.coordinates.lat, lng: f.coordinates.lng })
-    )
-    .sort((a, b) => +b.date - +a.date);
+  festivals.filter((f) =>
+    mapRef
+      .getMap()
+      .getBounds()
+      .contains({ lat: f.coordinates.lat, lng: f.coordinates.lng })
+  );
