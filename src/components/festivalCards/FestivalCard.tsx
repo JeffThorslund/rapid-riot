@@ -22,7 +22,12 @@ export const FestivalCard = (props: Props) => {
     >
       <Text size={"medium"}>{props.festival.title}</Text>
       <LocationText location={props.festival.location} />
-      <Text size={"small"}>{props.festival.link}</Text>
+      <Text
+        size={"small"}
+        style={{ textOverflow: "ellipsis", overflow: "hidden" }}
+      >
+        {props.festival.link}
+      </Text>
     </Box>
   );
 };
