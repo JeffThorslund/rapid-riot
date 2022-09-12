@@ -1,6 +1,7 @@
 import { Festival } from "../../types";
 import { Box, Text } from "grommet";
 import React from "react";
+import { LocationText } from "./LocationText";
 
 interface Props {
   festival: Festival;
@@ -20,6 +21,7 @@ export const FestivalCard = (props: Props) => {
       justify={"center"}
     >
       <Text size={"medium"}>{props.festival.title}</Text>
+      <LocationText location={props.festival.location} />
       <Text size={"small"}>{props.festival.link}</Text>
     </Box>
   );
