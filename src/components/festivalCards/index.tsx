@@ -1,8 +1,9 @@
 import React from "react";
-import { Box, Grid } from "grommet";
 import { Festival } from "../../types";
 import { HoverStateMethods } from "../_utils/useHoverState";
 import { FestivalCard } from "./FestivalCard";
+import Masonry from "react-masonry-css";
+import "./index.css";
 
 interface Props {
   festivals: Festival[];
@@ -11,14 +12,7 @@ interface Props {
 
 export const FestivalCards = (props: Props) => {
   return (
-    <Grid
-      columns={{
-        count: 3,
-        size: "auto",
-      }}
-      gap={"small"}
-      pad={"small"}
-    >
+    <Masonry breakpointCols={3} className="my-masonry-grid">
       {props.festivals.map((festival) => (
         <FestivalCard
           key={festival.title}
@@ -28,6 +22,6 @@ export const FestivalCards = (props: Props) => {
           isCardHovered={props.hoverStateMethods.isHovered(festival.id)}
         />
       ))}
-    </Grid>
+    </Masonry>
   );
 };

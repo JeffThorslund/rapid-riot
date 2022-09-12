@@ -16,13 +16,10 @@ export const FestivalCard = (props: Props) => {
 
   return (
     <Box
-      // border={{
-      //   color: props.isCardHovered ? "dark" : cardColor,
-      //   size: "medium",
-      // }}
       background={cardColor}
       round={"small"}
       pad={"small"}
+      margin={"small"}
       onMouseEnter={props.onMouseEnter}
       onMouseLeave={props.onMouseLeave}
       justify={"center"}
