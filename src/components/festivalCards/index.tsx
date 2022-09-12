@@ -11,25 +11,23 @@ interface Props {
 
 export const FestivalCards = (props: Props) => {
   return (
-    <Box>
-      <Grid
-        columns={{
-          count: 2,
-          size: "auto",
-        }}
-        gap={"small"}
-        pad={"small"}
-      >
-        {props.festivals.map((festival) => (
-          <FestivalCard
-            key={festival.title}
-            festival={festival}
-            onMouseEnter={() => props.hoverStateMethods.set(festival.id)}
-            onMouseLeave={() => props.hoverStateMethods.reset()}
-            isCardHovered={props.hoverStateMethods.isHovered(festival.id)}
-          />
-        ))}
-      </Grid>
-    </Box>
+    <Grid
+      columns={{
+        count: 3,
+        size: "auto",
+      }}
+      gap={"small"}
+      pad={"small"}
+    >
+      {props.festivals.map((festival) => (
+        <FestivalCard
+          key={festival.title}
+          festival={festival}
+          onMouseEnter={() => props.hoverStateMethods.set(festival.id)}
+          onMouseLeave={() => props.hoverStateMethods.reset()}
+          isCardHovered={props.hoverStateMethods.isHovered(festival.id)}
+        />
+      ))}
+    </Grid>
   );
 };
