@@ -1,5 +1,5 @@
-import { titles } from "./mockData";
-import { randomGenerator as randomGen } from "./mock/randomGenerator";
+import { titles } from "../mockData";
+import { randomGenerator as randomGen } from "./randomGenerator";
 
 export const createMockFestivals = (numberOfElements: number) => {
   const randomNames = randomGen.titles(titles, numberOfElements);
