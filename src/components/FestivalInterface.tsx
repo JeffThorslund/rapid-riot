@@ -1,4 +1,4 @@
-import { getMockData } from "../database/mock";
+import { getFestivalData } from "../database";
 import { useMap } from "react-map-gl";
 import React, { useEffect, useState } from "react";
 import { Box } from "grommet";
@@ -8,6 +8,8 @@ import { useViewState } from "./_utils/useViewState";
 import { Festival } from "../types";
 import { prepareFestivalData } from "./_utils/prepareFestivalData";
 import { useHoverState } from "./_utils/useHoverState";
+import { mockDataProvider } from "../database/mock";
+import { dataProvider } from "../database/data";
 
 export const FestivalInterface = () => {
   const mapRef = useMap();
@@ -16,7 +18,7 @@ export const FestivalInterface = () => {
   const hoverStateMethods = useHoverState();
 
   useEffect(() => {
-    const festivals = getMockData();
+    const festivals = getFestivalData(dataProvider);
     setFestivals(festivals);
   }, []);
 

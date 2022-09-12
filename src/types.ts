@@ -1,5 +1,6 @@
 export interface Festival {
   title: string;
+  address: string;
   coordinates: Coordinate;
   link: string;
   id: string;
