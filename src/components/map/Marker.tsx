@@ -7,6 +7,7 @@ export interface MarkerProps {
   latitude: number;
   onMouseEnter: () => void;
   onMouseLeave: () => void;
+  onClick: () => void;
   size: string;
 }
 
@@ -20,6 +21,7 @@ export const Marker = (props: MarkerProps) => {
       <FaMapMarkerAlt
         onMouseEnter={props.onMouseEnter}
         onMouseLeave={props.onMouseLeave}
+        onClick={props.onClick}
         size={props.size}
         cursor={"pointer"}
       />

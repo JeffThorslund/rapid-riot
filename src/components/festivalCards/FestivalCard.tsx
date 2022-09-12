@@ -9,6 +9,7 @@ interface Props {
   festival: Festival;
   onMouseEnter: () => void;
   onMouseLeave: () => void;
+  onClick: () => void;
   isCardHovered: boolean;
 }
 
@@ -24,6 +25,7 @@ export const FestivalCard = (props: Props) => {
       margin={"small"}
       onMouseEnter={props.onMouseEnter}
       onMouseLeave={props.onMouseLeave}
+      onClick={props.onClick}
       style={getCardStyle(props.isCardHovered)}
     >
       <Text size={"medium"} color={textColor}>
