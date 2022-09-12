@@ -1,4 +1,4 @@
-import { Festival } from "../../types";
+import { Festival, Country, States } from "../../types";
 
 export const dataProvider = (): Festival[] => {
   return festivals;
@@ -15,8 +15,40 @@ const festivals: Festival[] = [
   {
     title: "Gauley Fest",
     link: "https://www.americanwhitewater.org/content/Wiki/aw:events_gauley",
-    address: "Summersville, West Virginia 26651",
-    coordinates: { lat: 38.281916708182, lng: -80.84267523502763 },
     id: "a",
+    location: {
+      coordinates: { lat: 38.281916708182, lng: -80.84267523502763 },
+      country: Country.UnitedStates,
+      state: States.WV,
+      city: "Summersville",
+      zipCode: "26651",
+    },
+  },
+  {
+    title: "Dolores River Festival",
+    link: "https://www.doloresriverfest.org/",
+    id: "b",
+    location: {
+      coordinates: { lat: 37.47439000943224, lng: -108.49743635090842 },
+      country: Country.UnitedStates,
+      state: States.CO,
+      city: "Dolores",
+      zipCode: "81323",
+    },
+  },
+  // {
+  //   title: "Winni River Days",
+  // },
+  {
+    title: "Cheat River Festival",
+    link: "https://cheatfest.org/",
+    id: "c",
+    location: {
+      coordinates: { lat: 39.49390539602751, lng: -79.64195234306692 },
+      country: Country.UnitedStates,
+      state: States.WV,
+      city: "Albright",
+      zipCode: "26519",
+    },
   },
 ];

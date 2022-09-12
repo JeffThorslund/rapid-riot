@@ -21,8 +21,8 @@ export const MapElement = (props: Props) => {
       {props.festivals.map((festival) => {
         return (
           <Marker
-            longitude={festival.coordinates.lng}
-            latitude={festival.coordinates.lat}
+            longitude={festival.location.coordinates.lng}
+            latitude={festival.location.coordinates.lat}
             anchor="center"
             key={festival.title}
           >

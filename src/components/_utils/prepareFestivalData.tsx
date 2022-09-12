@@ -19,5 +19,8 @@ const getAndSortVisibleFestivalMarkers = (
     mapRef
       .getMap()
       .getBounds()
-      .contains({ lat: f.coordinates.lat, lng: f.coordinates.lng })
+      .contains({
+        lat: f.location.coordinates.lat,
+        lng: f.location.coordinates.lng,
+      })
   );
