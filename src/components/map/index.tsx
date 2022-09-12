@@ -2,8 +2,8 @@ import React from "react";
 import { Marker, ViewState } from "react-map-gl";
 import { Festival } from "../../types";
 import { CustomMapWrapper } from "./CustomMapWrapper";
-import { Location } from "grommet-icons";
 import { HoverStateMethods } from "../_utils/useHoverState";
+import { FaMapMarkerAlt } from "react-icons/fa";
 
 type Props = {
   festivals: Festival[];
@@ -23,15 +23,16 @@ export const MapElement = (props: Props) => {
           <Marker
             longitude={festival.location.coordinates.lng}
             latitude={festival.location.coordinates.lat}
-            anchor="center"
+            anchor="bottom"
             key={festival.title}
           >
-            <Location
+            <FaMapMarkerAlt
               onMouseEnter={() => props.hoverStateMethods.set(festival.id)}
               onMouseLeave={() => props.hoverStateMethods.reset()}
               size={
-                props.hoverStateMethods.isHovered(festival.id) ? "30px" : "20px"
+                props.hoverStateMethods.isHovered(festival.id) ? "50px" : "40px"
               }
+              cursor={"pointer"}
             />
           </Marker>
         );

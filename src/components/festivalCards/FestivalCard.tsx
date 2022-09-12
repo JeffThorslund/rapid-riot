@@ -22,7 +22,6 @@ export const FestivalCard = (props: Props) => {
       margin={"small"}
       onMouseEnter={props.onMouseEnter}
       onMouseLeave={props.onMouseLeave}
-      justify={"center"}
       style={{
         cursor: "pointer",
         transition: "all ease 0.2s",
