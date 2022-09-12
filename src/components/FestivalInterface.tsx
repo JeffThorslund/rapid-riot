@@ -18,7 +18,7 @@ export const FestivalInterface = () => {
   const hoverStateMethods = useHoverState();
 
   useEffect(() => {
-    const festivals = getFestivalData(dataProvider);
+    const festivals = getFestivalData(mockDataProvider);
     setFestivals(festivals);
   }, []);
 
