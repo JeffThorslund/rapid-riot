@@ -9,7 +9,7 @@ import { Festival } from "../types";
 import { prepareFestivalData } from "./_utils/prepareFestivalData";
 import { useHoverState } from "./_utils/useHoverState";
 import { mockDataProvider } from "../database/mock";
-import { dataProvider } from "../database/data";
+//import { dataProvider } from "../database/data";
 
 export const FestivalInterface = () => {
   const mapRef = useMap();
