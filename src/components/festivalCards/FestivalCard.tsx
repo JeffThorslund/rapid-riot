@@ -2,6 +2,8 @@ import { Festival } from "../../types";
 import { Box, Text } from "grommet";
 import React from "react";
 import { LocationText } from "./LocationText";
+import { getCardStyle } from "./_utils/getCardStyle";
+import { LinkText } from "./LinkText";
 
 interface Props {
   festival: Festival;
@@ -11,7 +13,7 @@ interface Props {
 }
 
 export const FestivalCard = (props: Props) => {
-  const textColor = "#2D1E2F";
+  const textColor = "dark";
   const cardColor = "card";
 
   return (
@@ -22,31 +24,13 @@ export const FestivalCard = (props: Props) => {
       margin={"small"}
       onMouseEnter={props.onMouseEnter}
       onMouseLeave={props.onMouseLeave}
-      style={{
-        cursor: "pointer",
-        transition: "all ease 0.2s",
-        ...(props.isCardHovered
-          ? {
-              boxShadow: "0px 5px 10px 1px rgba(0, 0, 0, 0.2)",
-              transform: "translateY(-3px)",
-            }
-          : {
-              boxShadow: "0px 3px 5px 0px rgba(0, 0, 0, 0.3)",
-              transform: "none",
-            }),
-      }}
+      style={getCardStyle(props.isCardHovered)}
     >
       <Text size={"medium"} color={textColor}>
         {props.festival.title}
       </Text>
       <LocationText location={props.festival.location} color={textColor} />
-      <Text
-        size={"small"}
-        style={{ textOverflow: "ellipsis", overflow: "hidden" }}
-        color={textColor}
-      >
-        {props.festival.link}
-      </Text>
+      <LinkText color={textColor} link={props.festival.link} />
     </Box>
   );
 };

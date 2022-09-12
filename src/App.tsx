@@ -6,7 +6,7 @@ import { FestivalInterface } from "./components/FestivalInterface";
 const App = () => {
   return (
     <AppWrapper>
-      {/*<PageHeader />*/}
+      <PageHeader />
       <FestivalInterface />
     </AppWrapper>
   );

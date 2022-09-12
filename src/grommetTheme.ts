@@ -10,7 +10,6 @@ export const theme: ThemeType = {
     colors: {
       background: "#dae3e5",
       card: "#bbd1ea",
-      hoveredCard: "#a1c6ea",
       dark: "#04080f",
     },
   },
