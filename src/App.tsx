@@ -1,13 +1,13 @@
 import React from "react";
 import { PageHeader } from "./components/PageHeader";
 import { AppWrapper } from "./components/AppWrapper";
-import { FestivalInterface } from "./components/FestivalInterface";
+import { Router } from "./router";
 
 const App = () => {
   return (
     <AppWrapper>
       <PageHeader />
-      <FestivalInterface />
+      <Router />
     </AppWrapper>
   );
 };
