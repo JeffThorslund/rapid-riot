@@ -4,7 +4,7 @@ export const dataProvider = (): Festival[] => {
   return festivals;
 };
 
-const festivals: Festival[] = [
+export const festivals: Festival[] = [
   // {
   //   title: "Unlikely Paddlefest",
   //   link: "https://www.facebook.com/groups/380071755490155",
