@@ -1,4 +1,4 @@
-import { States, Country, Provinces } from "./geo";
+import { States, Countries, Provinces } from "./geo";
 
 export interface Festival {
   title: string;
@@ -11,7 +11,7 @@ export interface Location {
   coordinates: Coordinate;
   city: string;
   state: States | Provinces; // state or province
-  country: Country;
+  country: Countries;
   zipCode: string; // zip or postal code
 }
 
@@ -24,4 +24,4 @@ export type FestivalId = string;
 
 export type HoveredMarkerState = FestivalId | undefined;
 
-export { States, Country, Provinces };
+export { States, Countries, Provinces };

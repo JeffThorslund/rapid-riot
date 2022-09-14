@@ -1,6 +1,6 @@
 import { titles } from "./mockTitles";
 import { randomGenerator as randomGen } from "./randomGenerator";
-import { Country, Festival, States } from "../../types";
+import { Countries, Festival, States } from "../../types";
 
 const NUMBER_OF_ELEMENTS = 40;
 
@@ -14,8 +14,8 @@ export const mockDataProvider = (): Festival[] => {
       location: {
         coordinates: randomGen.coordinate([30, 50], [-120, -80]),
         city: "city",
-        state: States.AK,
-        country: Country.Afghanistan,
+        state: States.Colorado,
+        country: Countries.UnitedStates,
         zipCode: "123456",
       },
 

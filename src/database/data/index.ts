@@ -1,4 +1,4 @@
-import { Festival, Country, States } from "../../types";
+import { Festival, Countries, States } from "../../types";
 
 export const dataProvider = (): Festival[] => {
   return festivals;
@@ -18,8 +18,8 @@ const festivals: Festival[] = [
     id: "a",
     location: {
       coordinates: { lat: 38.281916708182, lng: -80.84267523502763 },
-      country: Country.UnitedStates,
-      state: States.WV,
+      country: Countries.UnitedStates,
+      state: States.WestVirginia,
       city: "Summersville",
       zipCode: "26651",
     },
@@ -30,8 +30,8 @@ const festivals: Festival[] = [
     id: "b",
     location: {
       coordinates: { lat: 37.47439000943224, lng: -108.49743635090842 },
-      country: Country.UnitedStates,
-      state: States.CO,
+      country: Countries.UnitedStates,
+      state: States.Colorado,
       city: "Dolores",
       zipCode: "81323",
     },
@@ -45,8 +45,8 @@ const festivals: Festival[] = [
     id: "c",
     location: {
       coordinates: { lat: 39.49390539602751, lng: -79.64195234306692 },
-      country: Country.UnitedStates,
-      state: States.WV,
+      country: Countries.UnitedStates,
+      state: States.WestVirginia,
       city: "Albright",
       zipCode: "26519",
     },
