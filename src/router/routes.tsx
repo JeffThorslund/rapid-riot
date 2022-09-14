@@ -1,6 +1,7 @@
 import { RouteObject } from "react-router-dom";
 import { FestivalInterface } from "../components/FestivalInterface";
 import React from "react";
+import { Admin } from "../components/admin";
 
 export const routes: RouteObject[] = [
   {
@@ -12,6 +13,6 @@ export const routes: RouteObject[] = [
 export const developmentRoutes: RouteObject[] = [
   {
     path: "/admin",
-    element: <div>Welcome</div>,
+    element: <Admin />,
   },
 ];
