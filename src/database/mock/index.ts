@@ -18,7 +18,6 @@ export const mockDataProvider = (): Festival[] => {
         country: Countries.UnitedStates,
         zipCode: "123456",
       },
-
       date: randomGen.date(new Date(2012, 0, 1), new Date()),
       link: randomGen.link(),
       address: "fake address",

@@ -8,8 +8,6 @@ import { useViewState } from "./_utils/useViewState";
 import { Festival } from "../types";
 import { prepareFestivalData } from "./_utils/prepareFestivalData";
 import { useHoverState } from "./_utils/useHoverState";
-import { mockDataProvider } from "../database/mock";
-//import { dataProvider } from "../database/data";
 
 export const FestivalInterface = () => {
   const mapRef = useMap();
@@ -18,7 +16,7 @@ export const FestivalInterface = () => {
   const hoverStateMethods = useHoverState();
 
   useEffect(() => {
-    const festivals = getFestivalData(mockDataProvider);
+    const festivals = getFestivalData();
     setFestivals(festivals);
   }, []);
 
