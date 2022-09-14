@@ -1,5 +1,7 @@
 import mapboxgl from "mapbox-gl";
 
+// This is a hack for mapbox to enable it to compile in production.
+
 export const disableWorkerLoader = (): void => {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
