@@ -1,5 +1,4 @@
 import { Festival } from "../types";
-import { mockDataProvider } from "./mock";
 import { dataProvider } from "./data";
 
 export const getFestivalData = (): Festival[] => {
@@ -7,5 +6,5 @@ export const getFestivalData = (): Festival[] => {
     return dataProvider();
   }
 
-  return mockDataProvider();
+  return dataProvider();
 };

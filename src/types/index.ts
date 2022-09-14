@@ -12,7 +12,6 @@ export interface Location {
   city: string;
   state: States | Provinces; // state or province
   country: Countries;
-  zipCode: string; // zip or postal code
 }
 
 export interface Coordinate {

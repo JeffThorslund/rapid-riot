@@ -1,4 +1,4 @@
-import { Festival, Countries, States } from "../../types";
+import { Festival, Countries, States, Provinces } from "../../types";
 
 export const dataProvider = (): Festival[] => {
   return festivals;
@@ -21,7 +21,6 @@ const festivals: Festival[] = [
       country: Countries.UnitedStates,
       state: States.WestVirginia,
       city: "Summersville",
-      zipCode: "26651",
     },
   },
   {
@@ -33,7 +32,6 @@ const festivals: Festival[] = [
       country: Countries.UnitedStates,
       state: States.Colorado,
       city: "Dolores",
-      zipCode: "81323",
     },
   },
   // {
@@ -48,7 +46,28 @@ const festivals: Festival[] = [
       country: Countries.UnitedStates,
       state: States.WestVirginia,
       city: "Albright",
-      zipCode: "26519",
+    },
+  },
+  {
+    title: "M.A.C.K Fest",
+    link: "https://www.facebook.com/groups/MACKfest/",
+    id: "qnuSDhvm9cq3KYLRuNuzx",
+    location: {
+      coordinates: { lat: 44.485429202376935, lng: -77.67995774900632 },
+      country: Countries.Canada,
+      state: Provinces.Ontario,
+      city: "Marmora",
+    },
+  },
+  {
+    title: "Lochsa River Madness",
+    link: "https://www.facebook.com/LochsaRiverMadness2013",
+    id: "GnoDaKouJ58mzYa5iZJV4",
+    location: {
+      coordinates: { lat: 46.3437417040309, lng: -115.30776818929994 },
+      country: Countries.UnitedStates,
+      state: States.Idaho,
+      city: "Naz Perce-Clearwater National Forest",
     },
   },
 ];
