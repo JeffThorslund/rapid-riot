@@ -70,4 +70,26 @@ const festivals: Festival[] = [
       city: "Naz Perce-Clearwater National Forest",
     },
   },
+  {
+    title: "Russell Fork Rendezvous",
+    link: "http://www.russellforkrendezvous.com/schedule/",
+    id: "YVNsTU8Ic_4f3yboUdrWa",
+    location: {
+      coordinates: { lat: 37.21554701901949, lng: -82.29160403901776 },
+      country: Countries.UnitedStates,
+      state: States.Virginia,
+      city: "Haysi",
+    },
+  },
+  {
+    title: "Moose River Festival",
+    link: "https://www.facebook.com/MooseRiverFestival/",
+    id: "eQCVxuwnKxHzmSgbT8j27",
+    location: {
+      coordinates: { lat: 43.711293740934416, lng: -74.97378553916971 },
+      country: Countries.UnitedStates,
+      state: States.NewYork,
+      city: "Old Forge",
+    },
+  },
 ];

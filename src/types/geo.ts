@@ -6,7 +6,9 @@ export enum Countries {
 export enum States {
   "Colorado" = "CO",
   "Idaho" = "ID",
+  NewYork = "NY",
   "WestVirginia" = "WV",
+  "Virginia" = "VI",
 }
 
 export enum Provinces {
