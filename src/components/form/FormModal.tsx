@@ -22,20 +22,44 @@ const useFormState = () => {
 
   const [values, setValues] = useState<FormState>(defaultFormState);
 
+  console.log(values);
+
+  const stateData = getStateLabel(values.country);
+
   return {
     values,
     setValues,
     disabledFlags: {
       isStateDropdownDisabled: !values.country,
-      isCityTextFieldDisabled: !values.country && !values.state,
+      isCityTextFieldDisabled: !values.state,
+    },
+    formHelpers: {
+      stateLabel: stateData.label,
+      stateList: stateData.list,
+      clearStateValue: () =>
+        setValues((value) => ({ ...value, state: undefined })),
+      clearCityValue: () => setValues((value) => ({ ...value, city: "" })),
     },
   };
+};
+
+const getStateLabel = (countryValue: Countries | undefined) => {
+  if (countryValue === Countries.Canada) {
+    return { label: "Province", list: Object.values(Provinces) };
+  }
+
+  return { label: "State", list: Object.values(States) };
 };
 
 export function FormModal(props: { modalState: ActiveIndexStateMethods }) {
   if (props.modalState.value === undefined) return null;
 
-  const { values: value, setValues: setValue, disabledFlags } = useFormState();
+  const {
+    values: value,
+    setValues: setValue,
+    disabledFlags,
+    formHelpers,
+  } = useFormState();
 
   return (
     <Layer
@@ -70,19 +94,21 @@ export function FormModal(props: { modalState: ActiveIndexStateMethods }) {
               options={Object.values(Countries)}
               value={value.country}
               onChange={({ option }) => {
-                setValue({ ...value, country: option });
-                console.log(value, option);
+                setValue((value) => ({ ...value, country: option }));
+                formHelpers.clearStateValue();
+                formHelpers.clearCityValue();
               }}
             />
           </FormItemWrapper>
 
-          <FormItemWrapper label={"State"}>
+          <FormItemWrapper label={formHelpers.stateLabel}>
             <Select
-              options={Object.keys(Countries)}
-              value={value}
-              onChange={({ option }) =>
-                setValue((value) => ({ ...value, state: option }))
-              }
+              options={formHelpers.stateList}
+              value={value.state}
+              onChange={({ option }) => {
+                setValue((value) => ({ ...value, state: option }));
+                formHelpers.clearCityValue();
+              }}
               disabled={disabledFlags.isStateDropdownDisabled}
             />
           </FormItemWrapper>
