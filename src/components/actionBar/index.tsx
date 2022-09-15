@@ -28,20 +28,20 @@ export const ActionIconBar = (props: ActionIconBarProps) => {
 
   const iconData: IconData[] = [
     {
-      icon: FaPlusCircle,
-      iconProps: {
-        color: "#3FA34D",
-        key: "add",
-      },
-      tipMessage: "Submit a new festival",
-    },
-    {
       icon: FaExclamationCircle,
       iconProps: {
         color: "#ef6f6c",
         key: "delete",
       },
       tipMessage: "Report outdated, or incorrect data.",
+    },
+    {
+      icon: FaPlusCircle,
+      iconProps: {
+        color: "#3FA34D",
+        key: "add",
+      },
+      tipMessage: "Submit a new festival",
     },
   ];
 
