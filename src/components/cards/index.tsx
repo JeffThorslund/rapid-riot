@@ -23,11 +23,7 @@ export const FestivalCards = (props: Props) => {
   return (
     <Box overflow={"auto"} background={"background"}>
       {modalState.value !== undefined ? (
-        <Layer
-          onEsc={modalState.reset}
-          //onClickOutside={modalState.reset}
-          modal
-        >
+        <Layer onEsc={modalState.reset} onClickOutside={modalState.reset} modal>
           Hello, {modalState.value},
           {actionIconSchema[modalState.value].form.title}
         </Layer>
@@ -36,6 +32,7 @@ export const FestivalCards = (props: Props) => {
         positionPlacement={{ right: 20, bottom: 10 }}
         modalIndex={modalState.value}
         actionIconSchema={actionIconSchema}
+        onClick={(index: number) => modalState.set(index)}
       />
       <Masonry breakpointCols={3} className="my-masonry-grid">
         {props.festivals.map((festival, index) => (

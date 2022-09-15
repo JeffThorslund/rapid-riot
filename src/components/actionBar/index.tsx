@@ -1,35 +1,28 @@
 import { Box } from "grommet";
 import React from "react";
-import { getCardStyle } from "../cards/_utils/getCardStyle";
 import { useActiveIndexState } from "../_utils/useActiveIndexState";
 import { ActionIcon } from "./ActionIcon";
-import { TipWrapper } from "./TipWrapper";
+import { Tip } from "./Tip";
 import { ActionIconSchema } from "./actionIconSchema";
 import { ActiveIndexState, Position } from "../../types";
+import { ActionBarWrapper } from "./ActionBarWrapper";
 
 export interface ActionIconBarProps {
   actionIconSchema: ActionIconSchema[];
   modalIndex: ActiveIndexState;
   positionPlacement: Partial<Position>;
+  onClick: (index: number) => void;
 }
+
 export const ActionIconBar = (props: ActionIconBarProps) => {
   const tooltipHoverIndexState = useActiveIndexState();
 
   const MARGIN = 8;
 
   return (
-    <Box
-      background={"#444444"}
-      round={"medium"}
-      style={{
-        position: "absolute",
-        zIndex: Number.MAX_SAFE_INTEGER,
-        ...props.positionPlacement,
-        ...getCardStyle(false),
-      }}
-    >
+    <ActionBarWrapper positionPlacement={props.positionPlacement}>
       {tooltipHoverIndexState.value !== undefined ? (
-        <TipWrapper
+        <Tip
           key={
             props.actionIconSchema[tooltipHoverIndexState.value].tooltip.message
           }
@@ -52,16 +45,13 @@ export const ActionIconBar = (props: ActionIconBarProps) => {
               color={icon.props.color}
               onMouseEnter={() => tooltipHoverIndexState.set(index)}
               onMouseLeave={() => tooltipHoverIndexState.reset()}
-              onClick={() => {
-                console.log(props.modalIndex, index);
-                if (props.modalIndex === index) return;
-              }}
+              onClick={() => props.onClick(index)}
               isHovered={tooltipHoverIndexState.isHovered(index)}
               margin={MARGIN}
             />
           );
         })}
       </Box>
-    </Box>
+    </ActionBarWrapper>
   );
 };
