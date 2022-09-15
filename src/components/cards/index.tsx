@@ -6,7 +6,7 @@ import Masonry from "react-masonry-css";
 import "./index.css";
 import { openLink } from "../_utils/openLink";
 import { Box } from "grommet";
-import { ActionIconBar } from "./ActionIconBar";
+import { ActionIconBar } from "../actionBar";
 
 interface Props {
   festivals: Festival[];

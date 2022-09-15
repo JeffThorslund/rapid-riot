@@ -3,7 +3,7 @@ import { useMap } from "react-map-gl";
 import React, { useEffect, useState } from "react";
 import { Box } from "grommet";
 import { MapElement } from "./map";
-import { FestivalCards } from "./festivalCards";
+import { FestivalCards } from "./cards";
 import { useViewState } from "./_utils/useViewState";
 import { Festival } from "../types";
 import { prepareFestivalData } from "./_utils/prepareFestivalData";
