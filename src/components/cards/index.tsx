@@ -14,11 +14,13 @@ interface Props {
 }
 
 export const useIsFormVisible = () => {
-  const [isFormVisible, setIsFormVisible] = useState(false);
+  const [isFormVisible, setIsFormVisible] = useState<number | undefined>(
+    undefined
+  );
 
   const methods = {
-    open: () => setIsFormVisible(true),
-    close: () => setIsFormVisible(false),
+    open: (index: number) => setIsFormVisible(index),
+    close: () => setIsFormVisible(undefined),
   };
 
   return { isFormVisible, methods };
@@ -29,11 +31,11 @@ export const FestivalCards = (props: Props) => {
 
   return (
     <Box overflow={"auto"} background={"background"}>
-      {isFormVisible && (
+      {isFormVisible !== undefined ? (
         <Layer onEsc={methods.close} onClickOutside={methods.close} modal>
-          Hello
+          Hello, {isFormVisible}
         </Layer>
-      )}
+      ) : null}
       <ActionIconBar
         rightPosition={20}
         bottomPosition={10}

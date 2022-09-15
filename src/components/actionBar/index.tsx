@@ -6,11 +6,12 @@ import { useHoverState } from "../_utils/useHoverState";
 import { ActionIcon } from "./ActionIcon";
 import { IconType } from "react-icons";
 import { TipWrapper } from "./TipWrapper";
+import { actionIconSchema } from "./actionIconSchema";
 
 export interface ActionIconBarProps {
   rightPosition: number;
   bottomPosition: number;
-  openModal: () => void;
+  openModal: (index: number) => void;
 }
 
 interface IconData {
@@ -20,7 +21,6 @@ interface IconData {
     key: string;
   };
   tipMessage: string;
-  onClick: () => void;
 }
 
 export const ActionIconBar = (props: ActionIconBarProps) => {
@@ -36,7 +36,6 @@ export const ActionIconBar = (props: ActionIconBarProps) => {
         key: "delete",
       },
       tipMessage: "Report outdated, or incorrect data.",
-      onClick: props.openModal,
     },
     {
       icon: FaPlusCircle,
@@ -45,7 +44,6 @@ export const ActionIconBar = (props: ActionIconBarProps) => {
         key: "add",
       },
       tipMessage: "Submit a new festival",
-      onClick: props.openModal,
     },
   ];
 
@@ -81,15 +79,15 @@ export const ActionIconBar = (props: ActionIconBarProps) => {
         justify={"end"}
         style={{ transition: "all ease 0.2s" }}
       >
-        {iconData.map((icon, index) => {
+        {actionIconSchema.map(({ icon }, index) => {
           return (
             <ActionIcon
-              key={icon.iconProps.key}
-              Icon={icon.icon}
-              color={icon.iconProps.color}
+              key={icon.props.key}
+              Icon={icon.component}
+              color={icon.props.color}
               onMouseEnter={() => useHoverStateMethods.set(index)}
               onMouseLeave={() => useHoverStateMethods.reset()}
-              onClick={icon.onClick}
+              onClick={() => props.openModal(index)}
               isHovered={useHoverStateMethods.isHovered(index)}
               margin={MARGIN}
             />
