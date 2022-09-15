@@ -34,10 +34,6 @@ export const FestivalCards = (props: Props) => {
       ) : null}
       <ActionIconBar
         positionPlacement={{ right: 20, bottom: 10 }}
-        openModal={(index: number) => {
-          if (modalState.value === index) return;
-          modalState.set(index);
-        }}
         modalIndex={modalState.value}
         actionIconSchema={actionIconSchema}
       />

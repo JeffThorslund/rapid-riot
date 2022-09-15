@@ -55,7 +55,6 @@ export const ActionIconBar = (props: ActionIconBarProps) => {
               onClick={() => {
                 console.log(props.modalIndex, index);
                 if (props.modalIndex === index) return;
-                props.openModal(index);
               }}
               isHovered={tooltipHoverIndexState.isHovered(index)}
               margin={MARGIN}
