@@ -40,6 +40,9 @@ const useFormState = () => {
         setValues((value) => ({ ...value, state: undefined })),
       clearCityValue: () => setValues((value) => ({ ...value, city: "" })),
     },
+    methods: {
+      reset: () => setValues(defaultFormState),
+    },
   };
 };
 
@@ -59,6 +62,7 @@ export function FormModal(props: { modalState: ActiveIndexStateMethods }) {
     setValues: setValue,
     disabledFlags,
     formHelpers,
+    methods,
   } = useFormState();
 
   return (
@@ -91,23 +95,23 @@ export function FormModal(props: { modalState: ActiveIndexStateMethods }) {
         <Box direction={"row"}>
           <FormItemWrapper label={"Country"}>
             <Select
-              options={Object.values(Countries)}
+              options={Object.values(Countries).sort()}
               value={value.country}
               onChange={({ option }) => {
-                setValue((value) => ({ ...value, country: option }));
                 formHelpers.clearStateValue();
                 formHelpers.clearCityValue();
+                setValue((value) => ({ ...value, country: option }));
               }}
             />
           </FormItemWrapper>
 
           <FormItemWrapper label={formHelpers.stateLabel}>
             <Select
-              options={formHelpers.stateList}
+              options={formHelpers.stateList.sort()}
               value={value.state}
               onChange={({ option }) => {
-                setValue((value) => ({ ...value, state: option }));
                 formHelpers.clearCityValue();
+                setValue((value) => ({ ...value, state: option }));
               }}
               disabled={disabledFlags.isStateDropdownDisabled}
             />
@@ -127,7 +131,7 @@ export function FormModal(props: { modalState: ActiveIndexStateMethods }) {
 
         <Box direction="row" gap="medium" pad="small">
           <Button type="submit" primary label="Submit" />
-          <Button type="reset" label="Reset" />
+          <Button type="reset" label="Reset" onClick={methods.reset} />
         </Box>
       </Box>
     </Layer>
