@@ -20,4 +20,11 @@ export interface Coordinate {
 
 export type ActiveIndexState = number | undefined;
 
+export interface Position {
+  top: number;
+  bottom: number;
+  left: number;
+  right: number;
+}
+
 export { States, Countries, Provinces };

@@ -5,14 +5,12 @@ import { useActiveIndexState } from "../_utils/useActiveIndexState";
 import { ActionIcon } from "./ActionIcon";
 import { TipWrapper } from "./TipWrapper";
 import { ActionIconSchema } from "./actionIconSchema";
-import { ActiveIndexState } from "../../types";
+import { ActiveIndexState, Position } from "../../types";
 
 export interface ActionIconBarProps {
-  rightPosition: number;
-  bottomPosition: number;
-  openModal: (index: number) => void;
   actionIconSchema: ActionIconSchema[];
   modalIndex: ActiveIndexState;
+  positionPlacement: Partial<Position>;
 }
 export const ActionIconBar = (props: ActionIconBarProps) => {
   const tooltipHoverIndexState = useActiveIndexState();
@@ -26,8 +24,7 @@ export const ActionIconBar = (props: ActionIconBarProps) => {
       style={{
         position: "absolute",
         zIndex: Number.MAX_SAFE_INTEGER,
-        right: props.rightPosition,
-        bottom: props.bottomPosition,
+        ...props.positionPlacement,
         ...getCardStyle(false),
       }}
     >
