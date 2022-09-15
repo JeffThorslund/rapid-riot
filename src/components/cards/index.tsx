@@ -8,9 +8,10 @@ import { FestivalCard } from "./FestivalCard";
 import Masonry from "react-masonry-css";
 import "./index.css";
 import { openLink } from "../_utils/openLink";
-import { Box, Layer } from "grommet";
+import { Box } from "grommet";
 import { ActionIconBar } from "../actionBar";
 import { actionIconSchema } from "../actionBar/actionIconSchema";
+import { FormModal } from "../form/FormModal";
 
 interface Props {
   festivals: Festival[];
@@ -23,10 +24,7 @@ export const FestivalCards = (props: Props) => {
   return (
     <Box overflow={"auto"} background={"background"}>
       {modalState.value !== undefined ? (
-        <Layer onEsc={modalState.reset} onClickOutside={modalState.reset} modal>
-          Hello, {modalState.value},
-          {actionIconSchema[modalState.value].form.title}
-        </Layer>
+        <FormModal modalState={modalState} />
       ) : null}
       <ActionIconBar
         positionPlacement={{ right: 20, bottom: 10 }}
