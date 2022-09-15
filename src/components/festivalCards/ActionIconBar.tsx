@@ -28,7 +28,9 @@ export const ActionIconBar = (props: ActionIconBarProps) => {
       }}
     >
       {isIconHovered === 0 ? (
-        <Box pad={"medium"}>Submit a new festival.</Box>
+        <Box pad={{ horizontal: "medium", top: "medium", bottom: "small" }}>
+          Submit a new festival.
+        </Box>
       ) : isIconHovered === 1 ? (
         <Box pad={"medium"}>Report outdated, or incorrect data.</Box>
       ) : null}
