@@ -35,7 +35,7 @@ export const FestivalInterface = () => {
           hoverStateMethods={hoverStateMethods}
         />
       </Box>
-      <Box width={"55%"} overflow={"auto"} background={"background"}>
+      <Box width={"55%"}>
         <FestivalCards
           festivals={sortedFilteredFestivals}
           hoverStateMethods={hoverStateMethods}
