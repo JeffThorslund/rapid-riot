@@ -18,14 +18,14 @@ export const FestivalCards = (props: Props) => {
     <Box overflow={"auto"} background={"background"}>
       <ActionIconBar rightPosition={20} bottomPosition={10} />
       <Masonry breakpointCols={3} className="my-masonry-grid">
-        {props.festivals.map((festival) => (
+        {props.festivals.map((festival, index) => (
           <FestivalCard
             key={festival.title}
             festival={festival}
             onClick={() => openLink(festival.link)}
-            onMouseEnter={() => props.hoverStateMethods.set(festival.id)}
+            onMouseEnter={() => props.hoverStateMethods.set(index)}
             onMouseLeave={() => props.hoverStateMethods.reset()}
-            isCardHovered={props.hoverStateMethods.isHovered(festival.id)}
+            isCardHovered={props.hoverStateMethods.isHovered(index)}
           />
         ))}
       </Masonry>

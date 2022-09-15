@@ -1,8 +1,9 @@
 import { IconType } from "react-icons";
 import { Box } from "grommet";
 import { FaExclamationCircle, FaPlusCircle } from "react-icons/fa";
-import React, { useState } from "react";
+import React from "react";
 import { getCardStyle } from "./_utils/getCardStyle";
+import { useHoverState } from "../_utils/useHoverState";
 
 export interface ActionIconBarProps {
   rightPosition: number;
@@ -10,9 +11,8 @@ export interface ActionIconBarProps {
 }
 
 export const ActionIconBar = (props: ActionIconBarProps) => {
-  const [isIconHovered, setIsIconHovered] = useState<undefined | number>(
-    undefined
-  );
+  const useHoverStateMethods = useHoverState();
+
   const MARGIN = 8;
 
   return (
@@ -27,11 +27,11 @@ export const ActionIconBar = (props: ActionIconBarProps) => {
         ...getCardStyle(false),
       }}
     >
-      {isIconHovered === 0 ? (
+      {useHoverStateMethods.isHovered(0) ? (
         <Box pad={{ horizontal: "medium", top: "medium", bottom: "small" }}>
           Submit a new festival.
         </Box>
-      ) : isIconHovered === 1 ? (
+      ) : useHoverStateMethods.isHovered(1) ? (
         <Box pad={"medium"}>Report outdated, or incorrect data.</Box>
       ) : null}
       <Box
@@ -56,9 +56,9 @@ export const ActionIconBar = (props: ActionIconBarProps) => {
               key={icon.key}
               Icon={icon.icon}
               color={icon.color}
-              onMouseEnter={() => setIsIconHovered(index)}
-              onMouseLeave={() => setIsIconHovered(undefined)}
-              isHovered={isIconHovered === index}
+              onMouseEnter={() => useHoverStateMethods.set(index)}
+              onMouseLeave={() => useHoverStateMethods.reset()}
+              isHovered={useHoverStateMethods.isHovered(index)}
               margin={MARGIN}
             />
           );

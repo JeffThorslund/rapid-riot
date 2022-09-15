@@ -4,7 +4,6 @@ export interface Festival {
   title: string;
   location: Location;
   link: string;
-  id: FestivalId;
 }
 
 export interface Location {
@@ -19,8 +18,6 @@ export interface Coordinate {
   lng: number;
 }
 
-export type FestivalId = string;
-
-export type HoveredMarkerState = FestivalId | undefined;
+export type HoveredIndexState = number | undefined;
 
 export { States, Countries, Provinces };

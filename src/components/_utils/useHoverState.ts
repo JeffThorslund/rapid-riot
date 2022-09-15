@@ -1,22 +1,20 @@
 import { Dispatch, SetStateAction, useState } from "react";
-import { HoveredMarkerState } from "../../types";
+import { HoveredIndexState } from "../../types";
 
 export const useHoverState = () => {
-  const [hoveredMarker, setHoveredMarker] =
-    useState<HoveredMarkerState>(undefined);
+  const [hoveredIndex, setHoveredIndex] =
+    useState<HoveredIndexState>(undefined);
 
-  return createMethods(hoveredMarker, setHoveredMarker);
+  return createMethods(hoveredIndex, setHoveredIndex);
 };
 
 const createMethods = (
-  hoveredMarker: HoveredMarkerState,
-  setHoveredMarker: Dispatch<SetStateAction<HoveredMarkerState>>
+  hoveredIndex: HoveredIndexState,
+  setHoveredIndex: Dispatch<SetStateAction<HoveredIndexState>>
 ) => ({
-  reset: () => setHoveredMarker(undefined),
-  set: (id: string) => setHoveredMarker(id),
-  isHovered: (festivalId: string) => {
-    return festivalId === hoveredMarker;
-  },
+  reset: () => setHoveredIndex(undefined),
+  set: (index: number) => setHoveredIndex(index),
+  isHovered: (index: number) => index === hoveredIndex,
 });
 
 export type HoverStateMethods = ReturnType<typeof createMethods>;

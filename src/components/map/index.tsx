@@ -19,15 +19,15 @@ export const MapElement = (props: Props) => {
       {...props.viewState}
       onMove={(evt) => props.setViewState(evt.viewState)}
     >
-      {props.festivals.map((festival) => {
-        const isMarkerHovered = props.hoverStateMethods.isHovered(festival.id);
+      {props.festivals.map((festival, index) => {
+        const isMarkerHovered = props.hoverStateMethods.isHovered(index);
 
         return (
           <Marker
-            key={festival.id}
+            key={festival.title}
             latitude={festival.location.coordinates.lat}
             longitude={festival.location.coordinates.lng}
-            onMouseEnter={() => props.hoverStateMethods.set(festival.id)}
+            onMouseEnter={() => props.hoverStateMethods.set(index)}
             onMouseLeave={() => props.hoverStateMethods.reset()}
             onClick={() => openLink(festival.link)}
             size={isMarkerHovered ? "50px" : "40px"}
