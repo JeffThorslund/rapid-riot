@@ -2,7 +2,7 @@ import React from "react";
 import { ViewState } from "react-map-gl";
 import { Festival } from "../../types";
 import { CustomMapWrapper } from "./CustomMapWrapper";
-import { HoverStateMethods } from "../_utils/useHoverState";
+import { ActiveIndexStateMethods } from "../_utils/useActiveIndexState";
 import { Marker } from "./Marker";
 import { openLink } from "../_utils/openLink";
 
@@ -10,7 +10,7 @@ type Props = {
   festivals: Festival[];
   viewState: ViewState;
   setViewState: React.Dispatch<React.SetStateAction<ViewState>>;
-  hoverStateMethods: HoverStateMethods;
+  hoverStateMethods: ActiveIndexStateMethods;
 };
 
 export const MapElement = (props: Props) => {

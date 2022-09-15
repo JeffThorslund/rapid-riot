@@ -1,62 +1,23 @@
 import { Box } from "grommet";
-import { FaExclamationCircle, FaPlusCircle } from "react-icons/fa";
 import React from "react";
 import { getCardStyle } from "../cards/_utils/getCardStyle";
-import { useHoverState } from "../_utils/useHoverState";
+import { useActiveIndexState } from "../_utils/useActiveIndexState";
 import { ActionIcon } from "./ActionIcon";
-import { IconType } from "react-icons";
 import { TipWrapper } from "./TipWrapper";
-import { actionIconSchema } from "./actionIconSchema";
+import { ActionIconSchema } from "./actionIconSchema";
+import { ActiveIndexState } from "../../types";
 
 export interface ActionIconBarProps {
   rightPosition: number;
   bottomPosition: number;
   openModal: (index: number) => void;
+  actionIconSchema: ActionIconSchema[];
+  modalIndex: ActiveIndexState;
 }
-
-interface IconData {
-  icon: IconType;
-  iconProps: {
-    color: string;
-    key: string;
-  };
-  tipMessage: string;
-}
-
 export const ActionIconBar = (props: ActionIconBarProps) => {
-  const useHoverStateMethods = useHoverState();
+  const tooltipHoverIndexState = useActiveIndexState();
 
   const MARGIN = 8;
-
-  const iconData: IconData[] = [
-    {
-      icon: FaExclamationCircle,
-      iconProps: {
-        color: "#ef6f6c",
-        key: "delete",
-      },
-      tipMessage: "Report outdated, or incorrect data.",
-    },
-    {
-      icon: FaPlusCircle,
-      iconProps: {
-        color: "#3FA34D",
-        key: "add",
-      },
-      tipMessage: "Submit a new festival",
-    },
-  ];
-
-  const showHoveredTip = (
-    iconData: IconData[],
-    callback: (index: number) => boolean
-  ) => {
-    const tip = iconData.find((icon, index) => callback(index));
-
-    if (tip === undefined) return null;
-
-    return <TipWrapper key={tip.tipMessage} text={tip.tipMessage} />;
-  };
 
   return (
     <Box
@@ -70,25 +31,36 @@ export const ActionIconBar = (props: ActionIconBarProps) => {
         ...getCardStyle(false),
       }}
     >
-      {showHoveredTip(iconData, (index) =>
-        useHoverStateMethods.isHovered(index)
-      )}
+      {tooltipHoverIndexState.value !== undefined ? (
+        <TipWrapper
+          key={
+            props.actionIconSchema[tooltipHoverIndexState.value].tooltip.message
+          }
+          text={
+            props.actionIconSchema[tooltipHoverIndexState.value].tooltip.message
+          }
+        />
+      ) : null}
 
       <Box
         direction={"row"}
         justify={"end"}
         style={{ transition: "all ease 0.2s" }}
       >
-        {actionIconSchema.map(({ icon }, index) => {
+        {props.actionIconSchema.map(({ icon }, index) => {
           return (
             <ActionIcon
               key={icon.props.key}
               Icon={icon.component}
               color={icon.props.color}
-              onMouseEnter={() => useHoverStateMethods.set(index)}
-              onMouseLeave={() => useHoverStateMethods.reset()}
-              onClick={() => props.openModal(index)}
-              isHovered={useHoverStateMethods.isHovered(index)}
+              onMouseEnter={() => tooltipHoverIndexState.set(index)}
+              onMouseLeave={() => tooltipHoverIndexState.reset()}
+              onClick={() => {
+                console.log(props.modalIndex, index);
+                if (props.modalIndex === index) return;
+                props.openModal(index);
+              }}
+              isHovered={tooltipHoverIndexState.isHovered(index)}
               margin={MARGIN}
             />
           );

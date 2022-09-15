@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { Festival } from "../../types";
-import { HoverStateMethods } from "../_utils/useHoverState";
+import {
+  ActiveIndexStateMethods,
+  useActiveIndexState,
+} from "../_utils/useActiveIndexState";
 import { FestivalCard } from "./FestivalCard";
 import Masonry from "react-masonry-css";
 import "./index.css";
@@ -11,34 +14,30 @@ import { actionIconSchema } from "../actionBar/actionIconSchema";
 
 interface Props {
   festivals: Festival[];
-  hoverStateMethods: HoverStateMethods;
+  festivalHoverState: ActiveIndexStateMethods;
 }
 
-export const useModalIndex = () => {
-  const [modalIndex, setModalIndex] = useState<number | undefined>(undefined);
-
-  const methods = {
-    open: (index: number) => setModalIndex(index),
-    close: () => setModalIndex(undefined),
-  };
-
-  return { modalIndex, methods };
-};
-
 export const FestivalCards = (props: Props) => {
-  const { modalIndex, methods } = useModalIndex();
+  const modalState = useActiveIndexState();
 
   return (
     <Box overflow={"auto"} background={"background"}>
-      {modalIndex !== undefined ? (
-        <Layer onEsc={methods.close} onClickOutside={methods.close} modal>
-          Hello, {modalIndex}, {actionIconSchema[modalIndex].form.title}
+      {modalState.value !== undefined ? (
+        <Layer
+          onEsc={modalState.reset}
+          //onClickOutside={modalState.reset}
+          modal
+        >
+          Hello, {modalState.value},
+          {actionIconSchema[modalState.value].form.title}
         </Layer>
       ) : null}
       <ActionIconBar
         rightPosition={20}
         bottomPosition={10}
-        openModal={methods.open}
+        openModal={modalState.set}
+        modalIndex={modalState.value}
+        actionIconSchema={actionIconSchema}
       />
       <Masonry breakpointCols={3} className="my-masonry-grid">
         {props.festivals.map((festival, index) => (
@@ -46,9 +45,9 @@ export const FestivalCards = (props: Props) => {
             key={festival.title}
             festival={festival}
             onClick={() => openLink(festival.link)}
-            onMouseEnter={() => props.hoverStateMethods.set(index)}
-            onMouseLeave={() => props.hoverStateMethods.reset()}
-            isCardHovered={props.hoverStateMethods.isHovered(index)}
+            onMouseEnter={() => props.festivalHoverState.set(index)}
+            onMouseLeave={() => props.festivalHoverState.reset()}
+            isCardHovered={props.festivalHoverState.isHovered(index)}
           />
         ))}
       </Masonry>

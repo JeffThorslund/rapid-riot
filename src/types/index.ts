@@ -18,6 +18,6 @@ export interface Coordinate {
   lng: number;
 }
 
-export type HoveredIndexState = number | undefined;
+export type ActiveIndexState = number | undefined;
 
 export { States, Countries, Provinces };

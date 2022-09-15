@@ -6,7 +6,7 @@ enum ActionIconEnum {
   DELETE = "DELETE",
 }
 
-interface ActionIconSchema {
+export interface ActionIconSchema {
   icon: {
     component: IconType;
     props: {
