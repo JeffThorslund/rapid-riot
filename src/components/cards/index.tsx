@@ -7,33 +7,32 @@ import "./index.css";
 import { openLink } from "../_utils/openLink";
 import { Box, Layer } from "grommet";
 import { ActionIconBar } from "../actionBar";
+import { actionIconSchema } from "../actionBar/actionIconSchema";
 
 interface Props {
   festivals: Festival[];
   hoverStateMethods: HoverStateMethods;
 }
 
-export const useIsFormVisible = () => {
-  const [isFormVisible, setIsFormVisible] = useState<number | undefined>(
-    undefined
-  );
+export const useModalIndex = () => {
+  const [modalIndex, setModalIndex] = useState<number | undefined>(undefined);
 
   const methods = {
-    open: (index: number) => setIsFormVisible(index),
-    close: () => setIsFormVisible(undefined),
+    open: (index: number) => setModalIndex(index),
+    close: () => setModalIndex(undefined),
   };
 
-  return { isFormVisible, methods };
+  return { modalIndex, methods };
 };
 
 export const FestivalCards = (props: Props) => {
-  const { isFormVisible, methods } = useIsFormVisible();
+  const { modalIndex, methods } = useModalIndex();
 
   return (
     <Box overflow={"auto"} background={"background"}>
-      {isFormVisible !== undefined ? (
+      {modalIndex !== undefined ? (
         <Layer onEsc={methods.close} onClickOutside={methods.close} modal>
-          Hello, {isFormVisible}
+          Hello, {modalIndex}, {actionIconSchema[modalIndex].form.title}
         </Layer>
       ) : null}
       <ActionIconBar

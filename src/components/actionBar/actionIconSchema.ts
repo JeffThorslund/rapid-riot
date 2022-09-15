@@ -17,6 +17,10 @@ interface ActionIconSchema {
   tooltip: {
     message: string;
   };
+  form: {
+    title: string;
+    content: string;
+  };
 }
 
 export const actionIconSchema: ActionIconSchema[] = [
@@ -29,6 +33,7 @@ export const actionIconSchema: ActionIconSchema[] = [
       },
     },
     tooltip: { message: "Submit a new festival" },
+    form: { title: "Let's add a festival!", content: "Here is some content." },
   },
   {
     icon: {
@@ -39,5 +44,9 @@ export const actionIconSchema: ActionIconSchema[] = [
       },
     },
     tooltip: { message: "Report outdated, or incorrect data." },
+    form: {
+      title: "Let's delete a festival!",
+      content: "Here is some content about deleting.",
+    },
   },
 ];
