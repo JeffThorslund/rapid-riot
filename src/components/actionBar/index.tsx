@@ -10,6 +10,7 @@ import { TipWrapper } from "./TipWrapper";
 export interface ActionIconBarProps {
   rightPosition: number;
   bottomPosition: number;
+  openModal: () => void;
 }
 
 interface IconData {
@@ -19,6 +20,7 @@ interface IconData {
     key: string;
   };
   tipMessage: string;
+  onClick: () => void;
 }
 
 export const ActionIconBar = (props: ActionIconBarProps) => {
@@ -34,6 +36,7 @@ export const ActionIconBar = (props: ActionIconBarProps) => {
         key: "delete",
       },
       tipMessage: "Report outdated, or incorrect data.",
+      onClick: props.openModal,
     },
     {
       icon: FaPlusCircle,
@@ -42,6 +45,7 @@ export const ActionIconBar = (props: ActionIconBarProps) => {
         key: "add",
       },
       tipMessage: "Submit a new festival",
+      onClick: props.openModal,
     },
   ];
 
@@ -59,7 +63,7 @@ export const ActionIconBar = (props: ActionIconBarProps) => {
   return (
     <Box
       background={"#444444"}
-      round={"30px"}
+      round={"medium"}
       style={{
         position: "absolute",
         zIndex: Number.MAX_SAFE_INTEGER,
@@ -85,6 +89,7 @@ export const ActionIconBar = (props: ActionIconBarProps) => {
               color={icon.iconProps.color}
               onMouseEnter={() => useHoverStateMethods.set(index)}
               onMouseLeave={() => useHoverStateMethods.reset()}
+              onClick={icon.onClick}
               isHovered={useHoverStateMethods.isHovered(index)}
               margin={MARGIN}
             />

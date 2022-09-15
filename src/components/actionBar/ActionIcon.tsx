@@ -8,6 +8,7 @@ export interface ActionIconProps {
   onMouseEnter: () => void;
   onMouseLeave: () => void;
   isHovered: boolean;
+  onClick: () => void;
 }
 
 export const ActionIcon = ({ Icon, ...props }: ActionIconProps) => {
@@ -17,6 +18,7 @@ export const ActionIcon = ({ Icon, ...props }: ActionIconProps) => {
       color={props.color}
       onMouseEnter={props.onMouseEnter}
       onMouseLeave={props.onMouseLeave}
+      onClick={props.onClick}
       style={{
         margin: props.margin,
         cursor: "pointer",
