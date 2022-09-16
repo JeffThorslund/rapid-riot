@@ -1,4 +1,4 @@
-import { States, Countries, Provinces } from "./geo";
+import { Countries, Provinces, States, GeoOption } from "./geo";
 
 export interface Festival {
   title: string;
@@ -28,3 +28,5 @@ export interface Position {
 }
 
 export { States, Countries, Provinces };
+
+export type { GeoOption };

@@ -1,19 +1,14 @@
-import { Countries, Provinces, States } from "../../../types";
+import { Countries, Provinces, States, GeoOption } from "../../../types";
 import { useState } from "react";
 import { convertEnumToObject } from "../../../types/geo";
 
 export interface SubmissionFormState {
   title: string;
   link: string;
-  country: undefined | GeoObj<Countries>;
-  state: undefined | GeoObj<States | Provinces>;
+  country: undefined | GeoOption<Countries>;
+  state: undefined | GeoOption<States | Provinces>;
   city: string;
 }
-
-type GeoObj<T> = {
-  name: string;
-  abb: T;
-};
 
 export const useSubmissionFormState = () => {
   const defaultSubmissionFormState: SubmissionFormState = {
@@ -60,7 +55,7 @@ export const useSubmissionFormState = () => {
 };
 
 export const getStateLabelAndList = (
-  countryValue: GeoObj<Countries> | undefined
+  countryValue: GeoOption<Countries> | undefined
 ) => {
   if (countryValue === undefined) {
     return { label: "State", list: [] };
