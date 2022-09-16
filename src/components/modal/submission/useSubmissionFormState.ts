@@ -10,15 +10,23 @@ export interface SubmissionFormState {
   city: string;
 }
 
-export const useSubmissionFormState = () => {
-  const defaultValues: SubmissionFormState = {
-    title: "",
-    link: "",
-    country: Countries["Canada"],
-    state: Provinces["British Columbia"],
-    city: "",
-  };
+const getDefaultStateEnumFromCountry = (countryAbbreviation: Countries) => {
+  if (countryAbbreviation === Countries.Canada) {
+    return Provinces["British Columbia"];
+  }
 
+  return States["Washington"];
+};
+
+const defaultValues: SubmissionFormState = {
+  title: "",
+  link: "",
+  country: Countries["Canada"],
+  state: getDefaultStateEnumFromCountry(Countries["Canada"]),
+  city: "",
+};
+
+export const useSubmissionFormState = () => {
   const [values, setValues] = useState<SubmissionFormState>(defaultValues);
 
   const { list, label } = getStateLabelAndList(values.country);
@@ -30,7 +38,7 @@ export const useSubmissionFormState = () => {
       stateLabel: label,
       stateList: list,
       getDefaultStateValue: (countryValue: Countries) =>
-        getStateLabelAndList(countryValue).defaultValue,
+        getDefaultStateEnumFromCountry(countryValue),
     },
     methods: {
       reset: () => setValues(defaultValues),
@@ -43,13 +51,11 @@ export const getStateLabelAndList = (countryValue: Countries) => {
     return {
       label: "Province",
       list: convertEnumToObject(Provinces).sort(),
-      defaultValue: Provinces["British Columbia"],
     };
   }
 
   return {
     label: "State",
     list: convertEnumToObject(States).sort(),
-    defaultValue: States["Washington"],
   };
 };
