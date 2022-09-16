@@ -23,6 +23,7 @@ export function SubmissionForm(props: { modalState: ActiveIndexStateMethods }) {
       closeModal={props.modalState.reset}
       submitForm={async () => {
         await supabaseMethods.insert(values);
+        props.modalState.reset();
       }}
       resetForm={methods.reset}
       isSubmitButtonDisabled={methods.areAllFieldsFilled}
