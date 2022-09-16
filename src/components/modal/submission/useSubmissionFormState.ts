@@ -31,6 +31,8 @@ export const useSubmissionFormState = () => {
 
   const { list, label } = getStateLabelAndList(values.country);
 
+  const areAllFieldsFilled = !!(values.title && values.link && values.city);
+
   return {
     values,
     setValues,
@@ -42,6 +44,7 @@ export const useSubmissionFormState = () => {
     },
     methods: {
       reset: () => setValues(defaultValues),
+      areAllFieldsFilled,
     },
   };
 };

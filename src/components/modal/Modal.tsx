@@ -7,6 +7,7 @@ export const Modal = (props: {
   submitForm: () => void;
   resetForm: () => void;
   children: React.ReactNode;
+  isSubmitButtonDisabled: boolean;
 }) => {
   return (
     <Layer
@@ -18,7 +19,10 @@ export const Modal = (props: {
       <Box pad={"medium"} width={"large"} round={"large"}>
         {props.children}
         <Box direction="row" gap="medium" pad="small">
-          <SubmissionButton onClick={props.submitForm} />
+          <SubmissionButton
+            onClick={props.submitForm}
+            areAllFieldsValid={props.isSubmitButtonDisabled}
+          />
           <Button type="reset" label="Reset" onClick={props.resetForm} />
         </Box>
       </Box>
@@ -28,6 +32,7 @@ export const Modal = (props: {
 
 interface SubmissionButtonProps {
   onClick: () => void;
+  areAllFieldsValid: boolean;
 }
 
 const SubmissionButton = (props: SubmissionButtonProps) => {
@@ -47,7 +52,7 @@ const SubmissionButton = (props: SubmissionButtonProps) => {
       type="submit"
       primary
       label={label}
-      disabled={isButtonLoading}
+      disabled={!props.areAllFieldsValid || isButtonLoading}
       onClick={async () => {
         setIsButtonLoading(true);
         await props.onClick();
