@@ -1,6 +1,7 @@
-import { Box, Button, Layer } from "grommet";
+import { Box, Button, Layer, Spinner, Text } from "grommet";
 import { ActiveIndexStateMethods } from "../_utils/useActiveIndexState";
-import React from "react";
+import React, { useState } from "react";
+import { stall } from "./_utils/stall";
 
 export const Modal = (props: {
   closeModal: ActiveIndexStateMethods["reset"];
@@ -18,15 +19,46 @@ export const Modal = (props: {
       <Box pad={"medium"} width={"large"} round={"large"}>
         {props.children}
         <Box direction="row" gap="medium" pad="small">
-          <Button
-            type="submit"
-            primary
-            label="Submit"
-            onClick={props.submitForm}
+          <SubmissionButton
+            onClick={async () => {
+              await stall();
+              console.log("hi");
+            }}
           />
           <Button type="reset" label="Reset" onClick={props.resetForm} />
         </Box>
       </Box>
     </Layer>
+  );
+};
+
+interface SubmissionButtonProps {
+  onClick: () => Promise<void>;
+}
+
+const SubmissionButton = (props: SubmissionButtonProps) => {
+  const [isButtonLoading, setIsButtonLoading] = useState(false);
+
+  const label = (
+    <Box direction={"row"}>
+      <Text>Submit</Text>
+      {isButtonLoading ? (
+        <Spinner color={"black"} size={"xsmall"} margin={{ left: "small" }} />
+      ) : null}
+    </Box>
+  );
+
+  return (
+    <Button
+      type="submit"
+      primary
+      label={label}
+      disabled={isButtonLoading}
+      onClick={async () => {
+        setIsButtonLoading(true);
+        await props.onClick();
+        setIsButtonLoading(false);
+      }}
+    />
   );
 };

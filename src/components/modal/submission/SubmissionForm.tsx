@@ -11,7 +11,7 @@ export function SubmissionForm(props: { modalState: ActiveIndexStateMethods }) {
   if (props.modalState.value === undefined) return null;
 
   const {
-    values: value,
+    values,
     setValues: setValue,
     disabledFlags,
     formHelpers,
@@ -21,13 +21,15 @@ export function SubmissionForm(props: { modalState: ActiveIndexStateMethods }) {
   return (
     <Modal
       closeModal={props.modalState.reset}
-      submitForm={() => console.log(value)}
+      submitForm={() => {
+        console.log(values);
+      }}
       resetForm={methods.reset}
     >
       <FormItemWrapper label={"Festival Name"}>
         <TextInput
           placeholder="e.g. Clearwater Kayak Festival"
-          value={value.title}
+          value={values.title}
           onChange={(e) =>
             setValue((value) => ({ ...value, title: e.target.value }))
           }
@@ -37,7 +39,7 @@ export function SubmissionForm(props: { modalState: ActiveIndexStateMethods }) {
       <FormItemWrapper label={"Link"}>
         <TextInput
           placeholder="e.g. https://www.facebook.com/ClearwaterKayakFestival"
-          value={value.link}
+          value={values.link}
           onChange={(e) =>
             setValue((value) => ({ ...value, link: e.target.value }))
           }
@@ -48,7 +50,7 @@ export function SubmissionForm(props: { modalState: ActiveIndexStateMethods }) {
         <FormItemWrapper label={"Country"}>
           <Select
             options={convertEnumToObject(Countries).sort()}
-            value={value.country}
+            value={values.country}
             labelKey="name"
             valueKey="abb"
             onChange={({ option }) => {
@@ -62,7 +64,7 @@ export function SubmissionForm(props: { modalState: ActiveIndexStateMethods }) {
         <FormItemWrapper label={formHelpers.stateLabel}>
           <Select
             options={formHelpers.stateList}
-            value={value.state}
+            value={values.state}
             labelKey="name"
             valueKey="abb"
             onChange={({ option }) => {
@@ -76,7 +78,7 @@ export function SubmissionForm(props: { modalState: ActiveIndexStateMethods }) {
         <FormItemWrapper label={"City"}>
           <TextInput
             placeholder="Clearwater"
-            value={value.city}
+            value={values.city}
             onChange={(e) =>
               setValue((value) => ({ ...value, city: e.target.value }))
             }
