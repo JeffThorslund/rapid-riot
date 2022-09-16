@@ -10,7 +10,7 @@ export const ActionBarWrapper = (props: {
   return (
     <Box
       background={"#444444"}
-      round={"medium"}
+      round={"large"}
       style={{
         position: "absolute",
         zIndex: Number.MAX_SAFE_INTEGER,

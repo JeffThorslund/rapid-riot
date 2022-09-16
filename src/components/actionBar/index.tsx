@@ -2,7 +2,6 @@ import { Box } from "grommet";
 import React from "react";
 import { useActiveIndexState } from "../_utils/useActiveIndexState";
 import { ActionIcon } from "./ActionIcon";
-import { Tip } from "./Tip";
 import { ActionIconSchema } from "./actionIconSchema";
 import { ActiveIndexState, Position } from "../../types";
 import { ActionBarWrapper } from "./ActionBarWrapper";
@@ -21,22 +20,21 @@ export const ActionIconBar = (props: ActionIconBarProps) => {
 
   return (
     <ActionBarWrapper positionPlacement={props.positionPlacement}>
-      {tooltipHoverIndexState.value !== undefined ? (
-        <Tip
-          key={
-            props.actionIconSchema[tooltipHoverIndexState.value].tooltip.message
-          }
-          text={
-            props.actionIconSchema[tooltipHoverIndexState.value].tooltip.message
-          }
-        />
-      ) : null}
-
       <Box
         direction={"row"}
         justify={"end"}
+        align={"center"}
         style={{ transition: "all ease 0.2s" }}
       >
+        {tooltipHoverIndexState.value !== undefined ? (
+          <Box pad={{ horizontal: "medium" }}>
+            {
+              props.actionIconSchema[tooltipHoverIndexState.value].tooltip
+                .message
+            }
+          </Box>
+        ) : null}
+
         {props.actionIconSchema.map(({ icon }, index) => {
           return (
             <ActionIcon
