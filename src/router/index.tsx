@@ -1,11 +1,15 @@
 import React from "react";
-import { createBrowserRouter } from "react-router-dom";
-import { routes, developmentRoutes } from "./routes";
+import { createBrowserRouter, RouteObject } from "react-router-dom";
 import { RouterProvider } from "react-router";
 import { compileRoutes } from "./compileRoutes";
 
-export const Router = () => {
-  const compiledRoutes = compileRoutes(routes, developmentRoutes);
+interface Props {
+  routes: RouteObject[];
+  developmentRoutes: RouteObject[];
+}
+
+export const Router = (props: Props) => {
+  const compiledRoutes = compileRoutes(props.routes, props.developmentRoutes);
 
   const router = createBrowserRouter(compiledRoutes);
 

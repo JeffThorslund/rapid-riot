@@ -9,8 +9,13 @@ export const Modal = (props: {
   children: React.ReactNode;
 }) => {
   return (
-    <Layer onEsc={props.closeModal} onClickOutside={props.closeModal} modal>
-      <Box pad={"medium"} width={"large"}>
+    <Layer
+      onEsc={props.closeModal}
+      onClickOutside={props.closeModal}
+      background={"background"}
+      modal
+    >
+      <Box pad={"medium"} width={"large"} round={"large"}>
         {props.children}
         <Box direction="row" gap="medium" pad="small">
           <Button
