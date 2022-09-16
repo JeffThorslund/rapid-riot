@@ -6,7 +6,7 @@ import { Modal } from "../Modal";
 import { FormItemWrapper } from "../FormItemWrapper";
 import { useSubmissionFormState } from "./useSubmissionFormState";
 import { convertEnumToObject } from "../../../types/geo";
-import { supabase } from "../../../database";
+import { supabaseMethods } from "../../../database/supabase";
 
 export function SubmissionForm(props: { modalState: ActiveIndexStateMethods }) {
   if (props.modalState.value === undefined) return null;
@@ -23,12 +23,13 @@ export function SubmissionForm(props: { modalState: ActiveIndexStateMethods }) {
     <Modal
       closeModal={props.modalState.reset}
       submitForm={async () => {
-        const { data: new_festivals } = await supabase
-          .from("new_festivals")
-          .select("*");
+        const finalValues = {
+          ...values,
+          country: values.country?.abb || "",
+          state: values.state?.abb || "",
+        };
 
-        await supabase.from("new_festivals").insert([{ title: "someValue" }]);
-        console.log(new_festivals);
+        await supabaseMethods.insert(finalValues);
       }}
       resetForm={methods.reset}
     >

@@ -27,6 +27,20 @@ export interface Position {
   right: number;
 }
 
+// Database Types
+export interface NewFestivalSubmission {
+  title: string;
+  link: string;
+  country: string;
+  state: string;
+  city: string;
+}
+
+export interface NewFestival extends NewFestivalSubmission {
+  id: number;
+  created_at: string;
+}
+
 export { States, Countries, Provinces };
 
 export type { GeoOption };
