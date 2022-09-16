@@ -43,7 +43,7 @@ export const actionIconSchema: ActionIconSchema[] = [
         key: ActionIconEnum.DELETE,
       },
     },
-    tooltip: { message: "Report outdated, or incorrect data." },
+    tooltip: { message: "Report outdated or incorrect data." },
     form: {
       title: "Let's delete a festival!",
       content: "Here is some content about deleting.",
