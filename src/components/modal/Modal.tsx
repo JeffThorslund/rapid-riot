@@ -1,7 +1,6 @@
 import { Box, Button, Layer, Spinner, Text } from "grommet";
 import { ActiveIndexStateMethods } from "../_utils/useActiveIndexState";
 import React, { useState } from "react";
-import { stall } from "./_utils/stall";
 
 export const Modal = (props: {
   closeModal: ActiveIndexStateMethods["reset"];
@@ -19,12 +18,7 @@ export const Modal = (props: {
       <Box pad={"medium"} width={"large"} round={"large"}>
         {props.children}
         <Box direction="row" gap="medium" pad="small">
-          <SubmissionButton
-            onClick={async () => {
-              await stall();
-              console.log("hi");
-            }}
-          />
+          <SubmissionButton onClick={props.submitForm} />
           <Button type="reset" label="Reset" onClick={props.resetForm} />
         </Box>
       </Box>
@@ -33,7 +27,7 @@ export const Modal = (props: {
 };
 
 interface SubmissionButtonProps {
-  onClick: () => Promise<void>;
+  onClick: () => void;
 }
 
 const SubmissionButton = (props: SubmissionButtonProps) => {
