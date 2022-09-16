@@ -1,11 +1,11 @@
 import { Box, Select, TextInput } from "grommet";
 import React from "react";
 import { ActiveIndexStateMethods } from "../../_utils/useActiveIndexState";
-import { Countries } from "../../../types";
+import { Countries, Provinces, States } from "../../../types";
 import { Modal } from "../Modal";
 import { FormItemWrapper } from "../FormItemWrapper";
 import { useSubmissionFormState } from "./useSubmissionFormState";
-import { convertEnumToObject } from "../../../types/geo";
+import { convertEnumToObject, GeoOption } from "../../../types/geo";
 import { supabaseMethods } from "../../../database/supabase";
 
 export function SubmissionForm(props: { modalState: ActiveIndexStateMethods }) {
@@ -14,7 +14,6 @@ export function SubmissionForm(props: { modalState: ActiveIndexStateMethods }) {
   const {
     values,
     setValues: setValue,
-    disabledFlags,
     formHelpers,
     methods,
   } = useSubmissionFormState();
@@ -23,13 +22,7 @@ export function SubmissionForm(props: { modalState: ActiveIndexStateMethods }) {
     <Modal
       closeModal={props.modalState.reset}
       submitForm={async () => {
-        const finalValues = {
-          ...values,
-          country: values.country?.abb || "",
-          state: values.state?.abb || "",
-        };
-
-        await supabaseMethods.insert(finalValues);
+        await supabaseMethods.insert(values);
       }}
       resetForm={methods.reset}
     >
@@ -58,12 +51,14 @@ export function SubmissionForm(props: { modalState: ActiveIndexStateMethods }) {
           <Select
             options={convertEnumToObject(Countries).sort()}
             value={values.country}
-            labelKey="name"
-            valueKey="abb"
-            onChange={({ option }) => {
-              formHelpers.clearStateValue();
-              formHelpers.clearCityValue();
-              setValue((value) => ({ ...value, country: option }));
+            valueKey={{ key: "abb", reduce: true }}
+            labelKey={"name"}
+            onChange={({ option }: { option: GeoOption<Countries> }) => {
+              setValue((value) => ({
+                ...value,
+                country: option.abb,
+                state: formHelpers.getDefaultStateValue(option.abb),
+              }));
             }}
           />
         </FormItemWrapper>
@@ -72,13 +67,15 @@ export function SubmissionForm(props: { modalState: ActiveIndexStateMethods }) {
           <Select
             options={formHelpers.stateList}
             value={values.state}
-            labelKey="name"
-            valueKey="abb"
-            onChange={({ option }) => {
-              formHelpers.clearCityValue();
-              setValue((value) => ({ ...value, state: option }));
+            labelKey={"name"}
+            valueKey={{ key: "abb", reduce: true }}
+            onChange={({
+              option,
+            }: {
+              option: GeoOption<Provinces | States>;
+            }) => {
+              setValue((value) => ({ ...value, state: option.abb }));
             }}
-            disabled={disabledFlags.isStateDropdownDisabled}
           />
         </FormItemWrapper>
 
@@ -89,7 +86,6 @@ export function SubmissionForm(props: { modalState: ActiveIndexStateMethods }) {
             onChange={(e) =>
               setValue((value) => ({ ...value, city: e.target.value }))
             }
-            disabled={disabledFlags.isCityTextFieldDisabled}
           />
         </FormItemWrapper>
       </Box>

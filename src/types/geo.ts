@@ -82,6 +82,11 @@ export enum Provinces {
   "Yukon Territory" = "YT",
 }
 
+export type GeoOption<T> = {
+  name: string;
+  abb: T;
+};
+
 export const convertEnumToObject = <T>(geoEnum: {
   [key: string]: T;
 }): GeoOption<T>[] =>
@@ -91,8 +96,3 @@ export const convertEnumToObject = <T>(geoEnum: {
       abb: state[1],
     };
   });
-
-export type GeoOption<T> = {
-  name: string;
-  abb: T;
-};

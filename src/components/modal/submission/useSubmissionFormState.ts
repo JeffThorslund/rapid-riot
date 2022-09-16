@@ -1,69 +1,55 @@
-import { Countries, Provinces, States, GeoOption } from "../../../types";
+import { Countries, Provinces, States } from "../../../types";
 import { useState } from "react";
 import { convertEnumToObject } from "../../../types/geo";
 
 export interface SubmissionFormState {
   title: string;
   link: string;
-  country: undefined | GeoOption<Countries>;
-  state: undefined | GeoOption<States | Provinces>;
+  country: Countries;
+  state: States | Provinces;
   city: string;
 }
 
 export const useSubmissionFormState = () => {
-  const defaultSubmissionFormState: SubmissionFormState = {
+  const defaultValues: SubmissionFormState = {
     title: "",
     link: "",
-    country: undefined,
-    state: undefined,
+    country: Countries["Canada"],
+    state: Provinces["British Columbia"],
     city: "",
   };
 
-  const [values, setValues] = useState<SubmissionFormState>(
-    defaultSubmissionFormState
-  );
+  const [values, setValues] = useState<SubmissionFormState>(defaultValues);
 
   const { list, label } = getStateLabelAndList(values.country);
 
   return {
     values,
     setValues,
-    disabledFlags: {
-      isStateDropdownDisabled: !values.country,
-      isCityTextFieldDisabled: !values.state,
-    },
     formHelpers: {
       stateLabel: label,
       stateList: list,
-      clearStateValue: () => {
-        setValues((value) => ({
-          ...value,
-          state: defaultSubmissionFormState.state,
-        }));
-      },
-      clearCityValue: () => {
-        setValues((value) => ({
-          ...value,
-          city: defaultSubmissionFormState.city,
-        }));
-      },
+      getDefaultStateValue: (countryValue: Countries) =>
+        getStateLabelAndList(countryValue).defaultValue,
     },
     methods: {
-      reset: () => setValues(defaultSubmissionFormState),
+      reset: () => setValues(defaultValues),
     },
   };
 };
 
-export const getStateLabelAndList = (
-  countryValue: GeoOption<Countries> | undefined
-) => {
-  if (countryValue === undefined) {
-    return { label: "State", list: [] };
+export const getStateLabelAndList = (countryValue: Countries) => {
+  if (countryValue === Countries.Canada) {
+    return {
+      label: "Province",
+      list: convertEnumToObject(Provinces).sort(),
+      defaultValue: Provinces["British Columbia"],
+    };
   }
 
-  if (countryValue.abb === Countries.Canada) {
-    return { label: "Province", list: convertEnumToObject(Provinces).sort() };
-  }
-
-  return { label: "State", list: convertEnumToObject(States).sort() };
+  return {
+    label: "State",
+    list: convertEnumToObject(States).sort(),
+    defaultValue: States["Washington"],
+  };
 };
