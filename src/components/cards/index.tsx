@@ -11,7 +11,6 @@ import { openLink } from "../_utils/openLink";
 import { Box } from "grommet";
 import { ActionIconBar } from "../actionBar";
 import { actionIconSchema } from "../actionBar/actionIconSchema";
-import { SubmissionForm } from "../modal/SubmissionForm";
 
 interface Props {
   festivals: Festival[];
@@ -23,9 +22,9 @@ export const FestivalCards = (props: Props) => {
 
   return (
     <Box overflow={"auto"} background={"background"}>
-      {modalState.value !== undefined ? (
-        <SubmissionForm modalState={modalState} />
-      ) : null}
+      {modalState.value !== undefined
+        ? actionIconSchema[modalState.value].form(modalState)
+        : null}
       <ActionIconBar
         positionPlacement={{ right: 20, bottom: 10 }}
         modalIndex={modalState.value}

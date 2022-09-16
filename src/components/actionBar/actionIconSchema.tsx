@@ -1,5 +1,8 @@
 import { FaExclamationCircle, FaPlusCircle } from "react-icons/fa";
 import { IconType } from "react-icons";
+import { ActiveIndexStateMethods } from "../_utils/useActiveIndexState";
+import React from "react";
+import { SubmissionForm } from "../modal/SubmissionForm";
 
 enum ActionIconEnum {
   ADD = "ADD",
@@ -17,10 +20,7 @@ export interface ActionIconSchema {
   tooltip: {
     message: string;
   };
-  form: {
-    title: string;
-    content: string;
-  };
+  form: (modalState: ActiveIndexStateMethods) => React.ReactNode;
 }
 
 export const actionIconSchema: ActionIconSchema[] = [
@@ -33,7 +33,9 @@ export const actionIconSchema: ActionIconSchema[] = [
       },
     },
     tooltip: { message: "Submit a new festival" },
-    form: { title: "Let's add a festival!", content: "Here is some content." },
+    form: (modalState: ActiveIndexStateMethods) => (
+      <SubmissionForm modalState={modalState} />
+    ),
   },
   {
     icon: {
@@ -44,9 +46,6 @@ export const actionIconSchema: ActionIconSchema[] = [
       },
     },
     tooltip: { message: "Report outdated or incorrect data." },
-    form: {
-      title: "Let's delete a festival!",
-      content: "Here is some content about deleting.",
-    },
+    form: () => <div>hi</div>,
   },
 ];
