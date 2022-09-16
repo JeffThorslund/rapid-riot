@@ -69,12 +69,8 @@ export function SubmissionForm(props: { modalState: ActiveIndexStateMethods }) {
             value={values.state}
             labelKey={"name"}
             valueKey={{ key: "abb", reduce: true }}
-            onChange={({
-              option,
-            }: {
-              option: GeoOption<Provinces | States>;
-            }) => {
-              setValue((value) => ({ ...value, state: option.abb }));
+            onChange={(arg: { option: GeoOption<Provinces | States> }) => {
+              setValue((value) => ({ ...value, state: arg.option.abb }));
             }}
           />
         </FormItemWrapper>
