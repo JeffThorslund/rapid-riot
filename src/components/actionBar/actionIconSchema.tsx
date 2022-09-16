@@ -2,7 +2,8 @@ import { FaExclamationCircle, FaPlusCircle } from "react-icons/fa";
 import { IconType } from "react-icons";
 import { ActiveIndexStateMethods } from "../_utils/useActiveIndexState";
 import React from "react";
-import { SubmissionForm } from "../modal/submission/SubmissionForm";
+import { SubmissionForm } from "../modal/submission";
+import { ReportingForm } from "../modal/reporting";
 
 enum ActionIconEnum {
   ADD = "ADD",
@@ -46,6 +47,8 @@ export const actionIconSchema: ActionIconSchema[] = [
       },
     },
     tooltip: { message: "Report outdated or incorrect data." },
-    form: () => <div>hi</div>,
+    form: (modalState: ActiveIndexStateMethods) => (
+      <ReportingForm modalState={modalState} />
+    ),
   },
 ];
