@@ -3,27 +3,28 @@ import React, { useState } from "react";
 import { ActiveIndexStateMethods } from "../../_utils/useActiveIndexState";
 import { Modal } from "../Modal";
 import { FormItemWrapper } from "../FormItemWrapper";
+import { supabaseMethods } from "../../../database/supabase";
 
 export function ReportingForm(props: { modalState: ActiveIndexStateMethods }) {
   if (props.modalState.value === undefined) return null;
 
-  const [state, setState] = useState("");
+  const [text, setText] = useState("");
 
   return (
     <Modal
       closeModal={props.modalState.reset}
       submitForm={async () => {
-        //await supabaseMethods.insert(values);
+        await supabaseMethods.insertReport(text);
         props.modalState.reset();
       }}
-      resetForm={() => setState("")}
-      isSubmitButtonDisabled={!!state}
+      resetForm={() => setText("")}
+      isSubmitButtonDisabled={!!text}
     >
       <FormItemWrapper label={"Report"}>
         <TextArea
           placeholder="BeaterFest was stopped in 2019 due to property damage, and no longer runs."
-          value={state}
-          onChange={(e) => setState(e.target.value)}
+          value={text}
+          onChange={(e) => setText(e.target.value)}
         />
       </FormItemWrapper>
     </Modal>

@@ -28,6 +28,11 @@ export interface Position {
 }
 
 // Database Types
+export interface DataRowBase {
+  id: number;
+  created_at: string;
+}
+
 export interface NewFestivalSubmission {
   title: string;
   link: string;
@@ -36,10 +41,13 @@ export interface NewFestivalSubmission {
   city: string;
 }
 
-export interface NewFestival extends NewFestivalSubmission {
-  id: number;
-  created_at: string;
+export interface NewFestival extends NewFestivalSubmission, DataRowBase {}
+
+export interface NewReportSubmission {
+  report: string;
 }
+
+export interface NewReport extends NewReportSubmission, DataRowBase {}
 
 export { States, Countries, Provinces };
 

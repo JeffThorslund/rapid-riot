@@ -22,7 +22,7 @@ export function SubmissionForm(props: { modalState: ActiveIndexStateMethods }) {
     <Modal
       closeModal={props.modalState.reset}
       submitForm={async () => {
-        await supabaseMethods.insert(values);
+        await supabaseMethods.insertSubmission(values);
         props.modalState.reset();
       }}
       resetForm={methods.reset}
