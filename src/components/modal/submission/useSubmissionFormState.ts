@@ -1,13 +1,19 @@
-import { Countries, Provinces, States } from "../../types";
+import { Countries, Provinces, States } from "../../../types";
 import { useState } from "react";
+import { convertEnumToObject } from "../../../types/geo";
 
 export interface SubmissionFormState {
   title: string;
   link: string;
-  country: undefined | Countries;
-  state: undefined | States | Provinces;
+  country: undefined | GeoObj<Countries>;
+  state: undefined | GeoObj<States | Provinces>;
   city: string;
 }
+
+type GeoObj<T> = {
+  name: string;
+  abb: T;
+};
 
 export const useSubmissionFormState = () => {
   const defaultSubmissionFormState: SubmissionFormState = {
@@ -22,7 +28,7 @@ export const useSubmissionFormState = () => {
     defaultSubmissionFormState
   );
 
-  const stateData = getStateLabel(values.country);
+  const { list, label } = getStateLabelAndList(values.country);
 
   return {
     values,
@@ -32,18 +38,20 @@ export const useSubmissionFormState = () => {
       isCityTextFieldDisabled: !values.state,
     },
     formHelpers: {
-      stateLabel: stateData.label,
-      stateList: stateData.list,
-      clearStateValue: () =>
+      stateLabel: label,
+      stateList: list,
+      clearStateValue: () => {
         setValues((value) => ({
           ...value,
           state: defaultSubmissionFormState.state,
-        })),
-      clearCityValue: () =>
+        }));
+      },
+      clearCityValue: () => {
         setValues((value) => ({
           ...value,
           city: defaultSubmissionFormState.city,
-        })),
+        }));
+      },
     },
     methods: {
       reset: () => setValues(defaultSubmissionFormState),
@@ -51,10 +59,16 @@ export const useSubmissionFormState = () => {
   };
 };
 
-export const getStateLabel = (countryValue: Countries | undefined) => {
-  if (countryValue === Countries.Canada) {
-    return { label: "Province", list: Object.values(Provinces).sort() };
+export const getStateLabelAndList = (
+  countryValue: GeoObj<Countries> | undefined
+) => {
+  if (countryValue === undefined) {
+    return { label: "State", list: [] };
   }
 
-  return { label: "State", list: Object.values(States).sort() };
+  if (countryValue.abb === Countries.Canada) {
+    return { label: "Province", list: convertEnumToObject(Provinces).sort() };
+  }
+
+  return { label: "State", list: convertEnumToObject(States).sort() };
 };

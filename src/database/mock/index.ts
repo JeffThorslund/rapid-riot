@@ -15,7 +15,7 @@ export const mockDataProvider = (): Festival[] => {
         coordinates: randomGen.coordinate([30, 50], [-120, -80]),
         city: "city",
         state: States.Colorado,
-        country: Countries.UnitedStates,
+        country: Countries["United States"],
         zipCode: "123456",
       },
       date: randomGen.date(new Date(2012, 0, 1), new Date()),

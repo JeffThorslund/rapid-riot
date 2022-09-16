@@ -1,10 +1,11 @@
 import { Box, Select, TextInput } from "grommet";
 import React from "react";
-import { ActiveIndexStateMethods } from "../_utils/useActiveIndexState";
-import { Countries } from "../../types";
-import { Modal } from "./Modal";
-import { FormItemWrapper } from "./FormItemWrapper";
+import { ActiveIndexStateMethods } from "../../_utils/useActiveIndexState";
+import { Countries } from "../../../types";
+import { Modal } from "../Modal";
+import { FormItemWrapper } from "../FormItemWrapper";
 import { useSubmissionFormState } from "./useSubmissionFormState";
+import { convertEnumToObject } from "../../../types/geo";
 
 export function SubmissionForm(props: { modalState: ActiveIndexStateMethods }) {
   if (props.modalState.value === undefined) return null;
@@ -46,8 +47,10 @@ export function SubmissionForm(props: { modalState: ActiveIndexStateMethods }) {
       <Box direction={"row"}>
         <FormItemWrapper label={"Country"}>
           <Select
-            options={Object.values(Countries).sort()}
+            options={convertEnumToObject(Countries).sort()}
             value={value.country}
+            labelKey="name"
+            valueKey="abb"
             onChange={({ option }) => {
               formHelpers.clearStateValue();
               formHelpers.clearCityValue();
@@ -60,6 +63,8 @@ export function SubmissionForm(props: { modalState: ActiveIndexStateMethods }) {
           <Select
             options={formHelpers.stateList}
             value={value.state}
+            labelKey="name"
+            valueKey="abb"
             onChange={({ option }) => {
               formHelpers.clearCityValue();
               setValue((value) => ({ ...value, state: option }));
