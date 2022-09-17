@@ -18,12 +18,16 @@ export const Modal = (props: {
     >
       <Box pad={"medium"} width={"large"} round={"large"}>
         {props.children}
-        <Box direction="row" gap="medium" pad="small">
-          <SubmissionButton
-            onClick={props.submitForm}
-            areAllFieldsValid={props.isSubmitButtonDisabled}
-          />
-          <Button type="reset" label="Reset" onClick={props.resetForm} />
+        <Box direction="row" gap="medium" pad="small" justify={"between"}>
+          <Box direction={"row"} gap="medium">
+            <SubmissionButton
+              onClick={props.submitForm}
+              areAllFieldsValid={props.isSubmitButtonDisabled}
+            />
+            <Button type="reset" label="Reset" onClick={props.resetForm} />
+          </Box>
+
+          <Button label="Close" onClick={props.closeModal} justify={"center"} />
         </Box>
       </Box>
     </Layer>
