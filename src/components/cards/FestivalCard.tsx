@@ -13,15 +13,12 @@ interface Props {
 }
 
 export const FestivalCard = (props: Props) => {
-  const textColor = "dark";
-  const cardColor = "card";
-
   return (
     <Box
-      background={cardColor}
+      background={props.isCardHovered ? "neutral-2" : "#f2edfc"}
       round={"small"}
       pad={"small"}
-      margin={"small"}
+      margin={{ horizontal: "xsmall", vertical: "small" }}
       onMouseEnter={props.onMouseEnter}
       onMouseLeave={props.onMouseLeave}
       onClick={props.onClick}
@@ -32,11 +29,9 @@ export const FestivalCard = (props: Props) => {
         cursor: "pointer",
       }}
     >
-      <Text size={"medium"} color={textColor}>
-        {props.festival.title}
-      </Text>
-      <LocationText location={props.festival.location} color={textColor} />
-      <LinkText color={textColor} link={props.festival.link} />
+      <Text size={"medium"}>{props.festival.title}</Text>
+      <LocationText location={props.festival.location} />
+      <LinkText link={props.festival.link} />
     </Box>
   );
 };

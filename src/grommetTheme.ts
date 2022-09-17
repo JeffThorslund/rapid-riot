@@ -7,15 +7,11 @@ export const theme: ThemeType = {
       size: "18px",
       height: "20px",
     },
-    colors: {
-      background: "#dae3e5",
-      card: "#bbd1ea",
-      dark: "#04080f",
-    },
+    colors: {},
   },
   layer: {
     border: {
-      radius: "medium",
+      radius: "small",
     },
     container: {
       elevation: "large",

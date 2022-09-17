@@ -21,7 +21,11 @@ export const FestivalCards = (props: Props) => {
   const modalState = useActiveIndexState();
 
   return (
-    <Box overflow={"auto"} background={"background"}>
+    <Box
+      overflow={"auto"}
+      background={"#ffffff"}
+      pad={{ horizontal: "xsmall" }}
+    >
       {modalState.value !== undefined
         ? actionIconSchema[modalState.value].form(modalState)
         : null}

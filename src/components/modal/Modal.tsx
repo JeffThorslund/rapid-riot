@@ -16,7 +16,7 @@ export const Modal = (props: {
       background={"background"}
       modal
     >
-      <Box pad={"medium"} width={"large"} round={"large"}>
+      <Box pad={"medium"} width={"large"}>
         {props.children}
         <Box direction="row" gap="medium" pad="small" justify={"between"}>
           <Box direction={"row"} gap="medium">

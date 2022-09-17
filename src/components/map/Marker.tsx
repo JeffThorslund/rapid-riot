@@ -24,6 +24,7 @@ export const Marker = (props: MarkerProps) => {
         onClick={props.onClick}
         size={props.size}
         cursor={"pointer"}
+        color={"neutral-2"}
       />
     </ReactMapGlMarker>
   );

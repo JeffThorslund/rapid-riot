@@ -3,9 +3,11 @@ import React from "react";
 
 export function PageHeader() {
   return (
-    <Header background={"light-1"} pad="small">
+    <Header background={"brand"} pad="small">
       <Box>
-        <Text weight={"bold"}>Rapid Riot</Text>
+        <Text weight="bolder" size={"large"}>
+          Rapid Riot
+        </Text>
       </Box>
       <Box>Whitewater Festival Database</Box>
     </Header>
