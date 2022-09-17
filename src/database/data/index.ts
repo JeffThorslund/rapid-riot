@@ -1,4 +1,4 @@
-import { Festival, Countries, States, Provinces } from "../../types";
+import { Countries, Festival, Provinces, States } from "../../types";
 
 export const dataProvider = (): Festival[] => {
   return festivals;
@@ -83,6 +83,56 @@ export const festivals: Festival[] = [
       country: Countries["United States"],
       state: States["New York"],
       city: "Old Forge",
+    },
+  },
+  {
+    title: "North Fork Championships",
+    link: "http://northforkchampionship.com/",
+    location: {
+      coordinates: { lat: 44.11560073788811, lng: -115.9708269394663 },
+      country: Countries["United States"],
+      state: States["Idaho"],
+      city: "Crouch",
+    },
+  },
+  {
+    title: "BaileyFest",
+    link: "https://www.facebook.com/BaileyFest-737418089730702/",
+    location: {
+      coordinates: { lat: 39.40739674859621, lng: -105.47874831211327 },
+      country: Countries["United States"],
+      state: States["Colorado"],
+      city: "Bailey",
+    },
+  },
+  {
+    title: "Upper Clackamus Whitewater Festival",
+    link: "https://www.facebook.com/ucwwf/",
+    location: {
+      coordinates: { lat: 45.40772831582221, lng: -122.567425264854 },
+      country: Countries["United States"],
+      state: States["Oregon"],
+      city: "Clackamas",
+    },
+  },
+  {
+    title: "Ocoee River Championships",
+    link: "https://www.ocoeeriverchampionships.com/",
+    location: {
+      coordinates: { lat: 35.067079169993995, lng: -84.46155267179614 },
+      country: Countries["United States"],
+      state: States["Tennessee"],
+      city: "Ducktown",
+    },
+  },
+  {
+    title: "Pesh Fest",
+    link: "https://www.facebook.com/kosirswhitewaterrafting",
+    location: {
+      coordinates: { lat: 45.38762024792218, lng: -88.3033849733652 },
+      country: Countries["United States"],
+      state: States["Wisconsin"],
+      city: "Athelstane",
     },
   },
 ];
