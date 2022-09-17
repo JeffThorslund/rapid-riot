@@ -186,3 +186,494 @@ export const festivals: Festival[] = [
     },
   },
 ];
+
+/**
+ * [
+ *   {
+ *     "title": "Gauley Fest",
+ *     "link": "https://www.americanwhitewater.org/content/Wiki/aw:events_gauley",
+ *     "location": {
+ *       "coordinates": {},
+ *       "state": "WV",
+ *       "city": "Unnamed Road, Summersville, WV 26651, USA"
+ *     }
+ *   },
+ *   {
+ *     "title": "Dolores River Festival",
+ *     "link": "https://www.doloresriverfestival.org/",
+ *     "location": {
+ *       "coordinates": {},
+ *       "state": "CO",
+ *       "city": ""
+ *     }
+ *   },
+ *   {
+ *     "title": "Winni River Days",
+ *     "link": "http://millcitypark.com/events/2019winniriverdays",
+ *     "location": {
+ *       "coordinates": {},
+ *       "state": "NH",
+ *       "city": ""
+ *     }
+ *   },
+ *   {
+ *     "title": "Cheat River Festival",
+ *     "link": "http://cheatfest.org/",
+ *     "location": {
+ *       "coordinates": {},
+ *       "state": "WV",
+ *       "city": ""
+ *     }
+ *   },
+ *   {
+ *     "title": "Mack Fest",
+ *     "link": "https://www.kwpclub.ca/mackfest/mackfestdetails/",
+ *     "location": {
+ *       "coordinates": {},
+ *       "state": "ON",
+ *       "city": ""
+ *     }
+ *   },
+ *   {
+ *     "title": "Lochsa River Madness",
+ *     "link": "https://www.facebook.com/LochsaRiverMadness2013/",
+ *     "location": {
+ *       "coordinates": {},
+ *       "state": "ID",
+ *       "city": ""
+ *     }
+ *   },
+ *   {
+ *     "title": "King of the Rogue",
+ *     "link": "https://www.goldhillwhitewater.org/king-of-the-rogue",
+ *     "location": {
+ *       "coordinates": {},
+ *       "state": "OR",
+ *       "city": ""
+ *     }
+ *   },
+ *   {
+ *     "title": "Kicking Horse Paddle Fest",
+ *     "link": "https://www.facebook.com/kickinghorsepaddlefestival/",
+ *     "location": {
+ *       "coordinates": {},
+ *       "state": "BC",
+ *       "city": ""
+ *     }
+ *   },
+ *   {
+ *     "title": "Coosa River Festival",
+ *     "link": "https://www.facebook.com/coosariverwhitewaterfestival/",
+ *     "location": {
+ *       "coordinates": {},
+ *       "state": "AL",
+ *       "city": ""
+ *     }
+ *   },
+ *   {
+ *     "title": "Russell Fork Rendezvous",
+ *     "link": "http://www.russellforkrendezvous.com/",
+ *     "location": {
+ *       "coordinates": {},
+ *       "state": "VA",
+ *       "city": ""
+ *     }
+ *   },
+ *   {
+ *     "title": "Moose River Festival",
+ *     "link": "https://www.facebook.com/MooseRiverFestival/",
+ *     "location": {
+ *       "coordinates": {},
+ *       "state": "NY",
+ *       "city": ""
+ *     }
+ *   },
+ *   {
+ *     "title": "Wet willy festival",
+ *     "link": "Https://www.Jeffsucks420.com",
+ *     "location": {
+ *       "coordinates": {},
+ *       "state": "MT",
+ *       "city": "Unnamed Road, Broadus, MT 59317, USA"
+ *     }
+ *   },
+ *   {
+ *     "title": "Willamette Val Film Fest",
+ *     "link": "no info 2019",
+ *     "location": {
+ *       "coordinates": {},
+ *       "state": "OR",
+ *       "city": ""
+ *     }
+ *   },
+ *   {
+ *     "title": "North Fork Championships",
+ *     "link": "http://northforkchampionship.com/",
+ *     "location": {
+ *       "coordinates": {},
+ *       "state": "ID",
+ *       "city": ""
+ *     }
+ *   },
+ *   {
+ *     "title": "Bailey Fest",
+ *     "link": "https://coloradowhitewater.org/event-2997355",
+ *     "location": {
+ *       "coordinates": {},
+ *       "state": "CO",
+ *       "city": ""
+ *     }
+ *   },
+ *   {
+ *     "title": "Upper Clackamas Festival",
+ *     "link": "http://upperclackamasfestival.org/",
+ *     "location": {
+ *       "coordinates": {},
+ *       "state": "OR",
+ *       "city": ""
+ *     }
+ *   },
+ *   {
+ *     "title": "Ocoee River Championship",
+ *     "link": "http://www.ocoeeriverchampionships.com/",
+ *     "location": {
+ *       "coordinates": {},
+ *       "state": "TN",
+ *       "city": ""
+ *     }
+ *   },
+ *   {
+ *     "title": "Peshtigo Fest",
+ *     "link": "https://www.kosirs.com/",
+ *     "location": {
+ *       "coordinates": {},
+ *       "state": "WI",
+ *       "city": ""
+ *     }
+ *   },
+ *   {
+ *     "title": "CKS Paddlefest",
+ *     "link": "https://www.ckspaddlefest.com/",
+ *     "location": {
+ *       "coordinates": {},
+ *       "state": "CO",
+ *       "city": ""
+ *     }
+ *   },
+ *   {
+ *     "title": "Nelson Race",
+ *     "link": "https://www.facebook.com/events/2125753470811027/2126005337452507/?notif_t=plan_mall_activity&notif_id=1550606661841236",
+ *     "location": {
+ *       "coordinates": {},
+ *       "state": "QC",
+ *       "city": ""
+ *     }
+ *   },
+ *   {
+ *     "title": "Slave River Paddlefest",
+ *     "link": "http://slaveriverpaddlefest.ca/",
+ *     "location": {
+ *       "coordinates": {},
+ *       "state": "NT",
+ *       "city": ""
+ *     }
+ *   },
+ *   {
+ *     "title": "Montreal EauVive",
+ *     "link": "https://www.mtleauvive.com/",
+ *     "location": {
+ *       "coordinates": {},
+ *       "state": "QC",
+ *       "city": ""
+ *     }
+ *   },
+ *   {
+ *     "title": "Upper Wind Whitewater Festival",
+ *     "link": "https://www.facebook.com/UpperWindFestival/",
+ *     "location": {
+ *       "coordinates": {},
+ *       "state": "WA",
+ *       "city": ""
+ *     }
+ *   },
+ *   {
+ *     "title": "Ridgway River Festival",
+ *     "link": "https://ridgwayriverfest.org/",
+ *     "location": {
+ *       "coordinates": {},
+ *       "state": "CO",
+ *       "city": ""
+ *     }
+ *   },
+ *   {
+ *     "title": "Slalom 7 Soeurs",
+ *     "link": "https://slalom7soeurs.com/en/",
+ *     "location": {
+ *       "coordinates": {},
+ *       "state": "QC",
+ *       "city": ""
+ *     }
+ *   },
+ *   {
+ *     "title": "Gorefest",
+ *     "link": "https://www.facebook.com/gorecanyonfest/",
+ *     "location": {
+ *       "coordinates": {},
+ *       "state": "CO",
+ *       "city": ""
+ *     }
+ *   },
+ *   {
+ *     "title": "Big Water Blowout",
+ *     "link": "https://www.facebook.com/bwbrf/",
+ *     "location": {
+ *       "coordinates": {},
+ *       "state": "ID",
+ *       "city": ""
+ *     }
+ *   },
+ *   {
+ *     "title": "Gallatin Whitewater Festival",
+ *     "link": "https://www.facebook.com/gallatinwhitewaterfestival/",
+ *     "location": {
+ *       "coordinates": {},
+ *       "state": "MT",
+ *       "city": ""
+ *     }
+ *   },
+ *   {
+ *     "title": "Down River Rendezvous",
+ *     "link": "https://www.downriverequip.com/blog_detail.cfm?blogId=64",
+ *     "location": {
+ *       "coordinates": {},
+ *       "state": "CO",
+ *       "city": ""
+ *     }
+ *   },
+ *   {
+ *     "title": "Cuyahoga Falls Kayak Race",
+ *     "link": "https://www.cfkayakrace.com/",
+ *     "location": {
+ *       "coordinates": {},
+ *       "state": "OH",
+ *       "city": ""
+ *     }
+ *   },
+ *   {
+ *     "title": "NW Creeking Comp",
+ *     "link": "https://www.northwestcreekingcomp.com/",
+ *     "location": {
+ *       "coordinates": {},
+ *       "state": "WA",
+ *       "city": ""
+ *     }
+ *   },
+ *   {
+ *     "title": "FIBArk",
+ *     "link": "http://www.fibark.com/",
+ *     "location": {
+ *       "coordinates": {},
+ *       "state": "CO",
+ *       "city": ""
+ *     }
+ *   },
+ *   {
+ *     "title": "Spring Moose Fest",
+ *     "link": "https://www.facebook.com/MooseRiverFestival/",
+ *     "location": {
+ *       "coordinates": {},
+ *       "state": "NY",
+ *       "city": ""
+ *     }
+ *   },
+ *   {
+ *     "title": "Tuck Fest",
+ *     "link": "https://tuckfest.usnwc.org/",
+ *     "location": {
+ *       "coordinates": {},
+ *       "state": "NC",
+ *       "city": ""
+ *     }
+ *   },
+ *   {
+ *     "title": "Missouri Whitewater Championships",
+ *     "link": "https://missouriwhitewater.org/competition/mwc/",
+ *     "location": {
+ *       "coordinates": {},
+ *       "state": "MO",
+ *       "city": ""
+ *     }
+ *   },
+ *   {
+ *     "title": "French Broad River Festival",
+ *     "link": "http://www.frenchbroadriverfestival.com/",
+ *     "location": {
+ *       "coordinates": {},
+ *       "state": "NC",
+ *       "city": ""
+ *     }
+ *   },
+ *   {
+ *     "title": "White Salmon River Festival",
+ *     "link": "https://www.facebook.com/WhiteSalmonRiverFest/",
+ *     "location": {
+ *       "coordinates": {},
+ *       "state": "WA",
+ *       "city": ""
+ *     }
+ *   },
+ *   {
+ *     "title": "Le Festival d'eau-vive de la Haute-Gatineau",
+ *     "link": "https://www.gatineau.org/",
+ *     "location": {
+ *       "coordinates": {},
+ *       "state": "QC",
+ *       "city": ""
+ *     }
+ *   },
+ *   {
+ *     "title": "Deerfield Festival",
+ *     "link": "https://www.americanwhitewater.org/content/Wiki/aw:events_deerfield",
+ *     "location": {
+ *       "coordinates": {},
+ *       "state": "MA",
+ *       "city": ""
+ *     }
+ *   },
+ *   {
+ *     "title": "Reno River Festival",
+ *     "link": "https://renoriverfestival.com/the-cause/",
+ *     "location": {
+ *       "coordinates": {},
+ *       "state": "NV",
+ *       "city": ""
+ *     }
+ *   },
+ *   {
+ *     "title": "Jordan River Festival",
+ *     "link": "http://paddlerevelstoke.ca/jordan-river-festival",
+ *     "location": {
+ *       "coordinates": {},
+ *       "state": "BC",
+ *       "city": ""
+ *     }
+ *   },
+ *   {
+ *     "title": "South Fork Film Fest",
+ *     "link": "https://sites.google.com/view/southforkfilmfest",
+ *     "location": {
+ *       "coordinates": {},
+ *       "state": "CA",
+ *       "city": ""
+ *     }
+ *   },
+ *   {
+ *     "title": "Noli Fest",
+ *     "link": "https://www.facebook.com/Nolifest",
+ *     "location": {
+ *       "coordinates": {},
+ *       "state": "TN",
+ *       "city": ""
+ *     }
+ *   },
+ *   {
+ *     "title": "Pink Water Challenge",
+ *     "link": "https://pink-water.ca/en/challenge-pink-water-2019",
+ *     "location": {
+ *       "coordinates": {},
+ *       "state": "QC",
+ *       "city": ""
+ *     }
+ *   },
+ *   {
+ *     "title": "Wild West River Fest",
+ *     "link": "http://wildwestpaddleclub.org/cody-wild-west-river-fest/",
+ *     "location": {
+ *       "coordinates": {},
+ *       "state": "WY",
+ *       "city": ""
+ *     }
+ *   },
+ *   {
+ *     "title": "South Platte River Festival",
+ *     "link": "https://www.thegreenwayfoundation.org/citizens4theriver.html",
+ *     "location": {
+ *       "coordinates": {},
+ *       "state": "CO",
+ *       "city": ""
+ *     }
+ *   },
+ *   {
+ *     "title": "Beaver River Rendezvous - KoNY",
+ *     "link": "http://beaverriverrendezvous.com/",
+ *     "location": {
+ *       "coordinates": {},
+ *       "state": "NY",
+ *       "city": ""
+ *     }
+ *   },
+ *   {
+ *     "title": "Palmer River Fest",
+ *     "link": "https://paddlerco-op.ca/palmer-river-fest/",
+ *     "location": {
+ *       "coordinates": {},
+ *       "state": "ON",
+ *       "city": ""
+ *     }
+ *   },
+ *   {
+ *     "title": "OKC Whitwater Festival",
+ *     "link": "https://www.riversportokc.org/events/oklahoma-city-whitewater-festival/",
+ *     "location": {
+ *       "coordinates": {},
+ *       "state": "OK",
+ *       "city": ""
+ *     }
+ *   },
+ *   {
+ *     "title": "Stonycreek Rendezvous",
+ *     "link": "https://benscreekcanoeclub.com/rendezvous/",
+ *     "location": {
+ *       "coordinates": {},
+ *       "state": "PA",
+ *       "city": ""
+ *     }
+ *   },
+ *   {
+ *     "title": "Bigfork Whitewater Festival",
+ *     "link": "http://www.bigforkwhitewaterfestival.com/",
+ *     "location": {
+ *       "coordinates": {},
+ *       "state": "MT",
+ *       "city": ""
+ *     }
+ *   },
+ *   {
+ *     "title": "Clearwater Kayak Festival",
+ *     "link": "https://www.facebook.com/ClearwaterKayakFestival",
+ *     "location": {
+ *       "coordinates": {},
+ *       "state": "BC",
+ *       "city": "113 Dunn Lake Rd, Clearwater, BC V0E 1N2, Canada"
+ *     }
+ *   },
+ *   {
+ *     "title": "Sixmile Creek Whitewater Fest",
+ *     "link": "https://www.facebook.com/events/476261719496433/",
+ *     "location": {
+ *       "coordinates": {},
+ *       "state": "AK",
+ *       "city": ""
+ *     }
+ *   },
+ *   {
+ *     "title": "Unlikely Paddlefest",
+ *     "link": "https://www.facebook.com/groups/380071755490155",
+ *     "location": {
+ *       "coordinates": {},
+ *       "state": "BC",
+ *       "city": "137 4 Ave N, Williams Lake, BC V2G 2C8, Canada"
+ *     }
+ *   }
+ * ]
+ */
