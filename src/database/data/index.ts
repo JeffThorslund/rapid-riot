@@ -135,4 +135,14 @@ export const festivals: Festival[] = [
       city: "Athelstane",
     },
   },
+  {
+    title: "Pinball Race",
+    link: "https://www.facebook.com/events/472589174400300",
+    location: {
+      coordinates: { lat: 50.06387730149285, lng: -123.0992100997494 },
+      country: Countries["Canada"],
+      state: Provinces["British Columbia"],
+      city: "Whistler",
+    },
+  },
 ];
