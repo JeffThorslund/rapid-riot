@@ -22,8 +22,8 @@ export const FestivalCards = (props: Props) => {
 
   const breakpointColumnsObj = {
     default: 3,
-    1200: 2,
-    800: 1,
+    1600: 2,
+    1100: 1,
   };
 
   return (
