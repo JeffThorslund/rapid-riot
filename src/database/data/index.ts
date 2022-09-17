@@ -255,6 +255,66 @@ export const festivals: Festival[] = [
       city: "Johnstown",
     },
   },
+  {
+    title: "FIBArk",
+    link: "https://www.facebook.com/fibark",
+    location: {
+      coordinates: { lat: 38.53376019977398, lng: -105.99504769336826 },
+      country: Countries["United States"],
+      state: States["Colorado"],
+      city: "Salida",
+    },
+  },
+  {
+    title: "Missouri Whitewater Championships",
+    link: "https://missouriwhitewater.org/competition/mwc/",
+    location: {
+      coordinates: { lat: 37.55947356637624, lng: -90.29460593980127 },
+      country: Countries["United States"],
+      state: States["Missouri"],
+      city: "Fredericktown",
+    },
+  },
+  {
+    title: "Deerfield Festival",
+    link: "https://www.americanwhitewater.org/content/Wiki/aw:events_deerfield",
+    location: {
+      coordinates: { lat: 42.643510597388655, lng: -72.88702754907924 },
+      country: Countries["United States"],
+      state: States["Massachusetts"],
+      city: "Charlemont",
+    },
+  },
+  {
+    title: "Cuyahoga Falls Kayak Race",
+    link: "https://www.cfallsfest.com/",
+    location: {
+      coordinates: { lat: 41.1431502846992, lng: -81.50250082347753 },
+      country: Countries["United States"],
+      state: States["Ohio"],
+      city: "Cuyahoga Falls",
+    },
+  },
+  {
+    title: "Ridgway River Festival",
+    link: "https://ridgwayriverfest.org/",
+    location: {
+      coordinates: { lat: 38.15205409202805, lng: -107.7592157358386 },
+      country: Countries["United States"],
+      state: States["Colorado"],
+      city: "Ridgway",
+    },
+  },
+  {
+    title: "Slalom 7 Soeurs",
+    link: "https://www.facebook.com/Slalom7Soeurs/",
+    location: {
+      coordinates: { lat: 45.657800949189365, lng: -74.67494657335705 },
+      country: Countries["Canada"],
+      state: Provinces["Quebec"],
+      city: "Argenteuil",
+    },
+  },
 ];
 
 /**
@@ -265,15 +325,6 @@ export const festivals: Festival[] = [
  *     "location": {
  *       "coordinates": {},
  *       "state": "OR",
- *       "city": ""
- *     }
- *   },
- *   {
- *     "title": "Kicking Horse Paddle Fest",
- *     "link": "https://www.facebook.com/kickinghorsepaddlefestival/",
- *     "location": {
- *       "coordinates": {},
- *       "state": "BC",
  *       "city": ""
  *     }
  *   },
@@ -295,25 +346,8 @@ export const festivals: Festival[] = [
  *       "city": ""
  *     }
  *   },
- *   {
- *     "title": "Ridgway River Festival",
- *     "link": "https://ridgwayriverfest.org/",
- *     "location": {
- *       "coordinates": {},
- *       "state": "CO",
- *       "city": ""
- *     }
- *   },
- *   {
- *     "title": "Slalom 7 Soeurs",
- *     "link": "https://slalom7soeurs.com/en/",
- *     "location": {
- *       "coordinates": {},
- *       "state": "QC",
- *       "city": ""
- *     }
- *   },
- *
+
+
  *   {
  *     "title": "Big Water Blowout",
  *     "link": "https://www.facebook.com/bwbrf/",
@@ -323,132 +357,12 @@ export const festivals: Festival[] = [
  *       "city": ""
  *     }
  *   },
- *
- *   {
- *     "title": "Down River Rendezvous",
- *     "link": "https://www.downriverequip.com/blog_detail.cfm?blogId=64",
- *     "location": {
- *       "coordinates": {},
- *       "state": "CO",
- *       "city": ""
- *     }
- *   },
- *   {
- *     "title": "Cuyahoga Falls Kayak Race",
- *     "link": "https://www.cfkayakrace.com/",
- *     "location": {
- *       "coordinates": {},
- *       "state": "OH",
- *       "city": ""
- *     }
- *   },
  *   {
  *     "title": "NW Creeking Comp",
  *     "link": "https://www.northwestcreekingcomp.com/",
  *     "location": {
  *       "coordinates": {},
  *       "state": "WA",
- *       "city": ""
- *     }
- *   },
- *   {
- *     "title": "FIBArk",
- *     "link": "http://www.fibark.com/",
- *     "location": {
- *       "coordinates": {},
- *       "state": "CO",
- *       "city": ""
- *     }
- *   },
- *   {
- *     "title": "Spring Moose Fest",
- *     "link": "https://www.facebook.com/MooseRiverFestival/",
- *     "location": {
- *       "coordinates": {},
- *       "state": "NY",
- *       "city": ""
- *     }
- *   },
- *   {
- *     "title": "Tuck Fest",
- *     "link": "https://tuckfest.usnwc.org/",
- *     "location": {
- *       "coordinates": {},
- *       "state": "NC",
- *       "city": ""
- *     }
- *   },
- *   {
- *     "title": "Missouri Whitewater Championships",
- *     "link": "https://missouriwhitewater.org/competition/mwc/",
- *     "location": {
- *       "coordinates": {},
- *       "state": "MO",
- *       "city": ""
- *     }
- *   },
- *   {
- *     "title": "French Broad River Festival",
- *     "link": "http://www.frenchbroadriverfestival.com/",
- *     "location": {
- *       "coordinates": {},
- *       "state": "NC",
- *       "city": ""
- *     }
- *   },
- *   {
- *     "title": "White Salmon River Festival",
- *     "link": "https://www.facebook.com/WhiteSalmonRiverFest/",
- *     "location": {
- *       "coordinates": {},
- *       "state": "WA",
- *       "city": ""
- *     }
- *   },
- *
- *   {
- *     "title": "Deerfield Festival",
- *     "link": "https://www.americanwhitewater.org/content/Wiki/aw:events_deerfield",
- *     "location": {
- *       "coordinates": {},
- *       "state": "MA",
- *       "city": ""
- *     }
- *   },
- *   {
- *     "title": "Reno River Festival",
- *     "link": "https://renoriverfestival.com/the-cause/",
- *     "location": {
- *       "coordinates": {},
- *       "state": "NV",
- *       "city": ""
- *     }
- *   },
- *   {
- *     "title": "Jordan River Festival",
- *     "link": "http://paddlerevelstoke.ca/jordan-river-festival",
- *     "location": {
- *       "coordinates": {},
- *       "state": "BC",
- *       "city": ""
- *     }
- *   },
- *   {
- *     "title": "South Fork Film Fest",
- *     "link": "https://sites.google.com/view/southforkfilmfest",
- *     "location": {
- *       "coordinates": {},
- *       "state": "CA",
- *       "city": ""
- *     }
- *   },
- *
- *   {
- *     "title": "Pink Water Challenge",
- *     "link": "https://pink-water.ca/en/challenge-pink-water-2019",
- *     "location": {
- *       "coordinates": {},
- *       "state": "QC",
  *       "city": ""
  *     }
  *   },
@@ -479,7 +393,6 @@ export const festivals: Festival[] = [
  *       "city": ""
  *     }
  *   },
- *
  *   {
  *     "title": "OKC Whitwater Festival",
  *     "link": "https://www.riversportokc.org/events/oklahoma-city-whitewater-festival/",
@@ -489,9 +402,6 @@ export const festivals: Festival[] = [
  *       "city": ""
  *     }
  *   },
- *
- *
- *
  *   {
  *     "title": "Sixmile Creek Whitewater Fest",
  *     "link": "https://www.facebook.com/events/476261719496433/",

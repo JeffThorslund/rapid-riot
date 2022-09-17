@@ -1,9 +1,5 @@
 import { festivals } from "./index";
 
-test("verify number of festivals", () => {
-  expect(festivals.length).toBe(25);
-});
-
 describe.each(festivals)("iterative data validation", (festival) => {
   describe(`${festival.title}`, () => {
     test(`coordinates are within accepted range`, () => {
