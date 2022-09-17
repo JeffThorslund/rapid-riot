@@ -20,6 +20,12 @@ interface Props {
 export const FestivalCards = (props: Props) => {
   const modalState = useActiveIndexState();
 
+  const breakpointColumnsObj = {
+    default: 3,
+    1200: 2,
+    800: 1,
+  };
+
   return (
     <Box
       overflow={"auto"}
@@ -35,7 +41,10 @@ export const FestivalCards = (props: Props) => {
         actionIconSchema={actionIconSchema}
         onClick={(index: number) => modalState.set(index)}
       />
-      <Masonry breakpointCols={3} className="my-masonry-grid">
+      <Masonry
+        breakpointCols={breakpointColumnsObj}
+        className="my-masonry-grid"
+      >
         {props.festivals.map((festival, index) => (
           <FestivalCard
             key={festival.title}

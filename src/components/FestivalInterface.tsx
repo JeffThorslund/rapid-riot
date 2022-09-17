@@ -27,7 +27,7 @@ export const FestivalInterface = () => {
 
   return (
     <Box direction="row" height={"100%"}>
-      <Box width={"45%"}>
+      <Box width={"60%"}>
         <MapElement
           festivals={sortedFilteredFestivals}
           viewState={viewState}
@@ -35,7 +35,7 @@ export const FestivalInterface = () => {
           hoverStateMethods={festivalHoverState}
         />
       </Box>
-      <Box width={"55%"}>
+      <Box width={"40%"}>
         <FestivalCards
           festivals={sortedFilteredFestivals}
           festivalHoverState={festivalHoverState}
