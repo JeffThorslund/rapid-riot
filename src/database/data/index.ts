@@ -145,4 +145,44 @@ export const festivals: Festival[] = [
       city: "Whistler",
     },
   },
+  {
+    title: "CKS Paddlefest",
+    link: "https://www.ckspaddlefest.com/",
+    location: {
+      coordinates: { lat: 38.84141963731193, lng: -106.1335165960764 },
+      country: Countries["United States"],
+      state: States["Colorado"],
+      city: "Buena Vista",
+    },
+  },
+  {
+    title: "Neilson Race",
+    link: "http://www.neilsonrace.com/",
+    location: {
+      coordinates: { lat: 47.01317003300906, lng: -71.86005269804816 },
+      country: Countries["Canada"],
+      state: Provinces["Quebec"],
+      city: "St-Raymond",
+    },
+  },
+  {
+    title: "Slave River Paddlefest",
+    link: "http://slaveriverpaddlefest.ca/",
+    location: {
+      coordinates: { lat: 60.00864926883446, lng: -111.89294640281693 },
+      country: Countries["Canada"],
+      state: Provinces["Northwest Territories"],
+      city: "Fort Smith",
+    },
+  },
+  {
+    title: "MTL Eau Vive",
+    link: "https://www.mtleauvive.com/",
+    location: {
+      coordinates: { lat: 45.43114705359564, lng: -73.63271958505882 },
+      country: Countries["Canada"],
+      state: Provinces["Quebec"],
+      city: "LaSalle",
+    },
+  },
 ];
