@@ -13,4 +13,12 @@ export const theme: ThemeType = {
       dark: "#04080f",
     },
   },
+  layer: {
+    border: {
+      radius: "medium",
+    },
+    container: {
+      elevation: "large",
+    },
+  },
 };

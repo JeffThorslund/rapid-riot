@@ -1,7 +1,6 @@
 import React from "react";
 import { Position } from "../../types";
 import { Box } from "grommet";
-import { getCardStyle } from "../cards/_utils/getCardStyle";
 
 export const ActionBarWrapper = (props: {
   children: React.ReactNode;
@@ -12,11 +11,11 @@ export const ActionBarWrapper = (props: {
     <Box
       background={"#444444"}
       round={"large"}
+      elevation={"medium"}
       style={{
         position: "absolute",
         zIndex: Number.MAX_SAFE_INTEGER,
         ...props.positionPlacement,
-        ...getCardStyle(false),
         visibility: props.isHidden ? "hidden" : "visible",
         opacity: props.isHidden ? 0 : 1,
         transition: props.isHidden

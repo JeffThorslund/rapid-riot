@@ -5,7 +5,7 @@ export const useViewState = () => {
   return React.useState<ViewState>({
     longitude: -100,
     latitude: 40,
-    zoom: 3.5,
+    zoom: 2,
     bearing: 0,
     pitch: 0,
     padding: paddingOptions,
