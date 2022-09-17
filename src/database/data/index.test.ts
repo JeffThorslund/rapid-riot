@@ -1,7 +1,7 @@
 import { festivals } from "./index";
 
 test("verify number of festivals", () => {
-  expect(festivals.length).toBe(17);
+  expect(festivals.length).toBe(25);
 });
 
 describe.each(festivals)("iterative data validation", (festival) => {
