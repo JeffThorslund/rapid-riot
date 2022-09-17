@@ -315,110 +315,34 @@ export const festivals: Festival[] = [
       city: "Argenteuil",
     },
   },
+  {
+    title: "Upper Wind Whitewater Festival",
+    link: "https://www.facebook.com/UpperWindFestival/",
+    location: {
+      coordinates: { lat: 45.72464089051374, lng: -121.81899085688286 },
+      country: Countries["United States"],
+      state: States["Washington"],
+      city: "Carson",
+    },
+  },
+  {
+    title: "Big Water Blowout",
+    link: "https://www.facebook.com/bwbrf/",
+    location: {
+      coordinates: { lat: 45.418847366975804, lng: -116.31969327048115 },
+      country: Countries["United States"],
+      state: States["Idaho"],
+      city: "Riggins",
+    },
+  },
+  {
+    title: "Wild West River Fest",
+    link: "https://www.wildwestpaddleclub.org/riverfest",
+    location: {
+      coordinates: { lat: 44.5235601003716, lng: -109.06105340290524 },
+      country: Countries["United States"],
+      state: States["Wyoming"],
+      city: "Cody",
+    },
+  },
 ];
-
-/**
- * [
- *   {
- *     "title": "King of the Rogue",
- *     "link": "https://www.goldhillwhitewater.org/king-of-the-rogue",
- *     "location": {
- *       "coordinates": {},
- *       "state": "OR",
- *       "city": ""
- *     }
- *   },
- *   {
- *     "title": "Coosa River Festival",
- *     "link": "https://www.facebook.com/coosariverwhitewaterfestival/",
- *     "location": {
- *       "coordinates": {},
- *       "state": "AL",
- *       "city": ""
- *     }
- *   },
- *   {
- *     "title": "Upper Wind Whitewater Festival",
- *     "link": "https://www.facebook.com/UpperWindFestival/",
- *     "location": {
- *       "coordinates": {},
- *       "state": "WA",
- *       "city": ""
- *     }
- *   },
-
-
- *   {
- *     "title": "Big Water Blowout",
- *     "link": "https://www.facebook.com/bwbrf/",
- *     "location": {
- *       "coordinates": {},
- *       "state": "ID",
- *       "city": ""
- *     }
- *   },
- *   {
- *     "title": "NW Creeking Comp",
- *     "link": "https://www.northwestcreekingcomp.com/",
- *     "location": {
- *       "coordinates": {},
- *       "state": "WA",
- *       "city": ""
- *     }
- *   },
- *   {
- *     "title": "Wild West River Fest",
- *     "link": "http://wildwestpaddleclub.org/cody-wild-west-river-fest/",
- *     "location": {
- *       "coordinates": {},
- *       "state": "WY",
- *       "city": ""
- *     }
- *   },
- *   {
- *     "title": "South Platte River Festival",
- *     "link": "https://www.thegreenwayfoundation.org/citizens4theriver.html",
- *     "location": {
- *       "coordinates": {},
- *       "state": "CO",
- *       "city": ""
- *     }
- *   },
- *   {
- *     "title": "Beaver River Rendezvous - KoNY",
- *     "link": "http://beaverriverrendezvous.com/",
- *     "location": {
- *       "coordinates": {},
- *       "state": "NY",
- *       "city": ""
- *     }
- *   },
- *   {
- *     "title": "OKC Whitwater Festival",
- *     "link": "https://www.riversportokc.org/events/oklahoma-city-whitewater-festival/",
- *     "location": {
- *       "coordinates": {},
- *       "state": "OK",
- *       "city": ""
- *     }
- *   },
- *   {
- *     "title": "Sixmile Creek Whitewater Fest",
- *     "link": "https://www.facebook.com/events/476261719496433/",
- *     "location": {
- *       "coordinates": {},
- *       "state": "AK",
- *       "city": ""
- *     }
- *   },
- *   {
- *     "title": "Unlikely Paddlefest",
- *     "link": "https://www.facebook.com/groups/380071755490155",
- *     "location": {
- *       "coordinates": {},
- *       "state": "BC",
- *       "city": "137 4 Ave N, Williams Lake, BC V2G 2C8, Canada"
- *     }
- *   }
- * ]
- */
