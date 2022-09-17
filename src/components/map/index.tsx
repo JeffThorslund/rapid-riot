@@ -31,6 +31,7 @@ export const MapElement = (props: Props) => {
             onMouseLeave={() => props.hoverStateMethods.reset()}
             onClick={() => openLink(festival.link)}
             size={isMarkerHovered ? "50px" : "40px"}
+            color={isMarkerHovered ? "#3D138D" : "#333333"}
           />
         );
       })}

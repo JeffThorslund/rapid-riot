@@ -9,6 +9,7 @@ export interface MarkerProps {
   onMouseLeave: () => void;
   onClick: () => void;
   size: string;
+  color: string;
 }
 
 export const Marker = (props: MarkerProps) => {
@@ -24,7 +25,7 @@ export const Marker = (props: MarkerProps) => {
         onClick={props.onClick}
         size={props.size}
         cursor={"pointer"}
-        color={"neutral-2"}
+        color={props.color}
       />
     </ReactMapGlMarker>
   );
