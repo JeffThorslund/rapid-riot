@@ -22,7 +22,6 @@ export const ActionIcon = ({ Icon, ...props }: ActionIconProps) => {
       style={{
         margin: props.margin,
         cursor: "pointer",
-        transition: "all ease 0.2s",
         transform: props.isHovered ? "scale(1.1)" : undefined,
       }}
     />

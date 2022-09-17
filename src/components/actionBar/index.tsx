@@ -19,13 +19,11 @@ export const ActionIconBar = (props: ActionIconBarProps) => {
   const MARGIN = 8;
 
   return (
-    <ActionBarWrapper positionPlacement={props.positionPlacement}>
-      <Box
-        direction={"row"}
-        justify={"end"}
-        align={"center"}
-        style={{ transition: "all ease 0.2s" }}
-      >
+    <ActionBarWrapper
+      positionPlacement={props.positionPlacement}
+      isHidden={props.modalIndex !== undefined}
+    >
+      <Box direction={"row"} justify={"end"} align={"center"}>
         {tooltipHoverIndexState.value !== undefined ? (
           <Box pad={{ horizontal: "medium" }}>
             {
