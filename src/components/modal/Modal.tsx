@@ -22,7 +22,11 @@ export const Modal = (props: {
             onClick={props.submitForm}
             areAllFieldsValid={props.isSubmitButtonDisabled}
           />
-          <Button label="Close" onClick={props.closeModal} justify={"center"} />
+          <Button
+            label="Cancel"
+            onClick={props.closeModal}
+            justify={"center"}
+          />
         </Box>
       </Box>
     </Layer>
