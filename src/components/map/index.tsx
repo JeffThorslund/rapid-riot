@@ -19,19 +19,24 @@ export const MapElement = (props: Props) => {
       {...props.viewState}
       onMove={(evt) => props.setViewState(evt.viewState)}
     >
-      {props.festivals.map((festival, index) => {
-        const isMarkerHovered = props.selectionManagement.hover.isActive(index);
-        const isMarkerSelected =
-          props.selectionManagement.select.isActive(index);
+      {props.festivals.map((festival) => {
+        const isMarkerHovered = props.selectionManagement.hover.isActive(
+          festival.title
+        );
+        const isMarkerSelected = props.selectionManagement.select.isActive(
+          festival.title
+        );
 
         return (
           <Marker
             key={festival.title}
             latitude={festival.location.coordinates.lat}
             longitude={festival.location.coordinates.lng}
-            onMouseEnter={() => props.selectionManagement.hover.set(index)}
+            onMouseEnter={() =>
+              props.selectionManagement.hover.set(festival.title)
+            }
             onMouseLeave={() => props.selectionManagement.hover.reset()}
-            onClick={() => props.selectionManagement.select.set(index)}
+            onClick={() => props.selectionManagement.select.set(festival.title)}
             size={isMarkerHovered ? "50px" : "40px"}
             color={getColor("#333333", isMarkerHovered, isMarkerSelected)}
           />

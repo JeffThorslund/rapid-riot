@@ -43,15 +43,21 @@ export const FestivalCards = (props: Props) => {
         breakpointCols={breakpointColumnsObj}
         className="my-masonry-grid"
       >
-        {props.festivals.map((festival, index) => (
+        {props.festivals.map((festival) => (
           <FestivalCard
             key={festival.title}
             festival={festival}
             onClick={() => openLink(festival.link)}
-            onMouseEnter={() => props.selectionManagement.hover.set(index)}
+            onMouseEnter={() =>
+              props.selectionManagement.hover.set(festival.title)
+            }
             onMouseLeave={() => props.selectionManagement.hover.reset()}
-            isCardHovered={props.selectionManagement.hover.isActive(index)}
-            isCardSelected={props.selectionManagement.select.isActive(index)}
+            isCardHovered={props.selectionManagement.hover.isActive(
+              festival.title
+            )}
+            isCardSelected={props.selectionManagement.select.isActive(
+              festival.title
+            )}
           />
         ))}
       </Masonry>

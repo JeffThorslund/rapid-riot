@@ -1,16 +1,16 @@
 import {
-  ActiveIndexStateMethods,
+  ActiveIdStateMethods,
   useActiveIndexState,
 } from "./useActiveIndexState";
 
 export interface UseSelectionManagementMethods {
-  select: ActiveIndexStateMethods;
-  hover: ActiveIndexStateMethods;
+  select: ActiveIdStateMethods;
+  hover: ActiveIdStateMethods;
 }
 
 export const useSelectionManagement = (): UseSelectionManagementMethods => {
   return {
-    select: useActiveIndexState<number>(),
-    hover: useActiveIndexState<number>(),
+    select: useActiveIndexState<string>(),
+    hover: useActiveIndexState<string>(),
   };
 };
