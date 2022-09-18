@@ -15,7 +15,7 @@ export function SubmissionForm(props: { modalState: ActiveIndexStateMethods }) {
     values,
     setValues: setValue,
     formHelpers,
-    methods,
+    flags,
   } = useSubmissionFormState();
 
   return (
@@ -25,8 +25,7 @@ export function SubmissionForm(props: { modalState: ActiveIndexStateMethods }) {
         await supabaseMethods.insertSubmission(values);
         props.modalState.reset();
       }}
-      resetForm={methods.reset}
-      isSubmitButtonDisabled={methods.areAllFieldsFilled}
+      isSubmitButtonDisabled={flags.areAllFieldsFilled}
     >
       <FormItemWrapper label={"Festival Name"}>
         <TextInput

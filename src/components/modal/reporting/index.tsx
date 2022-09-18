@@ -17,7 +17,6 @@ export function ReportingForm(props: { modalState: ActiveIndexStateMethods }) {
         await supabaseMethods.insertReport(text);
         props.modalState.reset();
       }}
-      resetForm={() => setText("")}
       isSubmitButtonDisabled={!!text}
     >
       <FormItemWrapper label={"Report"}>

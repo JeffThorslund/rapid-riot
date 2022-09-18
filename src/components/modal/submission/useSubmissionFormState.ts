@@ -42,8 +42,7 @@ export const useSubmissionFormState = () => {
       getDefaultStateValue: (countryValue: Countries) =>
         getDefaultStateEnumFromCountry(countryValue),
     },
-    methods: {
-      reset: () => setValues(defaultValues),
+    flags: {
       areAllFieldsFilled,
     },
   };
