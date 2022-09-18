@@ -17,7 +17,7 @@ export const CustomMapWrapper: React.FC<MapPropsWithFogAndTerrainOverride> = ({
     <ReactMapGL
       {...mapProps}
       mapboxAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
-      mapStyle="mapbox://styles/mapbox/streets-v9"
+      mapStyle="mapbox://styles/mapbox/outdoors-v11"
     >
       {children}
     </ReactMapGL>
