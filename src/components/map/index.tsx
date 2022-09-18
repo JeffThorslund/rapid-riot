@@ -3,14 +3,14 @@ import { ViewState } from "react-map-gl";
 import { Festival } from "../../types";
 import { CustomMapWrapper } from "./CustomMapWrapper";
 import { Marker } from "./Marker";
-import { UseSelectionManagement } from "../_utils/useSelectionManagement";
+import { UseSelectionManagementMethods } from "../_utils/useSelectionManagement";
 import { getColor } from "../cards/FestivalCard";
 
 type Props = {
   festivals: Festival[];
   viewState: ViewState;
   setViewState: React.Dispatch<React.SetStateAction<ViewState>>;
-  selectionManagement: UseSelectionManagement;
+  selectionManagement: UseSelectionManagementMethods;
 };
 
 export const MapElement = (props: Props) => {

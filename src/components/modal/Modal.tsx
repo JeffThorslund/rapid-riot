@@ -1,6 +1,6 @@
 import { Box, Button, Layer, Spinner, Text } from "grommet";
-import { ActiveIndexStateMethods } from "../_utils/useActiveIndexState";
 import React, { useState } from "react";
+import { ActiveIndexStateMethods } from "../_utils/useActiveIndexState";
 
 export const Modal = (props: {
   closeModal: ActiveIndexStateMethods["reset"];

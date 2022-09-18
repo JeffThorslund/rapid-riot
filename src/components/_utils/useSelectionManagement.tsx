@@ -3,14 +3,14 @@ import {
   useActiveIndexState,
 } from "./useActiveIndexState";
 
-export interface UseSelectionManagement {
+export interface UseSelectionManagementMethods {
   select: ActiveIndexStateMethods;
   hover: ActiveIndexStateMethods;
 }
 
-export const useSelectionManagement = (): UseSelectionManagement => {
+export const useSelectionManagement = (): UseSelectionManagementMethods => {
   return {
-    select: useActiveIndexState(),
-    hover: useActiveIndexState(),
+    select: useActiveIndexState<number>(),
+    hover: useActiveIndexState<number>(),
   };
 };

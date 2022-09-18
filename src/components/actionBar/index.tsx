@@ -1,20 +1,23 @@
 import { Box } from "grommet";
 import React from "react";
-import { useActiveIndexState } from "../_utils/useActiveIndexState";
+import {
+  ActiveIndexStateMethods,
+  useActiveIndexState,
+} from "../_utils/useActiveIndexState";
 import { ActionIcon } from "./ActionIcon";
 import { ActionIconSchema } from "./actionIconSchema";
-import { ActiveIndexState, Position } from "../../types";
+import { Position } from "../../types";
 import { ActionBarWrapper } from "./ActionBarWrapper";
 
 export interface ActionIconBarProps {
   actionIconSchema: ActionIconSchema[];
-  modalIndex: ActiveIndexState;
+  modalIndex: ActiveIndexStateMethods["value"];
   positionPlacement: Partial<Position>;
   onClick: (index: number) => void;
 }
 
 export const ActionIconBar = (props: ActionIconBarProps) => {
-  const tooltipHoverIndexState = useActiveIndexState();
+  const tooltipHoverIndexState = useActiveIndexState<number>();
 
   const MARGIN = 8;
 

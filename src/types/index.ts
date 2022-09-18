@@ -18,8 +18,6 @@ export interface Coordinate {
   lng: number;
 }
 
-export type ActiveIndexState = number | undefined;
-
 export interface Position {
   top: number;
   bottom: number;

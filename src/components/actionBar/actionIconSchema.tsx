@@ -1,9 +1,9 @@
 import { FaExclamationCircle, FaPlusCircle } from "react-icons/fa";
 import { IconType } from "react-icons";
-import { ActiveIndexStateMethods } from "../_utils/useActiveIndexState";
 import React from "react";
 import { SubmissionForm } from "../modal/submission";
 import { ReportingForm } from "../modal/reporting";
+import { ActiveIndexStateMethods } from "../_utils/useActiveIndexState";
 
 enum ActionIconEnum {
   ADD = "ADD",

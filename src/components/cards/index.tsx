@@ -8,15 +8,15 @@ import { openLink } from "../_utils/openLink";
 import { Box } from "grommet";
 import { ActionIconBar } from "../actionBar";
 import { actionIconSchema } from "../actionBar/actionIconSchema";
-import { UseSelectionManagement } from "../_utils/useSelectionManagement";
+import { UseSelectionManagementMethods } from "../_utils/useSelectionManagement";
 
 interface Props {
   festivals: Festival[];
-  selectionManagement: UseSelectionManagement;
+  selectionManagement: UseSelectionManagementMethods;
 }
 
 export const FestivalCards = (props: Props) => {
-  const modalState = useActiveIndexState();
+  const modalState = useActiveIndexState<number>();
 
   const breakpointColumnsObj = {
     default: 3,
