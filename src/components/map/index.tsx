@@ -1,13 +1,13 @@
 import React from "react";
 import { ViewState } from "react-map-gl";
-import { Festival } from "../../types";
+import { RefFestival } from "../../types";
 import { CustomMapWrapper } from "./CustomMapWrapper";
 import { Marker } from "./Marker";
 import { UseSelectionManagementMethods } from "../_utils/useSelectionManagement";
 import { getColor } from "../cards/FestivalCard";
 
 type Props = {
-  festivals: Festival[];
+  festivals: RefFestival[];
   viewState: ViewState;
   setViewState: React.Dispatch<React.SetStateAction<ViewState>>;
   selectionManagement: UseSelectionManagementMethods;
@@ -20,23 +20,22 @@ export const MapElement = (props: Props) => {
       onMove={(evt) => props.setViewState(evt.viewState)}
     >
       {props.festivals.map((festival) => {
-        const isMarkerHovered = props.selectionManagement.hover.isActive(
-          festival.title
-        );
-        const isMarkerSelected = props.selectionManagement.select.isActive(
-          festival.title
-        );
+        const { hover, select } = props.selectionManagement;
+
+        const isMarkerHovered = hover.isActive(festival.title);
+        const isMarkerSelected = select.isActive(festival.title);
 
         return (
           <Marker
             key={festival.title}
             latitude={festival.location.coordinates.lat}
             longitude={festival.location.coordinates.lng}
-            onMouseEnter={() =>
-              props.selectionManagement.hover.set(festival.title)
-            }
-            onMouseLeave={() => props.selectionManagement.hover.reset()}
-            onClick={() => props.selectionManagement.select.set(festival.title)}
+            onMouseEnter={() => hover.set(festival.title)}
+            onMouseLeave={() => hover.reset()}
+            onClick={() => {
+              select.set(festival.title);
+              if (festival.ref.current) festival.ref.current.scrollIntoView();
+            }}
             size={isMarkerHovered ? "50px" : "40px"}
             color={getColor("#333333", isMarkerHovered, isMarkerSelected)}
           />

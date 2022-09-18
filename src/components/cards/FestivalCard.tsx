@@ -1,11 +1,11 @@
-import { Festival } from "../../types";
+import { RefFestival } from "../../types";
 import { Box, Text } from "grommet";
 import React from "react";
 import { LocationText } from "./LocationText";
 import { LinkText } from "./LinkText";
 
 interface Props {
-  festival: Festival;
+  festival: RefFestival;
   onMouseEnter: () => void;
   onMouseLeave: () => void;
   onClick: () => void;
@@ -18,8 +18,8 @@ export const getColor = (
   isHovered: boolean,
   isSelected: boolean
 ): string => {
-  if (isHovered) return "#3D138D";
   if (isSelected) return "#02873c";
+  if (isHovered) return "#3D138D";
   return baseColor;
 };
 
@@ -43,6 +43,7 @@ export const FestivalCard = (props: Props) => {
         transition: "all ease 0.2s",
         cursor: "pointer",
       }}
+      ref={props.festival.ref}
     >
       <Text size={"medium"}>{props.festival.title}</Text>
       <LocationText location={props.festival.location} />

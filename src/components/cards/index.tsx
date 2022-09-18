@@ -1,5 +1,5 @@
 import React from "react";
-import { Festival } from "../../types";
+import { RefFestival } from "../../types";
 import { useActiveIndexState } from "../_utils/useActiveIndexState";
 import { FestivalCard } from "./FestivalCard";
 import Masonry from "react-masonry-css";
@@ -11,7 +11,7 @@ import { actionIconSchema } from "../actionBar/actionIconSchema";
 import { UseSelectionManagementMethods } from "../_utils/useSelectionManagement";
 
 interface Props {
-  festivals: Festival[];
+  festivals: RefFestival[];
   selectionManagement: UseSelectionManagementMethods;
 }
 
@@ -29,6 +29,7 @@ export const FestivalCards = (props: Props) => {
       overflow={"auto"}
       background={"#ffffff"}
       pad={{ horizontal: "xsmall" }}
+      style={{ scrollBehavior: "smooth" }}
     >
       {modalState.value !== undefined
         ? actionIconSchema[modalState.value].form(modalState)

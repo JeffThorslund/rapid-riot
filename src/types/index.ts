@@ -1,9 +1,14 @@
 import { Countries, Provinces, States, GeoOption } from "./geo";
+import React from "react";
 
 export interface Festival {
   title: string;
   location: Location;
   link: string;
+}
+
+export interface RefFestival extends Festival {
+  ref: React.RefObject<HTMLDivElement>;
 }
 
 export interface Location {
