@@ -1,9 +1,6 @@
 import React from "react";
 import { Festival } from "../../types";
-import {
-  ActiveIndexStateMethods,
-  useActiveIndexState,
-} from "../_utils/useActiveIndexState";
+import { useActiveIndexState } from "../_utils/useActiveIndexState";
 import { FestivalCard } from "./FestivalCard";
 import Masonry from "react-masonry-css";
 import "./index.css";
@@ -11,10 +8,11 @@ import { openLink } from "../_utils/openLink";
 import { Box } from "grommet";
 import { ActionIconBar } from "../actionBar";
 import { actionIconSchema } from "../actionBar/actionIconSchema";
+import { UseSelectionManagement } from "../_utils/useSelectionManagement";
 
 interface Props {
   festivals: Festival[];
-  festivalHoverState: ActiveIndexStateMethods;
+  selectionManagement: UseSelectionManagement;
 }
 
 export const FestivalCards = (props: Props) => {
@@ -50,9 +48,9 @@ export const FestivalCards = (props: Props) => {
             key={festival.title}
             festival={festival}
             onClick={() => openLink(festival.link)}
-            onMouseEnter={() => props.festivalHoverState.set(index)}
-            onMouseLeave={() => props.festivalHoverState.reset()}
-            isCardHovered={props.festivalHoverState.isHovered(index)}
+            onMouseEnter={() => props.selectionManagement.hover.set(index)}
+            onMouseLeave={() => props.selectionManagement.hover.reset()}
+            isCardHovered={props.selectionManagement.hover.isActive(index)}
           />
         ))}
       </Masonry>

@@ -11,10 +11,10 @@ const createMethods = (
   activeIndex: ActiveIndexState,
   setActiveIndex: Dispatch<SetStateAction<ActiveIndexState>>
 ) => ({
-  reset: () => setActiveIndex(undefined),
-  set: setActiveIndex,
   value: activeIndex,
-  isHovered: (index: number) => index === activeIndex,
+  set: setActiveIndex,
+  reset: () => setActiveIndex(undefined),
+  isActive: (index: number) => index === activeIndex,
 });
 
 export type ActiveIndexStateMethods = ReturnType<typeof createMethods>;

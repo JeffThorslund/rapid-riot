@@ -7,13 +7,13 @@ import { FestivalCards } from "./cards";
 import { useViewState } from "./_utils/useViewState";
 import { Festival } from "../types";
 import { prepareFestivalData } from "./_utils/prepareFestivalData";
-import { useActiveIndexState } from "./_utils/useActiveIndexState";
+import { useSelectionManagement } from "./_utils/useSelectionManagement";
 
 export const FestivalInterface = () => {
   const mapRef = useMap();
   const [viewState, setViewState] = useViewState();
   const [festivals, setFestivals] = useState<Festival[]>([]);
-  const festivalHoverState = useActiveIndexState();
+  const selectionManagement = useSelectionManagement();
 
   useEffect(() => {
     const festivals = getFestivalData();
@@ -32,13 +32,13 @@ export const FestivalInterface = () => {
           festivals={sortedFilteredFestivals}
           viewState={viewState}
           setViewState={setViewState}
-          hoverStateMethods={festivalHoverState}
+          selectionManagement={selectionManagement}
         />
       </Box>
       <Box width={"40%"}>
         <FestivalCards
           festivals={sortedFilteredFestivals}
-          festivalHoverState={festivalHoverState}
+          selectionManagement={selectionManagement}
         />
       </Box>
     </Box>

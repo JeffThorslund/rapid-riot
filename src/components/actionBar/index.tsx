@@ -42,7 +42,7 @@ export const ActionIconBar = (props: ActionIconBarProps) => {
               onMouseEnter={() => tooltipHoverIndexState.set(index)}
               onMouseLeave={() => tooltipHoverIndexState.reset()}
               onClick={() => props.onClick(index)}
-              isHovered={tooltipHoverIndexState.isHovered(index)}
+              isHovered={tooltipHoverIndexState.isActive(index)}
               margin={MARGIN}
             />
           );

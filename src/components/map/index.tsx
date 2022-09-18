@@ -2,15 +2,14 @@ import React from "react";
 import { ViewState } from "react-map-gl";
 import { Festival } from "../../types";
 import { CustomMapWrapper } from "./CustomMapWrapper";
-import { ActiveIndexStateMethods } from "../_utils/useActiveIndexState";
 import { Marker } from "./Marker";
-import { openLink } from "../_utils/openLink";
+import { UseSelectionManagement } from "../_utils/useSelectionManagement";
 
 type Props = {
   festivals: Festival[];
   viewState: ViewState;
   setViewState: React.Dispatch<React.SetStateAction<ViewState>>;
-  hoverStateMethods: ActiveIndexStateMethods;
+  selectionManagement: UseSelectionManagement;
 };
 
 export const MapElement = (props: Props) => {
@@ -20,16 +19,16 @@ export const MapElement = (props: Props) => {
       onMove={(evt) => props.setViewState(evt.viewState)}
     >
       {props.festivals.map((festival, index) => {
-        const isMarkerHovered = props.hoverStateMethods.isHovered(index);
+        const isMarkerHovered = props.selectionManagement.hover.isActive(index);
 
         return (
           <Marker
             key={festival.title}
             latitude={festival.location.coordinates.lat}
             longitude={festival.location.coordinates.lng}
-            onMouseEnter={() => props.hoverStateMethods.set(index)}
-            onMouseLeave={() => props.hoverStateMethods.reset()}
-            onClick={() => openLink(festival.link)}
+            onMouseEnter={() => props.selectionManagement.hover.set(index)}
+            onMouseLeave={() => props.selectionManagement.hover.reset()}
+            onClick={() => props.selectionManagement.select.set(index)}
             size={isMarkerHovered ? "50px" : "40px"}
             color={isMarkerHovered ? "#3D138D" : "#333333"}
           />
