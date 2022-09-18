@@ -9,6 +9,7 @@ import { Box } from "grommet";
 import { ActionIconBar } from "../actionBar";
 import { actionIconSchema } from "../actionBar/actionIconSchema";
 import { UseSelectionManagementMethods } from "../interface/_utils/useSelectionManagement";
+import { NoResultsIndicator } from "./NoResultsIndicator";
 
 interface Props {
   festivals: RefFestival[];
@@ -40,28 +41,32 @@ export const FestivalCards = (props: Props) => {
         actionIconSchema={actionIconSchema}
         onClick={(index: number) => modalState.set(index)}
       />
-      <Masonry
-        breakpointCols={breakpointColumnsObj}
-        className="my-masonry-grid"
-      >
-        {props.festivals.map((festival) => (
-          <FestivalCard
-            key={festival.title}
-            festival={festival}
-            onClick={() => openLink(festival.link)}
-            onMouseEnter={() =>
-              props.selectionManagement.hover.set(festival.title)
-            }
-            onMouseLeave={() => props.selectionManagement.hover.reset()}
-            isCardHovered={props.selectionManagement.hover.isActive(
-              festival.title
-            )}
-            isCardSelected={props.selectionManagement.select.isActive(
-              festival.title
-            )}
-          />
-        ))}
-      </Masonry>
+      {props.festivals.length ? (
+        <Masonry
+          breakpointCols={breakpointColumnsObj}
+          className="my-masonry-grid"
+        >
+          {props.festivals.map((festival) => (
+            <FestivalCard
+              key={festival.title}
+              festival={festival}
+              onClick={() => openLink(festival.link)}
+              onMouseEnter={() =>
+                props.selectionManagement.hover.set(festival.title)
+              }
+              onMouseLeave={() => props.selectionManagement.hover.reset()}
+              isCardHovered={props.selectionManagement.hover.isActive(
+                festival.title
+              )}
+              isCardSelected={props.selectionManagement.select.isActive(
+                festival.title
+              )}
+            />
+          ))}
+        </Masonry>
+      ) : (
+        <NoResultsIndicator />
+      )}
     </Box>
   );
 };
