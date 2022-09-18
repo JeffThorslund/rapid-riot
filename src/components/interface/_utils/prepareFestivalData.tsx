@@ -1,5 +1,5 @@
 import { MapRef } from "react-map-gl";
-import { Festival, RefFestival } from "../../types";
+import { Festival, RefFestival } from "../../../types";
 import React from "react";
 
 export const prepareFestivalData = (

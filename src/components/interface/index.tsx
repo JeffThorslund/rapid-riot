@@ -1,13 +1,13 @@
-import { getFestivalData } from "../database";
+import { getFestivalData } from "../../database";
 import { useMap } from "react-map-gl";
 import React, { useEffect, useState } from "react";
-import { Box } from "grommet";
-import { MapElement } from "./map";
-import { FestivalCards } from "./cards";
+import { MapElement } from "../map";
+import { FestivalCards } from "../cards";
 import { useViewState } from "./_utils/useViewState";
-import { Festival } from "../types";
+import { Festival } from "../../types";
 import { prepareFestivalData } from "./_utils/prepareFestivalData";
 import { useSelectionManagement } from "./_utils/useSelectionManagement";
+import { ResponsiveContainer } from "./ResponsiveContainer";
 
 export const FestivalInterface = () => {
   const mapRef = useMap();
@@ -26,21 +26,21 @@ export const FestivalInterface = () => {
   );
 
   return (
-    <Box direction="row" height={"100%"}>
-      <Box width={"60%"}>
+    <ResponsiveContainer
+      map={
         <MapElement
           festivals={sortedFilteredFestivals}
           viewState={viewState}
           setViewState={setViewState}
           selectionManagement={selectionManagement}
         />
-      </Box>
-      <Box width={"40%"}>
+      }
+      cards={
         <FestivalCards
           festivals={sortedFilteredFestivals}
           selectionManagement={selectionManagement}
         />
-      </Box>
-    </Box>
+      }
+    />
   );
 };

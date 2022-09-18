@@ -3,7 +3,7 @@ import { ViewState } from "react-map-gl";
 import { RefFestival } from "../../types";
 import { CustomMapWrapper } from "./CustomMapWrapper";
 import { Marker } from "./Marker";
-import { UseSelectionManagementMethods } from "../_utils/useSelectionManagement";
+import { UseSelectionManagementMethods } from "../interface/_utils/useSelectionManagement";
 import { getColor } from "../cards/FestivalCard";
 
 type Props = {

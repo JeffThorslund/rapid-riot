@@ -8,7 +8,7 @@ import { openLink } from "../_utils/openLink";
 import { Box } from "grommet";
 import { ActionIconBar } from "../actionBar";
 import { actionIconSchema } from "../actionBar/actionIconSchema";
-import { UseSelectionManagementMethods } from "../_utils/useSelectionManagement";
+import { UseSelectionManagementMethods } from "../interface/_utils/useSelectionManagement";
 
 interface Props {
   festivals: RefFestival[];

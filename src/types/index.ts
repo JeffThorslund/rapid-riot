@@ -1,5 +1,6 @@
 import { Countries, Provinces, States, GeoOption } from "./geo";
 import React from "react";
+import { DirectionType } from "grommet/utils";
 
 export interface Festival {
   title: string;
@@ -10,6 +11,14 @@ export interface Festival {
 export interface RefFestival extends Festival {
   ref: React.RefObject<HTMLDivElement>;
 }
+
+export type Dims = { height: string; width: string };
+
+export type SettingsPack = {
+  direction: DirectionType;
+  map: Dims;
+  cards: Dims;
+};
 
 export interface Location {
   coordinates: Coordinate;

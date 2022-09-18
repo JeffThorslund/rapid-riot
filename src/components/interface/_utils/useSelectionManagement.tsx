@@ -1,7 +1,7 @@
 import {
   ActiveIdStateMethods,
   useActiveIndexState,
-} from "./useActiveIndexState";
+} from "../../_utils/useActiveIndexState";
 
 export interface UseSelectionManagementMethods {
   select: ActiveIdStateMethods;
