@@ -51,6 +51,7 @@ export const FestivalCards = (props: Props) => {
             onMouseEnter={() => props.selectionManagement.hover.set(index)}
             onMouseLeave={() => props.selectionManagement.hover.reset()}
             isCardHovered={props.selectionManagement.hover.isActive(index)}
+            isCardSelected={props.selectionManagement.select.isActive(index)}
           />
         ))}
       </Masonry>

@@ -4,6 +4,7 @@ import { Festival } from "../../types";
 import { CustomMapWrapper } from "./CustomMapWrapper";
 import { Marker } from "./Marker";
 import { UseSelectionManagement } from "../_utils/useSelectionManagement";
+import { getColor } from "../cards/FestivalCard";
 
 type Props = {
   festivals: Festival[];
@@ -20,6 +21,8 @@ export const MapElement = (props: Props) => {
     >
       {props.festivals.map((festival, index) => {
         const isMarkerHovered = props.selectionManagement.hover.isActive(index);
+        const isMarkerSelected =
+          props.selectionManagement.select.isActive(index);
 
         return (
           <Marker
@@ -30,7 +33,7 @@ export const MapElement = (props: Props) => {
             onMouseLeave={() => props.selectionManagement.hover.reset()}
             onClick={() => props.selectionManagement.select.set(index)}
             size={isMarkerHovered ? "50px" : "40px"}
-            color={isMarkerHovered ? "#3D138D" : "#333333"}
+            color={getColor("#333333", isMarkerHovered, isMarkerSelected)}
           />
         );
       })}

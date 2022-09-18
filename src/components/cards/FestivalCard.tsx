@@ -10,12 +10,27 @@ interface Props {
   onMouseLeave: () => void;
   onClick: () => void;
   isCardHovered: boolean;
+  isCardSelected: boolean;
 }
+
+export const getColor = (
+  baseColor: string,
+  isHovered: boolean,
+  isSelected: boolean
+): string => {
+  if (isHovered) return "#3D138D";
+  if (isSelected) return "#02873c";
+  return baseColor;
+};
 
 export const FestivalCard = (props: Props) => {
   return (
     <Box
-      background={props.isCardHovered ? "neutral-2" : "#f2edfc"}
+      background={getColor(
+        "#f2edfc",
+        props.isCardHovered,
+        props.isCardSelected
+      )}
       round={"small"}
       pad={"small"}
       margin={{ horizontal: "xsmall", vertical: "small" }}
