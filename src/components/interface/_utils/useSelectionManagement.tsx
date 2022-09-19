@@ -3,6 +3,7 @@ import {
   useActiveIndexState,
 } from "../../_utils/useActiveIndexState";
 import { useSmallScreenDetection } from "./useSmallScreenDetection";
+import { disableStateSetter } from "../../_utils/disableStateSetter";
 
 export interface UseSelectionManagementMethods {
   select: ActiveIdStateMethods;
@@ -23,8 +24,4 @@ export const useSelectionManagement = (): UseSelectionManagementMethods => {
     select: useActiveIndexState<string>(),
     hover: hoverMethods,
   };
-};
-
-const disableStateSetter = (methods: ActiveIdStateMethods) => {
-  methods.set = () => undefined;
 };
