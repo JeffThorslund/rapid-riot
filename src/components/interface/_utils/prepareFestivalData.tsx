@@ -8,22 +8,22 @@ export const prepareFestivalData = (
 ): RefFestival[] => {
   if (!mapRef) return [];
 
-  return filterOutOfBoundsMarkers(festivals, mapRef);
+  return festivals
+    .filter(isMarkerWithinMapBounds(mapRef))
+    .sort(sortByTitle)
+    .map(appendRefToFestival);
 };
 
-const filterOutOfBoundsMarkers = (festivals: Festival[], mapRef: MapRef) =>
-  festivals
-    // don't show festivals out of bounds
-    .filter((f) =>
-      mapRef.getMap().getBounds().contains({
-        lat: f.location.coordinates.lat,
-        lng: f.location.coordinates.lng,
-      })
-    )
-    // append a ref to each festival for scrolling
-    .map((f) => ({
-      ...f,
-      ref: React.createRef<HTMLDivElement>(),
-    }))
-    // sort festivals alphabetically
-    .sort((a, b) => a.title.localeCompare(b.title));
+const isMarkerWithinMapBounds = (mapRef: MapRef) => (festival: Festival) =>
+  mapRef.getMap().getBounds().contains({
+    lat: festival.location.coordinates.lat,
+    lng: festival.location.coordinates.lng,
+  });
+
+const sortByTitle = (a: Festival, b: Festival) =>
+  a.title.localeCompare(b.title);
+
+const appendRefToFestival = (festival: Festival) => ({
+  ...festival,
+  ref: React.createRef<HTMLDivElement>(),
+});
