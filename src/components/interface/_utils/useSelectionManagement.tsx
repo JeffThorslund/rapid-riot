@@ -14,13 +14,17 @@ export const useSelectionManagement = (): UseSelectionManagementMethods => {
 
   const hoverMethods = useActiveIndexState<string>();
 
-  // if screen is small, disable hover setting interactions
+  // if screen is small, disable hover setting interactions for better UX
   if (isScreenSmall) {
-    hoverMethods.set = () => undefined;
+    disableStateSetter(hoverMethods);
   }
 
   return {
     select: useActiveIndexState<string>(),
     hover: hoverMethods,
   };
+};
+
+const disableStateSetter = (methods: ActiveIdStateMethods) => {
+  methods.set = () => undefined;
 };
