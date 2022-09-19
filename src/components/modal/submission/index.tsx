@@ -26,6 +26,7 @@ export function SubmissionForm(props: { modalState: ActiveIndexStateMethods }) {
         props.modalState.reset();
       }}
       isSubmitButtonDisabled={flags.areAllFieldsFilled}
+      title={"Submit a New Festival"}
     >
       <FormItemWrapper label={"Festival Name"}>
         <TextInput
@@ -78,7 +79,7 @@ export function SubmissionForm(props: { modalState: ActiveIndexStateMethods }) {
 
         <FormItemWrapper label={"City"}>
           <TextInput
-            placeholder="Clearwater"
+            placeholder="e.g. Clearwater"
             value={values.city}
             onChange={(e) =>
               setValue((value) => ({ ...value, city: e.target.value }))

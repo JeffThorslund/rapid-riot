@@ -7,6 +7,7 @@ export const Modal = (props: {
   submitForm: () => void;
   children: React.ReactNode;
   isSubmitButtonDisabled: boolean;
+  title: string;
 }) => {
   return (
     <Layer
@@ -16,6 +17,9 @@ export const Modal = (props: {
       modal
     >
       <Box pad={"medium"} width={"large"}>
+        <Box direction="column" gap="medium" pad="small" align={"center"}>
+          <Text size={"large"}>{props.title}</Text>
+        </Box>
         {props.children}
         <Box direction="row" gap="medium" pad="small" justify={"between"}>
           <SubmissionButton

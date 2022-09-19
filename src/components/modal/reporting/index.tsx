@@ -1,4 +1,4 @@
-import { TextArea } from "grommet";
+import { Box, TextArea } from "grommet";
 import React, { useState } from "react";
 import { ActiveIndexStateMethods } from "../../_utils/useActiveIndexState";
 import { Modal } from "../Modal";
@@ -18,13 +18,18 @@ export function ReportingForm(props: { modalState: ActiveIndexStateMethods }) {
         props.modalState.reset();
       }}
       isSubmitButtonDisabled={!!text}
+      title={"Report an Issue"}
     >
       <FormItemWrapper label={"Report"}>
-        <TextArea
-          placeholder="BeaterFest was stopped in 2019 due to property damage, and no longer runs."
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-        />
+        <Box height={"small"}>
+          <TextArea
+            placeholder="e.g. BeaterFest has an updated website after the old one was hacked by squirt boaters."
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+            size={"medium"}
+            style={{ height: 500 }}
+          />
+        </Box>
       </FormItemWrapper>
     </Modal>
   );
