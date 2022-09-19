@@ -9,21 +9,18 @@ import { ResponsiveContainer } from "./ResponsiveContainer";
 import { useFestivalData } from "./_utils/useFestivalData";
 
 export const FestivalInterface = () => {
-  const festivals = useFestivalData();
+  const rawFestivals = useFestivalData();
   const mapRef = useMap();
   const [viewState, setViewState] = useViewState();
   const selectionManagement = useSelectionManagement();
 
-  const sortedFilteredFestivals = prepareFestivalData(
-    mapRef.default,
-    festivals
-  );
+  const festivals = prepareFestivalData(mapRef.default, rawFestivals);
 
   return (
     <ResponsiveContainer
       map={
         <MapElement
-          festivals={sortedFilteredFestivals}
+          festivals={festivals}
           viewState={viewState}
           setViewState={setViewState}
           selectionManagement={selectionManagement}
@@ -31,7 +28,7 @@ export const FestivalInterface = () => {
       }
       cards={
         <FestivalCards
-          festivals={sortedFilteredFestivals}
+          festivals={festivals}
           selectionManagement={selectionManagement}
         />
       }
