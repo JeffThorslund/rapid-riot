@@ -1,7 +1,8 @@
 import { SettingsPack } from "../../../types";
+import { isSizeSmall } from "./isSizeSmall";
 
 export const getResponsiveSettings = (size: string): SettingsPack => {
-  if (size === "small") {
+  if (isSizeSmall(size)) {
     return {
       direction: "column",
       map: { height: "60%", width: "auto" },
