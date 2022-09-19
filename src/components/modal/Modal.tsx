@@ -1,6 +1,7 @@
-import { Box, Button, Layer, Spinner, Text } from "grommet";
-import React, { useState } from "react";
+import { Box, Button, Layer, Text } from "grommet";
+import React from "react";
 import { ActiveIndexStateMethods } from "../_utils/useActiveIndexState";
+import { SubmissionButton } from "./SubmissionButton";
 
 export const Modal = (props: {
   closeModal: ActiveIndexStateMethods["reset"];
@@ -34,37 +35,5 @@ export const Modal = (props: {
         </Box>
       </Box>
     </Layer>
-  );
-};
-
-interface SubmissionButtonProps {
-  onClick: () => void;
-  areAllFieldsValid: boolean;
-}
-
-const SubmissionButton = (props: SubmissionButtonProps) => {
-  const [isButtonLoading, setIsButtonLoading] = useState(false);
-
-  const label = (
-    <Box direction={"row"}>
-      <Text>Submit</Text>
-      {isButtonLoading ? (
-        <Spinner color={"black"} size={"xsmall"} margin={{ left: "small" }} />
-      ) : null}
-    </Box>
-  );
-
-  return (
-    <Button
-      type="submit"
-      primary
-      label={label}
-      disabled={!props.areAllFieldsValid || isButtonLoading}
-      onClick={async () => {
-        setIsButtonLoading(true);
-        await props.onClick();
-        setIsButtonLoading(false);
-      }}
-    />
   );
 };
