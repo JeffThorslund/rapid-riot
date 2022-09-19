@@ -5,7 +5,7 @@ import {
   useActiveIndexState,
 } from "../_utils/useActiveIndexState";
 import { ActionIcon } from "./ActionIcon";
-import { ActionIconSchema } from "./actionIconSchema";
+import { ActionIconSchema } from "./_utils/actionIconSchema";
 import { Position } from "../../types";
 import { ActionBarWrapper } from "./ActionBarWrapper";
 

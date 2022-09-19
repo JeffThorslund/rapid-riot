@@ -1,6 +1,6 @@
 import { ActiveIndexStateMethods } from "../_utils/useActiveIndexState";
 import React from "react";
-import { actionIconSchema } from "../actionBar/actionIconSchema";
+import { actionIconSchema } from "../actionBar/_utils/actionIconSchema";
 
 interface Props {
   modalState: ActiveIndexStateMethods;
