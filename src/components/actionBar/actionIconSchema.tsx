@@ -29,7 +29,7 @@ export const actionIconSchema: ActionIconSchema[] = [
     icon: {
       component: FaPlusCircle,
       props: {
-        color: "#3FA34D",
+        color: "#00C781",
         key: ActionIconEnum.ADD,
       },
     },
@@ -42,7 +42,7 @@ export const actionIconSchema: ActionIconSchema[] = [
     icon: {
       component: FaExclamationCircle,
       props: {
-        color: "#EF6F6C",
+        color: "#FF4040",
         key: ActionIconEnum.DELETE,
       },
     },

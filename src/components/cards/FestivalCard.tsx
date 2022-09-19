@@ -3,6 +3,7 @@ import { Box, Text } from "grommet";
 import React from "react";
 import { LocationText } from "./LocationText";
 import { LinkText } from "./LinkText";
+import { getColor } from "./_utils/getColor";
 
 interface Props {
   festival: RefFestival;
@@ -12,16 +13,6 @@ interface Props {
   isCardHovered: boolean;
   isCardSelected: boolean;
 }
-
-export const getColor = (
-  baseColor: string,
-  isHovered: boolean,
-  isSelected: boolean
-): string => {
-  if (isSelected) return "#02873c";
-  if (isHovered) return "#3D138D";
-  return baseColor;
-};
 
 export const FestivalCard = (props: Props) => {
   return (

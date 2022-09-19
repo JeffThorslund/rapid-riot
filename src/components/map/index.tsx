@@ -4,7 +4,7 @@ import { RefFestival } from "../../types";
 import { CustomMapWrapper } from "./CustomMapWrapper";
 import { Marker } from "./Marker";
 import { UseSelectionManagementMethods } from "../interface/_utils/useSelectionManagement";
-import { getColor } from "../cards/FestivalCard";
+import { getColor } from "../cards/_utils/getColor";
 
 type Props = {
   festivals: RefFestival[];
