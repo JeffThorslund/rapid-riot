@@ -7,15 +7,12 @@ import { prepareFestivalData } from "./_utils/prepareFestivalData";
 import { useSelectionManagement } from "./_utils/useSelectionManagement";
 import { ResponsiveContainer } from "./ResponsiveContainer";
 import { useFestivalData } from "./_utils/useFestivalData";
-import { logJSON } from "../../database/data/logJSON";
 
 export const FestivalInterface = () => {
   const rawFestivals = useFestivalData();
   const mapRef = useMap();
   const [viewState, setViewState] = useViewState();
   const selectionManagement = useSelectionManagement();
-
-  logJSON();
 
   const festivals = prepareFestivalData(mapRef.default, rawFestivals);
 
