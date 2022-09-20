@@ -345,4 +345,54 @@ export const festivals: Festival[] = [
       city: "Cody",
     },
   },
+  {
+    title: "Royal Gorge Whitewater Festival",
+    link: "https://www.royalgorgewhitewaterfestival.com/",
+    location: {
+      coordinates: { lat: 38.44640401400269, lng: -105.22676534510448 },
+      country: Countries["United States"],
+      state: States["Colorado"],
+      city: "Cañon City",
+    },
+  },
+  {
+    title: "Green River Race",
+    link: "https://greenrace.us/",
+    location: {
+      coordinates: { lat: 35.23855588441514, lng: -82.34768597603552 },
+      country: Countries["United States"],
+      state: States["North Carolina"],
+      city: "Saluda",
+    },
+  },
+  {
+    title: "Feather River Festival",
+    link: "https://www.facebook.com/featherriver.fest/",
+    location: {
+      coordinates: { lat: 39.95324294883412, lng: -121.30065730034603 },
+      country: Countries["United States"],
+      state: States["California"],
+      city: "Indian Jim Campground",
+    },
+  },
+  {
+    title: "TatlowFest",
+    link: "https://www.paddlebv.com/tatlowfest-2022",
+    location: {
+      coordinates: { lat: 54.78103656359999, lng: -127.16976157829224 },
+      country: Countries["Canada"],
+      state: Provinces["British Columbia"],
+      city: "Smithers",
+    },
+  },
+  {
+    title: "Paddlemania",
+    link: "https://paddle-mania.com/",
+    location: {
+      coordinates: { lat: 46.66637222232146, lng: -92.42588120331587 },
+      country: Countries["United States"],
+      state: States["Minnesota"],
+      city: "Carlton",
+    },
+  },
 ];
