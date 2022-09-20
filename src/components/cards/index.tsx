@@ -12,7 +12,7 @@ import { UseSelectionManagementMethods } from "../interface/_utils/useSelectionM
 import { festivals } from "../../database/data";
 import { NoResultsFallbackWrapper } from "./NoResultsFallbackWrapper";
 import { FeedbackModal } from "./FeedbackModal";
-import { breakpointColumnsObj } from "./breakpointColumnsObj";
+import { breakpointColumnsObj } from "./_utils/breakpointColumnsObj";
 
 interface Props {
   festivals: RefFestival[];

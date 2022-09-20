@@ -10,20 +10,20 @@ export const prepareFestivalData = (
 
   return festivals
     .filter(isMarkerWithinMapBounds(mapRef))
-    .sort(sortByTitle)
+    .sort((a, b) => sortByTitle(a.title, b.title))
     .map(appendRefToFestival);
 };
 
-const isMarkerWithinMapBounds = (mapRef: MapRef) => (festival: Festival) =>
-  mapRef.getMap().getBounds().contains({
-    lat: festival.location.coordinates.lat,
-    lng: festival.location.coordinates.lng,
-  });
+export const isMarkerWithinMapBounds =
+  (mapRef: MapRef) => (festival: Festival) =>
+    mapRef.getMap().getBounds().contains({
+      lat: festival.location.coordinates.lat,
+      lng: festival.location.coordinates.lng,
+    });
 
-const sortByTitle = (a: Festival, b: Festival) =>
-  a.title.localeCompare(b.title);
+export const sortByTitle = (a: string, b: string) => a.localeCompare(b);
 
-const appendRefToFestival = (festival: Festival) => ({
+export const appendRefToFestival = (festival: Festival) => ({
   ...festival,
   ref: React.createRef<HTMLDivElement>(),
 });

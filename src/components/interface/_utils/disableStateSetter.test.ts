@@ -1,4 +1,4 @@
-import { ActiveIdStateMethods } from "./useActiveIndexState";
+import { ActiveIdStateMethods } from "../../_utils/useActiveIndexState";
 import { disableStateSetter } from "./disableStateSetter";
 
 test("method is not disabled", () => {

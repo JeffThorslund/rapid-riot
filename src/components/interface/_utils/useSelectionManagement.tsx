@@ -3,7 +3,7 @@ import {
   useActiveIndexState,
 } from "../../_utils/useActiveIndexState";
 import { useSmallScreenDetection } from "./useSmallScreenDetection";
-import { disableStateSetter } from "../../_utils/disableStateSetter";
+import { disableStateSetter } from "./disableStateSetter";
 
 export interface UseSelectionManagementMethods {
   select: ActiveIdStateMethods;
