@@ -9,7 +9,7 @@ import { ResponsiveContainer } from "./ResponsiveContainer";
 import { useFestivalData } from "./_utils/useFestivalData";
 
 export const FestivalInterface = () => {
-  const rawFestivals = useFestivalData();
+  const { festivals: rawFestivals, isDataFetching } = useFestivalData();
   const mapRef = useMap();
   const [viewState, setViewState] = useViewState();
   const selectionManagement = useSelectionManagement();
@@ -30,6 +30,7 @@ export const FestivalInterface = () => {
         <FestivalCards
           festivals={festivals}
           selectionManagement={selectionManagement}
+          isDataFetching={isDataFetching}
         />
       }
     />
