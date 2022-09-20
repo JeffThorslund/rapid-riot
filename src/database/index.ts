@@ -1,6 +1,12 @@
-import { Festival } from "../types";
-import { dataProvider } from "./data";
+import { supabaseMethods } from "./supabase";
+import { definitions } from "../types/supabase";
 
-export const getFestivalData = (): Festival[] => {
-  return dataProvider();
+export const getFestivalData = async (): Promise<
+  definitions["festivals"][]
+> => {
+  const festivals = await supabaseMethods.readAllFestivals();
+
+  if (!festivals) return [];
+
+  return festivals;
 };

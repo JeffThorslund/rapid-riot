@@ -1,10 +1,11 @@
 import { MapRef } from "react-map-gl";
-import { Festival, RefFestival } from "../../../types";
+import { Countries, Provinces, RefFestival, States } from "../../../types";
 import React from "react";
+import { definitions } from "../../../types/supabase";
 
 export const prepareFestivalData = (
   mapRef: MapRef | undefined,
-  festivals: Festival[]
+  festivals: definitions["festivals"][]
 ): RefFestival[] => {
   if (!mapRef) return [];
 
@@ -15,15 +16,24 @@ export const prepareFestivalData = (
 };
 
 export const isMarkerWithinMapBounds =
-  (mapRef: MapRef) => (festival: Festival) =>
+  (mapRef: MapRef) => (festival: definitions["festivals"]) =>
     mapRef.getMap().getBounds().contains({
-      lat: festival.location.coordinates.lat,
-      lng: festival.location.coordinates.lng,
+      lat: festival.lat,
+      lng: festival.lng,
     });
 
 export const sortByTitle = (a: string, b: string) => a.localeCompare(b);
 
-export const appendRefToFestival = (festival: Festival) => ({
-  ...festival,
+export const appendRefToFestival = (
+  festival: definitions["festivals"]
+): RefFestival => ({
+  title: festival.title,
+  link: festival.link,
+  location: {
+    coordinates: { lat: festival.lat, lng: festival.lng },
+    country: festival.country as Countries,
+    state: festival.state as States | Provinces,
+    city: festival.city,
+  },
   ref: React.createRef<HTMLDivElement>(),
 });

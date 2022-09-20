@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
-import { Festival } from "../../../types";
 import { getFestivalData } from "../../../database";
+import { definitions } from "../../../types/supabase";
 
 export const useFestivalData = () => {
-  const [festivals, setFestivals] = useState<Festival[]>([]);
+  const [festivals, setFestivals] = useState<definitions["festivals"][]>([]);
 
   useEffect(() => {
-    const festivals = getFestivalData();
-    setFestivals(festivals);
+    (async () => {
+      const festivals = await getFestivalData();
+      setFestivals(festivals);
+    })();
   }, []);
 
   return festivals;

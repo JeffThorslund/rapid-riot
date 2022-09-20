@@ -12,391 +12,17 @@ export interface paths {
       };
     };
   };
-  "/dates": {
-    get: {
-      parameters: {
-        query: {
-          id?: parameters["rowFilter.dates.id"];
-          submission_id?: parameters["rowFilter.dates.submission_id"];
-          date?: parameters["rowFilter.dates.date"];
-          created?: parameters["rowFilter.dates.created"];
-          /** Filtering Columns */
-          select?: parameters["select"];
-          /** Ordering */
-          order?: parameters["order"];
-          /** Limiting and Pagination */
-          offset?: parameters["offset"];
-          /** Limiting and Pagination */
-          limit?: parameters["limit"];
-        };
-        header: {
-          /** Limiting and Pagination */
-          Range?: parameters["range"];
-          /** Limiting and Pagination */
-          "Range-Unit"?: parameters["rangeUnit"];
-          /** Preference */
-          Prefer?: parameters["preferCount"];
-        };
-      };
-      responses: {
-        /** OK */
-        200: {
-          schema: definitions["dates"][];
-        };
-        /** Partial Content */
-        206: unknown;
-      };
-    };
-    post: {
-      parameters: {
-        body: {
-          /** dates */
-          dates?: definitions["dates"];
-        };
-        query: {
-          /** Filtering Columns */
-          select?: parameters["select"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** Created */
-        201: unknown;
-      };
-    };
-    delete: {
-      parameters: {
-        query: {
-          id?: parameters["rowFilter.dates.id"];
-          submission_id?: parameters["rowFilter.dates.submission_id"];
-          date?: parameters["rowFilter.dates.date"];
-          created?: parameters["rowFilter.dates.created"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** No Content */
-        204: never;
-      };
-    };
-    patch: {
-      parameters: {
-        query: {
-          id?: parameters["rowFilter.dates.id"];
-          submission_id?: parameters["rowFilter.dates.submission_id"];
-          date?: parameters["rowFilter.dates.date"];
-          created?: parameters["rowFilter.dates.created"];
-        };
-        body: {
-          /** dates */
-          dates?: definitions["dates"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** No Content */
-        204: never;
-      };
-    };
-  };
-  "/deletions": {
-    get: {
-      parameters: {
-        query: {
-          id?: parameters["rowFilter.deletions.id"];
-          festival_id?: parameters["rowFilter.deletions.festival_id"];
-          created?: parameters["rowFilter.deletions.created"];
-          user_id?: parameters["rowFilter.deletions.user_id"];
-          /** Filtering Columns */
-          select?: parameters["select"];
-          /** Ordering */
-          order?: parameters["order"];
-          /** Limiting and Pagination */
-          offset?: parameters["offset"];
-          /** Limiting and Pagination */
-          limit?: parameters["limit"];
-        };
-        header: {
-          /** Limiting and Pagination */
-          Range?: parameters["range"];
-          /** Limiting and Pagination */
-          "Range-Unit"?: parameters["rangeUnit"];
-          /** Preference */
-          Prefer?: parameters["preferCount"];
-        };
-      };
-      responses: {
-        /** OK */
-        200: {
-          schema: definitions["deletions"][];
-        };
-        /** Partial Content */
-        206: unknown;
-      };
-    };
-    post: {
-      parameters: {
-        body: {
-          /** deletions */
-          deletions?: definitions["deletions"];
-        };
-        query: {
-          /** Filtering Columns */
-          select?: parameters["select"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** Created */
-        201: unknown;
-      };
-    };
-    delete: {
-      parameters: {
-        query: {
-          id?: parameters["rowFilter.deletions.id"];
-          festival_id?: parameters["rowFilter.deletions.festival_id"];
-          created?: parameters["rowFilter.deletions.created"];
-          user_id?: parameters["rowFilter.deletions.user_id"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** No Content */
-        204: never;
-      };
-    };
-    patch: {
-      parameters: {
-        query: {
-          id?: parameters["rowFilter.deletions.id"];
-          festival_id?: parameters["rowFilter.deletions.festival_id"];
-          created?: parameters["rowFilter.deletions.created"];
-          user_id?: parameters["rowFilter.deletions.user_id"];
-        };
-        body: {
-          /** deletions */
-          deletions?: definitions["deletions"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** No Content */
-        204: never;
-      };
-    };
-  };
-  "/demos": {
-    get: {
-      parameters: {
-        query: {
-          id?: parameters["rowFilter.demos.id"];
-          name?: parameters["rowFilter.demos.name"];
-          color?: parameters["rowFilter.demos.color"];
-          /** Filtering Columns */
-          select?: parameters["select"];
-          /** Ordering */
-          order?: parameters["order"];
-          /** Limiting and Pagination */
-          offset?: parameters["offset"];
-          /** Limiting and Pagination */
-          limit?: parameters["limit"];
-        };
-        header: {
-          /** Limiting and Pagination */
-          Range?: parameters["range"];
-          /** Limiting and Pagination */
-          "Range-Unit"?: parameters["rangeUnit"];
-          /** Preference */
-          Prefer?: parameters["preferCount"];
-        };
-      };
-      responses: {
-        /** OK */
-        200: {
-          schema: definitions["demos"][];
-        };
-        /** Partial Content */
-        206: unknown;
-      };
-    };
-    post: {
-      parameters: {
-        body: {
-          /** demos */
-          demos?: definitions["demos"];
-        };
-        query: {
-          /** Filtering Columns */
-          select?: parameters["select"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** Created */
-        201: unknown;
-      };
-    };
-    delete: {
-      parameters: {
-        query: {
-          id?: parameters["rowFilter.demos.id"];
-          name?: parameters["rowFilter.demos.name"];
-          color?: parameters["rowFilter.demos.color"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** No Content */
-        204: never;
-      };
-    };
-    patch: {
-      parameters: {
-        query: {
-          id?: parameters["rowFilter.demos.id"];
-          name?: parameters["rowFilter.demos.name"];
-          color?: parameters["rowFilter.demos.color"];
-        };
-        body: {
-          /** demos */
-          demos?: definitions["demos"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** No Content */
-        204: never;
-      };
-    };
-  };
-  "/favorites": {
-    get: {
-      parameters: {
-        query: {
-          id?: parameters["rowFilter.favorites.id"];
-          festival_id?: parameters["rowFilter.favorites.festival_id"];
-          created?: parameters["rowFilter.favorites.created"];
-          user_id?: parameters["rowFilter.favorites.user_id"];
-          /** Filtering Columns */
-          select?: parameters["select"];
-          /** Ordering */
-          order?: parameters["order"];
-          /** Limiting and Pagination */
-          offset?: parameters["offset"];
-          /** Limiting and Pagination */
-          limit?: parameters["limit"];
-        };
-        header: {
-          /** Limiting and Pagination */
-          Range?: parameters["range"];
-          /** Limiting and Pagination */
-          "Range-Unit"?: parameters["rangeUnit"];
-          /** Preference */
-          Prefer?: parameters["preferCount"];
-        };
-      };
-      responses: {
-        /** OK */
-        200: {
-          schema: definitions["favorites"][];
-        };
-        /** Partial Content */
-        206: unknown;
-      };
-    };
-    post: {
-      parameters: {
-        body: {
-          /** favorites */
-          favorites?: definitions["favorites"];
-        };
-        query: {
-          /** Filtering Columns */
-          select?: parameters["select"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** Created */
-        201: unknown;
-      };
-    };
-    delete: {
-      parameters: {
-        query: {
-          id?: parameters["rowFilter.favorites.id"];
-          festival_id?: parameters["rowFilter.favorites.festival_id"];
-          created?: parameters["rowFilter.favorites.created"];
-          user_id?: parameters["rowFilter.favorites.user_id"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** No Content */
-        204: never;
-      };
-    };
-    patch: {
-      parameters: {
-        query: {
-          id?: parameters["rowFilter.favorites.id"];
-          festival_id?: parameters["rowFilter.favorites.festival_id"];
-          created?: parameters["rowFilter.favorites.created"];
-          user_id?: parameters["rowFilter.favorites.user_id"];
-        };
-        body: {
-          /** favorites */
-          favorites?: definitions["favorites"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** No Content */
-        204: never;
-      };
-    };
-  };
   "/festivals": {
     get: {
       parameters: {
         query: {
+          title?: parameters["rowFilter.festivals.title"];
+          link?: parameters["rowFilter.festivals.link"];
+          lat?: parameters["rowFilter.festivals.lat"];
+          lng?: parameters["rowFilter.festivals.lng"];
+          country?: parameters["rowFilter.festivals.country"];
+          state?: parameters["rowFilter.festivals.state"];
+          city?: parameters["rowFilter.festivals.city"];
           id?: parameters["rowFilter.festivals.id"];
           /** Filtering Columns */
           select?: parameters["select"];
@@ -448,6 +74,13 @@ export interface paths {
     delete: {
       parameters: {
         query: {
+          title?: parameters["rowFilter.festivals.title"];
+          link?: parameters["rowFilter.festivals.link"];
+          lat?: parameters["rowFilter.festivals.lat"];
+          lng?: parameters["rowFilter.festivals.lng"];
+          country?: parameters["rowFilter.festivals.country"];
+          state?: parameters["rowFilter.festivals.state"];
+          city?: parameters["rowFilter.festivals.city"];
           id?: parameters["rowFilter.festivals.id"];
         };
         header: {
@@ -463,6 +96,13 @@ export interface paths {
     patch: {
       parameters: {
         query: {
+          title?: parameters["rowFilter.festivals.title"];
+          link?: parameters["rowFilter.festivals.link"];
+          lat?: parameters["rowFilter.festivals.lat"];
+          lng?: parameters["rowFilter.festivals.lng"];
+          country?: parameters["rowFilter.festivals.country"];
+          state?: parameters["rowFilter.festivals.state"];
+          city?: parameters["rowFilter.festivals.city"];
           id?: parameters["rowFilter.festivals.id"];
         };
         body: {
@@ -678,414 +318,27 @@ export interface paths {
       };
     };
   };
-  "/profiles": {
-    get: {
-      parameters: {
-        query: {
-          id?: parameters["rowFilter.profiles.id"];
-          email?: parameters["rowFilter.profiles.email"];
-          raw_user_meta_data?: parameters["rowFilter.profiles.raw_user_meta_data"];
-          /** Filtering Columns */
-          select?: parameters["select"];
-          /** Ordering */
-          order?: parameters["order"];
-          /** Limiting and Pagination */
-          offset?: parameters["offset"];
-          /** Limiting and Pagination */
-          limit?: parameters["limit"];
-        };
-        header: {
-          /** Limiting and Pagination */
-          Range?: parameters["range"];
-          /** Limiting and Pagination */
-          "Range-Unit"?: parameters["rangeUnit"];
-          /** Preference */
-          Prefer?: parameters["preferCount"];
-        };
-      };
-      responses: {
-        /** OK */
-        200: {
-          schema: definitions["profiles"][];
-        };
-        /** Partial Content */
-        206: unknown;
-      };
-    };
-    post: {
-      parameters: {
-        body: {
-          /** profiles */
-          profiles?: definitions["profiles"];
-        };
-        query: {
-          /** Filtering Columns */
-          select?: parameters["select"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** Created */
-        201: unknown;
-      };
-    };
-    delete: {
-      parameters: {
-        query: {
-          id?: parameters["rowFilter.profiles.id"];
-          email?: parameters["rowFilter.profiles.email"];
-          raw_user_meta_data?: parameters["rowFilter.profiles.raw_user_meta_data"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** No Content */
-        204: never;
-      };
-    };
-    patch: {
-      parameters: {
-        query: {
-          id?: parameters["rowFilter.profiles.id"];
-          email?: parameters["rowFilter.profiles.email"];
-          raw_user_meta_data?: parameters["rowFilter.profiles.raw_user_meta_data"];
-        };
-        body: {
-          /** profiles */
-          profiles?: definitions["profiles"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** No Content */
-        204: never;
-      };
-    };
-  };
-  "/submissions": {
-    get: {
-      parameters: {
-        query: {
-          city?: parameters["rowFilter.submissions.city"];
-          country_code?: parameters["rowFilter.submissions.country_code"];
-          created?: parameters["rowFilter.submissions.created"];
-          name?: parameters["rowFilter.submissions.name"];
-          state_code?: parameters["rowFilter.submissions.state_code"];
-          website?: parameters["rowFilter.submissions.website"];
-          id?: parameters["rowFilter.submissions.id"];
-          latitude?: parameters["rowFilter.submissions.latitude"];
-          longitude?: parameters["rowFilter.submissions.longitude"];
-          address?: parameters["rowFilter.submissions.address"];
-          state?: parameters["rowFilter.submissions.state"];
-          country?: parameters["rowFilter.submissions.country"];
-          festival_id?: parameters["rowFilter.submissions.festival_id"];
-          user_id?: parameters["rowFilter.submissions.user_id"];
-          /** Filtering Columns */
-          select?: parameters["select"];
-          /** Ordering */
-          order?: parameters["order"];
-          /** Limiting and Pagination */
-          offset?: parameters["offset"];
-          /** Limiting and Pagination */
-          limit?: parameters["limit"];
-        };
-        header: {
-          /** Limiting and Pagination */
-          Range?: parameters["range"];
-          /** Limiting and Pagination */
-          "Range-Unit"?: parameters["rangeUnit"];
-          /** Preference */
-          Prefer?: parameters["preferCount"];
-        };
-      };
-      responses: {
-        /** OK */
-        200: {
-          schema: definitions["submissions"][];
-        };
-        /** Partial Content */
-        206: unknown;
-      };
-    };
-    post: {
-      parameters: {
-        body: {
-          /** submissions */
-          submissions?: definitions["submissions"];
-        };
-        query: {
-          /** Filtering Columns */
-          select?: parameters["select"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** Created */
-        201: unknown;
-      };
-    };
-    delete: {
-      parameters: {
-        query: {
-          city?: parameters["rowFilter.submissions.city"];
-          country_code?: parameters["rowFilter.submissions.country_code"];
-          created?: parameters["rowFilter.submissions.created"];
-          name?: parameters["rowFilter.submissions.name"];
-          state_code?: parameters["rowFilter.submissions.state_code"];
-          website?: parameters["rowFilter.submissions.website"];
-          id?: parameters["rowFilter.submissions.id"];
-          latitude?: parameters["rowFilter.submissions.latitude"];
-          longitude?: parameters["rowFilter.submissions.longitude"];
-          address?: parameters["rowFilter.submissions.address"];
-          state?: parameters["rowFilter.submissions.state"];
-          country?: parameters["rowFilter.submissions.country"];
-          festival_id?: parameters["rowFilter.submissions.festival_id"];
-          user_id?: parameters["rowFilter.submissions.user_id"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** No Content */
-        204: never;
-      };
-    };
-    patch: {
-      parameters: {
-        query: {
-          city?: parameters["rowFilter.submissions.city"];
-          country_code?: parameters["rowFilter.submissions.country_code"];
-          created?: parameters["rowFilter.submissions.created"];
-          name?: parameters["rowFilter.submissions.name"];
-          state_code?: parameters["rowFilter.submissions.state_code"];
-          website?: parameters["rowFilter.submissions.website"];
-          id?: parameters["rowFilter.submissions.id"];
-          latitude?: parameters["rowFilter.submissions.latitude"];
-          longitude?: parameters["rowFilter.submissions.longitude"];
-          address?: parameters["rowFilter.submissions.address"];
-          state?: parameters["rowFilter.submissions.state"];
-          country?: parameters["rowFilter.submissions.country"];
-          festival_id?: parameters["rowFilter.submissions.festival_id"];
-          user_id?: parameters["rowFilter.submissions.user_id"];
-        };
-        body: {
-          /** submissions */
-          submissions?: definitions["submissions"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** No Content */
-        204: never;
-      };
-    };
-  };
-  "/user_profiles": {
-    get: {
-      parameters: {
-        query: {
-          id?: parameters["rowFilter.user_profiles.id"];
-          updated_at?: parameters["rowFilter.user_profiles.updated_at"];
-          username?: parameters["rowFilter.user_profiles.username"];
-          avatar_url?: parameters["rowFilter.user_profiles.avatar_url"];
-          website?: parameters["rowFilter.user_profiles.website"];
-          /** Filtering Columns */
-          select?: parameters["select"];
-          /** Ordering */
-          order?: parameters["order"];
-          /** Limiting and Pagination */
-          offset?: parameters["offset"];
-          /** Limiting and Pagination */
-          limit?: parameters["limit"];
-        };
-        header: {
-          /** Limiting and Pagination */
-          Range?: parameters["range"];
-          /** Limiting and Pagination */
-          "Range-Unit"?: parameters["rangeUnit"];
-          /** Preference */
-          Prefer?: parameters["preferCount"];
-        };
-      };
-      responses: {
-        /** OK */
-        200: {
-          schema: definitions["user_profiles"][];
-        };
-        /** Partial Content */
-        206: unknown;
-      };
-    };
-    post: {
-      parameters: {
-        body: {
-          /** user_profiles */
-          user_profiles?: definitions["user_profiles"];
-        };
-        query: {
-          /** Filtering Columns */
-          select?: parameters["select"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** Created */
-        201: unknown;
-      };
-    };
-    delete: {
-      parameters: {
-        query: {
-          id?: parameters["rowFilter.user_profiles.id"];
-          updated_at?: parameters["rowFilter.user_profiles.updated_at"];
-          username?: parameters["rowFilter.user_profiles.username"];
-          avatar_url?: parameters["rowFilter.user_profiles.avatar_url"];
-          website?: parameters["rowFilter.user_profiles.website"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** No Content */
-        204: never;
-      };
-    };
-    patch: {
-      parameters: {
-        query: {
-          id?: parameters["rowFilter.user_profiles.id"];
-          updated_at?: parameters["rowFilter.user_profiles.updated_at"];
-          username?: parameters["rowFilter.user_profiles.username"];
-          avatar_url?: parameters["rowFilter.user_profiles.avatar_url"];
-          website?: parameters["rowFilter.user_profiles.website"];
-        };
-        body: {
-          /** user_profiles */
-          user_profiles?: definitions["user_profiles"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** No Content */
-        204: never;
-      };
-    };
-  };
 }
 
 export interface definitions {
-  dates: {
-    /**
-     * Format: bigint
-     * @description Note:
-     * This is a Primary Key.<pk/>
-     */
-    id: number;
-    /**
-     * Format: bigint
-     * @description Note:
-     * This is a Foreign Key to `submissions.id`.<fk table='submissions' column='id'/>
-     */
-    submission_id: number;
-    /** Format: timestamp with time zone */
-    date?: string;
-    /**
-     * Format: timestamp with time zone
-     * @default now()
-     */
-    created?: string;
-  };
-  deletions: {
-    /**
-     * Format: bigint
-     * @description Note:
-     * This is a Primary Key.<pk/>
-     */
-    id: number;
-    /**
-     * Format: bigint
-     * @description Note:
-     * This is a Foreign Key to `festivals.id`.<fk table='festivals' column='id'/>
-     */
-    festival_id?: number;
-    /**
-     * Format: timestamp with time zone
-     * @default now()
-     */
-    created?: string;
-    /**
-     * Format: uuid
-     * @description Note:
-     * This is a Foreign Key to `profiles.id`.<fk table='profiles' column='id'/>
-     */
-    user_id?: string;
-  };
-  demos: {
-    /**
-     * Format: bigint
-     * @description Note:
-     * This is a Primary Key.<pk/>
-     */
-    id: number;
-    /** Format: text */
-    name?: string;
-    /** Format: text */
-    color?: string;
-  };
-  /** @description Every record of every favorite */
-  favorites: {
-    /**
-     * Format: bigint
-     * @description Note:
-     * This is a Primary Key.<pk/>
-     */
-    id: number;
-    /**
-     * Format: bigint
-     * @description Note:
-     * This is a Foreign Key to `festivals.id`.<fk table='festivals' column='id'/>
-     */
-    festival_id: number;
-    /**
-     * Format: timestamp with time zone
-     * @default now()
-     */
-    created?: string;
-    /**
-     * Format: uuid
-     * @description Note:
-     * This is a Foreign Key to `profiles.id`.<fk table='profiles' column='id'/>
-     */
-    user_id: string;
-  };
+  /** @description river festivals */
   festivals: {
+    /** Format: text */
+    title: string;
+    /** Format: text */
+    link: string;
+    /** Format: double precision */
+    lat: number;
+    /** Format: double precision */
+    lng: number;
+    /** Format: text */
+    country: string;
+    /** Format: text */
+    state: string;
+    /** Format: text */
+    city: string;
     /**
-     * Format: bigint
+     * Format: smallint
      * @description Note:
      * This is a Primary Key.<pk/>
      */
@@ -1133,79 +386,6 @@ export interface definitions {
     /** Format: text */
     report: string;
   };
-  profiles: {
-    /**
-     * Format: uuid
-     * @description Note:
-     * This is a Primary Key.<pk/>
-     */
-    id: string;
-    /** Format: text */
-    email?: string;
-    /** Format: jsonb */
-    raw_user_meta_data?: string;
-  };
-  submissions: {
-    /** Format: text */
-    city?: string;
-    /** Format: text */
-    country_code?: string;
-    /**
-     * Format: timestamp with time zone
-     * @default now()
-     */
-    created?: string;
-    /** Format: text */
-    name?: string;
-    /** Format: text */
-    state_code?: string;
-    /** Format: text */
-    website?: string;
-    /**
-     * Format: integer
-     * @description Note:
-     * This is a Primary Key.<pk/>
-     */
-    id: number;
-    /** Format: double precision */
-    latitude?: number;
-    /** Format: double precision */
-    longitude?: number;
-    /** Format: text */
-    address?: string;
-    /** Format: text */
-    state?: string;
-    /** Format: text */
-    country?: string;
-    /**
-     * Format: bigint
-     * @description Note:
-     * This is a Foreign Key to `festivals.id`.<fk table='festivals' column='id'/>
-     */
-    festival_id?: number;
-    /**
-     * Format: uuid
-     * @description Note:
-     * This is a Foreign Key to `profiles.id`.<fk table='profiles' column='id'/>
-     */
-    user_id: string;
-  };
-  user_profiles: {
-    /**
-     * Format: uuid
-     * @description Note:
-     * This is a Primary Key.<pk/>
-     */
-    id: string;
-    /** Format: timestamp with time zone */
-    updated_at?: string;
-    /** Format: text */
-    username?: string;
-    /** Format: text */
-    avatar_url?: string;
-    /** Format: text */
-    website?: string;
-  };
 }
 
 export interface parameters {
@@ -1241,47 +421,23 @@ export interface parameters {
   offset: string;
   /** @description Limiting and Pagination */
   limit: string;
-  /** @description dates */
-  "body.dates": definitions["dates"];
-  /** Format: bigint */
-  "rowFilter.dates.id": string;
-  /** Format: bigint */
-  "rowFilter.dates.submission_id": string;
-  /** Format: timestamp with time zone */
-  "rowFilter.dates.date": string;
-  /** Format: timestamp with time zone */
-  "rowFilter.dates.created": string;
-  /** @description deletions */
-  "body.deletions": definitions["deletions"];
-  /** Format: bigint */
-  "rowFilter.deletions.id": string;
-  /** Format: bigint */
-  "rowFilter.deletions.festival_id": string;
-  /** Format: timestamp with time zone */
-  "rowFilter.deletions.created": string;
-  /** Format: uuid */
-  "rowFilter.deletions.user_id": string;
-  /** @description demos */
-  "body.demos": definitions["demos"];
-  /** Format: bigint */
-  "rowFilter.demos.id": string;
-  /** Format: text */
-  "rowFilter.demos.name": string;
-  /** Format: text */
-  "rowFilter.demos.color": string;
-  /** @description favorites */
-  "body.favorites": definitions["favorites"];
-  /** Format: bigint */
-  "rowFilter.favorites.id": string;
-  /** Format: bigint */
-  "rowFilter.favorites.festival_id": string;
-  /** Format: timestamp with time zone */
-  "rowFilter.favorites.created": string;
-  /** Format: uuid */
-  "rowFilter.favorites.user_id": string;
   /** @description festivals */
   "body.festivals": definitions["festivals"];
-  /** Format: bigint */
+  /** Format: text */
+  "rowFilter.festivals.title": string;
+  /** Format: text */
+  "rowFilter.festivals.link": string;
+  /** Format: double precision */
+  "rowFilter.festivals.lat": string;
+  /** Format: double precision */
+  "rowFilter.festivals.lng": string;
+  /** Format: text */
+  "rowFilter.festivals.country": string;
+  /** Format: text */
+  "rowFilter.festivals.state": string;
+  /** Format: text */
+  "rowFilter.festivals.city": string;
+  /** Format: smallint */
   "rowFilter.festivals.id": string;
   /** @description new_festivals */
   "body.new_festivals": definitions["new_festivals"];
@@ -1307,60 +463,4 @@ export interface parameters {
   "rowFilter.new_reports.created_at": string;
   /** Format: text */
   "rowFilter.new_reports.report": string;
-  /** @description profiles */
-  "body.profiles": definitions["profiles"];
-  /** Format: uuid */
-  "rowFilter.profiles.id": string;
-  /** Format: text */
-  "rowFilter.profiles.email": string;
-  /** Format: jsonb */
-  "rowFilter.profiles.raw_user_meta_data": string;
-  /** @description submissions */
-  "body.submissions": definitions["submissions"];
-  /** Format: text */
-  "rowFilter.submissions.city": string;
-  /** Format: text */
-  "rowFilter.submissions.country_code": string;
-  /** Format: timestamp with time zone */
-  "rowFilter.submissions.created": string;
-  /** Format: text */
-  "rowFilter.submissions.name": string;
-  /** Format: text */
-  "rowFilter.submissions.state_code": string;
-  /** Format: text */
-  "rowFilter.submissions.website": string;
-  /** Format: integer */
-  "rowFilter.submissions.id": string;
-  /** Format: double precision */
-  "rowFilter.submissions.latitude": string;
-  /** Format: double precision */
-  "rowFilter.submissions.longitude": string;
-  /** Format: text */
-  "rowFilter.submissions.address": string;
-  /** Format: text */
-  "rowFilter.submissions.state": string;
-  /** Format: text */
-  "rowFilter.submissions.country": string;
-  /** Format: bigint */
-  "rowFilter.submissions.festival_id": string;
-  /** Format: uuid */
-  "rowFilter.submissions.user_id": string;
-  /** @description user_profiles */
-  "body.user_profiles": definitions["user_profiles"];
-  /** Format: uuid */
-  "rowFilter.user_profiles.id": string;
-  /** Format: timestamp with time zone */
-  "rowFilter.user_profiles.updated_at": string;
-  /** Format: text */
-  "rowFilter.user_profiles.username": string;
-  /** Format: text */
-  "rowFilter.user_profiles.avatar_url": string;
-  /** Format: text */
-  "rowFilter.user_profiles.website": string;
 }
-
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface operations {}
-
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface external {}

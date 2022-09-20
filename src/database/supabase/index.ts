@@ -5,6 +5,7 @@ import {
   RawNewReport,
   ReportSubmissionLite,
 } from "../../types";
+import { definitions } from "../../types/supabase";
 
 const supabaseUrl = process.env.REACT_APP_SUPABASE_URL || "";
 const supabasePublicKey = process.env.REACT_APP_SUPABASE_PUBLIC_KEY || "";
@@ -17,5 +18,12 @@ export const supabaseMethods = {
   insertReport: async (report: string) => {
     const dataToSend: ReportSubmissionLite = { report };
     await supabase.from<RawNewReport>("new_reports").insert([dataToSend]);
+  },
+  readAllFestivals: async () => {
+    const { data } = await supabase
+      .from<definitions["festivals"]>("festivals")
+      .select("*");
+
+    return data;
   },
 };
