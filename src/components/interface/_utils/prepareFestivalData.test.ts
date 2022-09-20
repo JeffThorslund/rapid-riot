@@ -1,5 +1,4 @@
 import { sortByTitle } from "./prepareFestivalData";
-import { MapRef } from "react-map-gl";
 
 describe("alphabetical title sorting", () => {
   test("titles are sorted alphabetically", () => {
