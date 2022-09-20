@@ -24,6 +24,8 @@ export interface paths {
           state?: parameters["rowFilter.festivals.state"];
           city?: parameters["rowFilter.festivals.city"];
           id?: parameters["rowFilter.festivals.id"];
+          /** row has been approved by moderator */
+          approved?: parameters["rowFilter.festivals.approved"];
           /** Filtering Columns */
           select?: parameters["select"];
           /** Ordering */
@@ -82,6 +84,8 @@ export interface paths {
           state?: parameters["rowFilter.festivals.state"];
           city?: parameters["rowFilter.festivals.city"];
           id?: parameters["rowFilter.festivals.id"];
+          /** row has been approved by moderator */
+          approved?: parameters["rowFilter.festivals.approved"];
         };
         header: {
           /** Preference */
@@ -104,6 +108,8 @@ export interface paths {
           state?: parameters["rowFilter.festivals.state"];
           city?: parameters["rowFilter.festivals.city"];
           id?: parameters["rowFilter.festivals.id"];
+          /** row has been approved by moderator */
+          approved?: parameters["rowFilter.festivals.approved"];
         };
         body: {
           /** festivals */
@@ -343,6 +349,12 @@ export interface definitions {
      * This is a Primary Key.<pk/>
      */
     id: number;
+    /**
+     * Format: boolean
+     * @description row has been approved by moderator
+     * @default false
+     */
+    approved: boolean;
   };
   /** @description user submissions for new festivals */
   new_festivals: {
@@ -439,6 +451,11 @@ export interface parameters {
   "rowFilter.festivals.city": string;
   /** Format: smallint */
   "rowFilter.festivals.id": string;
+  /**
+   * Format: boolean
+   * @description row has been approved by moderator
+   */
+  "rowFilter.festivals.approved": string;
   /** @description new_festivals */
   "body.new_festivals": definitions["new_festivals"];
   /** Format: bigint */
