@@ -9,7 +9,6 @@ import { Box } from "grommet";
 import { ActionIconBar } from "../actionBar";
 import { actionIconSchema } from "../actionBar/_utils/actionIconSchema";
 import { UseSelectionManagementMethods } from "../interface/_utils/useSelectionManagement";
-import { festivals } from "../../database/data";
 import { NoResultsFallbackWrapper } from "./NoResultsFallbackWrapper";
 import { FeedbackModal } from "./FeedbackModal";
 import { breakpointColumnsObj } from "./_utils/breakpointColumnsObj";
@@ -36,7 +35,7 @@ export const FestivalCards = (props: Props) => {
         actionIconSchema={actionIconSchema}
         onClick={(index: number) => modalState.set(index)}
       />
-      <NoResultsFallbackWrapper numberOfItems={festivals.length}>
+      <NoResultsFallbackWrapper numberOfItems={props.festivals.length}>
         <Masonry
           breakpointCols={breakpointColumnsObj}
           className="my-masonry-grid"

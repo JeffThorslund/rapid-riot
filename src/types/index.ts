@@ -3,16 +3,6 @@ import React from "react";
 import { DirectionType } from "grommet/utils";
 import { definitions } from "./supabase";
 
-export interface Festival {
-  title: string;
-  location: Location;
-  link: string;
-}
-
-export interface RefFestival extends Festival {
-  ref: React.RefObject<HTMLDivElement>;
-}
-
 export type Dims = { height: string; width: string };
 
 export type SettingsPack = {
@@ -38,6 +28,27 @@ export interface Position {
   bottom: number;
   left: number;
   right: number;
+}
+
+export interface Festival {
+  title: string;
+  location: Location;
+  link: string;
+}
+
+export interface RefFestival extends Festival {
+  ref: React.RefObject<HTMLDivElement>;
+}
+
+// festival
+export type RawFestival = definitions["festivals"];
+
+export interface Festival {
+  id: string;
+  title: string;
+  link: string;
+  location: Location;
+  ref: React.RefObject<HTMLDivElement>;
 }
 
 // festival submission
