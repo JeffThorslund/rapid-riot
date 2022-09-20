@@ -19,7 +19,7 @@ export const prepareFestivalData = (
   return festivals
     .filter(isMarkerWithinMapBounds(mapRef))
     .sort((a, b) => sortByTitle(a.title, b.title))
-    .map(appendRefToFestival);
+    .map(shaper);
 };
 
 export const isMarkerWithinMapBounds =
@@ -31,7 +31,7 @@ export const isMarkerWithinMapBounds =
 
 export const sortByTitle = (a: string, b: string) => a.localeCompare(b);
 
-export const appendRefToFestival = (festival: RawFestival): Festival => ({
+export const shaper = (festival: RawFestival): Festival => ({
   id: festival.id.toString(),
   title: festival.title,
   link: festival.link,
