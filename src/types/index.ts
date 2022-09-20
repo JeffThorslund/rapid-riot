@@ -45,8 +45,8 @@ export type RawFestival = definitions["festivals"];
 
 export interface Festival {
   id: string;
-  title: string;
-  link: string;
+  title: RawFestival["title"];
+  link: RawFestival["link"];
   location: Location;
   ref: React.RefObject<HTMLDivElement>;
 }
