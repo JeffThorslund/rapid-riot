@@ -1,6 +1,7 @@
 import { Countries, Provinces, States, GeoOption } from "./geo";
 import React from "react";
 import { DirectionType } from "grommet/utils";
+import { definitions } from "./supabase";
 
 export interface Festival {
   title: string;
@@ -39,27 +40,13 @@ export interface Position {
   right: number;
 }
 
-// Database Types
-export interface DataRowBase {
-  id: number;
-  created_at: string;
-}
+// festival submission
+export type RawNewFestival = definitions["new_festivals"];
+export type FestivalSubmissionLite = Omit<RawNewFestival, "id" | "created_at">;
 
-export interface NewFestivalSubmission {
-  title: string;
-  link: string;
-  country: string;
-  state: string;
-  city: string;
-}
-
-export interface NewFestival extends NewFestivalSubmission, DataRowBase {}
-
-export interface NewReportSubmission {
-  report: string;
-}
-
-export interface NewReport extends NewReportSubmission, DataRowBase {}
+//report submission
+export type RawNewReport = definitions["new_reports"];
+export type ReportSubmissionLite = Omit<RawNewReport, "id" | "created_at">;
 
 export { States, Countries, Provinces };
 
