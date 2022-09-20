@@ -5,6 +5,7 @@ import { CustomMapWrapper } from "./CustomMapWrapper";
 import { Marker } from "./Marker";
 import { UseSelectionManagementMethods } from "../interface/_utils/useSelectionManagement";
 import { getColor } from "../cards/_utils/getColor";
+import { getFestivalIdentifier } from "../interface/_utils/getFestivalIdentifier";
 
 type Props = {
   festivals: RefFestival[];
@@ -22,18 +23,20 @@ export const MapElement = (props: Props) => {
       {props.festivals.map((festival) => {
         const { hover, select } = props.selectionManagement;
 
-        const isMarkerHovered = hover.isActive(festival.title);
-        const isMarkerSelected = select.isActive(festival.title);
+        const festivalIdentifier = getFestivalIdentifier(festival);
+
+        const isMarkerHovered = hover.isActive(festivalIdentifier);
+        const isMarkerSelected = select.isActive(festivalIdentifier);
 
         return (
           <Marker
             key={festival.title}
             latitude={festival.location.coordinates.lat}
             longitude={festival.location.coordinates.lng}
-            onMouseEnter={() => hover.set(festival.title)}
+            onMouseEnter={() => hover.set(festivalIdentifier)}
             onMouseLeave={() => hover.reset()}
             onClick={() => {
-              select.set(festival.title);
+              select.set(festivalIdentifier);
               if (festival.ref.current) festival.ref.current.scrollIntoView();
             }}
             size={isMarkerHovered ? "50px" : "40px"}

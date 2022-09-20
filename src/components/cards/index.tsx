@@ -12,6 +12,7 @@ import { UseSelectionManagementMethods } from "../interface/_utils/useSelectionM
 import { NoResultsFallbackWrapper } from "./NoResultsFallbackWrapper";
 import { FeedbackModal } from "./FeedbackModal";
 import { breakpointColumnsObj } from "./_utils/breakpointColumnsObj";
+import { getFestivalIdentifier } from "../interface/_utils/getFestivalIdentifier";
 
 interface Props {
   festivals: RefFestival[];
@@ -54,16 +55,17 @@ export const FestivalCards = (props: Props) => {
             >
               {props.festivals.map((festival) => {
                 const { hover, select } = props.selectionManagement;
+                const festivalIdentifier = getFestivalIdentifier(festival);
 
                 return (
                   <FestivalCard
                     key={festival.title}
                     festival={festival}
                     onClick={() => openLink(festival.link)}
-                    onMouseEnter={() => hover.set(festival.title)}
+                    onMouseEnter={() => hover.set(festivalIdentifier)}
                     onMouseLeave={() => hover.reset()}
-                    isCardHovered={hover.isActive(festival.title)}
-                    isCardSelected={select.isActive(festival.title)}
+                    isCardHovered={hover.isActive(festivalIdentifier)}
+                    isCardSelected={select.isActive(festivalIdentifier)}
                   />
                 );
               })}
