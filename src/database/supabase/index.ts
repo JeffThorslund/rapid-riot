@@ -12,12 +12,20 @@ const supabasePublicKey = process.env.REACT_APP_SUPABASE_PUBLIC_KEY || "";
 
 const supabase = createClient(supabaseUrl, supabasePublicKey);
 
+// helpers
+const readAllFestivals = () =>
+  supabase.from<RawFestival>("festivals").select("*");
+
 export const supabaseMethods = {
-  insertSubmission: (submission: FestivalSubmissionLite) =>
-    supabase.from<RawNewFestival>("new_festivals").insert([submission]),
+  insertSubmission: (submission: FestivalSubmissionLite) => {
+    return supabase.from<RawNewFestival>("new_festivals").insert([submission]);
+  },
   insertReport: (report: string) => {
     const dataToSend: ReportSubmissionLite = { report };
     return supabase.from<RawNewReport>("new_reports").insert([dataToSend]);
   },
-  readAllFestivals: () => supabase.from<RawFestival>("festivals").select("*"),
+  readAllFestivals,
+  readApprovedFestivals: () => {
+    return readAllFestivals().match({ approved: true });
+  },
 };
