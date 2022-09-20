@@ -1,11 +1,11 @@
 import { createClient } from "@supabase/supabase-js";
 import {
   FestivalSubmissionLite,
+  RawFestival,
   RawNewFestival,
   RawNewReport,
   ReportSubmissionLite,
 } from "../../types";
-import { definitions } from "../../types/supabase";
 
 const supabaseUrl = process.env.REACT_APP_SUPABASE_URL || "";
 const supabasePublicKey = process.env.REACT_APP_SUPABASE_PUBLIC_KEY || "";
@@ -13,17 +13,11 @@ const supabasePublicKey = process.env.REACT_APP_SUPABASE_PUBLIC_KEY || "";
 const supabase = createClient(supabaseUrl, supabasePublicKey);
 
 export const supabaseMethods = {
-  insertSubmission: async (submission: FestivalSubmissionLite) =>
-    await supabase.from<RawNewFestival>("new_festivals").insert([submission]),
-  insertReport: async (report: string) => {
+  insertSubmission: (submission: FestivalSubmissionLite) =>
+    supabase.from<RawNewFestival>("new_festivals").insert([submission]),
+  insertReport: (report: string) => {
     const dataToSend: ReportSubmissionLite = { report };
-    await supabase.from<RawNewReport>("new_reports").insert([dataToSend]);
+    return supabase.from<RawNewReport>("new_reports").insert([dataToSend]);
   },
-  readAllFestivals: async () => {
-    const { data } = await supabase
-      .from<definitions["festivals"]>("festivals")
-      .select("*");
-
-    return data;
-  },
+  readAllFestivals: () => supabase.from<RawFestival>("festivals").select("*"),
 };
