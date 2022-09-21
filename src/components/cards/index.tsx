@@ -31,7 +31,10 @@ export const FestivalCards = (props: Props) => {
       style={{ scrollBehavior: "smooth" }}
     >
       <React.Fragment>
-        <FeedbackModal modalState={modalState} />
+        <FeedbackModal
+          modalState={modalState}
+          actionIconSchema={actionIconSchema}
+        />
 
         <ActionIconBar
           positionPlacement={{ right: 20, bottom: 10 }}
