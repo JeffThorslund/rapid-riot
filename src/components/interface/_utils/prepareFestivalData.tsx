@@ -8,11 +8,10 @@ import {
   States,
 } from "../../../types";
 import React from "react";
-import { definitions } from "../../../types/supabase";
 
 export const prepareFestivalData = (
   mapRef: MapRef | undefined,
-  festivals: definitions["festivals"][]
+  festivals: RawFestival[]
 ): RefFestival[] => {
   if (!mapRef) return [];
 
