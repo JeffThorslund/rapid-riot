@@ -13,6 +13,7 @@ export const MessageAlert = (props: {
       direction={"column"}
       justify={"around"}
       align={"center"}
+      pad={"small"}
     >
       <Box direction={"column"} align={"center"} gap={"small"}>
         {props.icon}
@@ -21,7 +22,7 @@ export const MessageAlert = (props: {
         </Text>
         <Text>{props.description}</Text>
       </Box>
-      <Box>
+      <Box pad={{ top: "large" }}>
         <Button label="Cancel" onClick={props.closeModal} />
       </Box>
     </Box>
