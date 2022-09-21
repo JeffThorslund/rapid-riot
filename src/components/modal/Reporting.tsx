@@ -12,14 +12,12 @@ export const Reporting = (props: { closeModal: () => void }) => {
   return (
     <ModalWrapper
       formStep={formStep}
+      setFormStep={setFormStep}
       closeModal={props.closeModal}
       form={{
         fields: <ReportingFormInnards text={text} setText={setText} />,
         title: "Report an Issue",
-        handleSubmit: async () => {
-          await supabaseMethods.insertReport(text);
-          setFormStep(FormStep.Success);
-        },
+        handleSubmit: () => supabaseMethods.insertReport(text),
         areAllFieldsValid: !!text,
       }}
     />

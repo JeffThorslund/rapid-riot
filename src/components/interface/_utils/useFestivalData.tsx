@@ -21,9 +21,11 @@ export const useFestivalData = () => {
 };
 
 const getFestivalData = async (): Promise<RawFestival[]> => {
-  const { data: festivals } = await supabaseMethods.readApprovedFestivals();
-
-  if (!festivals) return [];
-
-  return festivals;
+  try {
+    const { data: festivals } = await supabaseMethods.readApprovedFestivals();
+    if (!festivals) throw new Error();
+    return festivals;
+  } catch {
+    return [];
+  }
 };

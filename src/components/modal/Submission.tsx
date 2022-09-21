@@ -24,6 +24,7 @@ export const Submission = (props: { closeModal: () => void }) => {
   return (
     <ModalWrapper
       formStep={formStep}
+      setFormStep={setFormStep}
       closeModal={props.closeModal}
       form={{
         fields: (
@@ -34,10 +35,7 @@ export const Submission = (props: { closeModal: () => void }) => {
           />
         ),
         title: "Report an Issue",
-        handleSubmit: async () => {
-          await supabaseMethods.insertSubmission(values);
-          setFormStep(FormStep.Success);
-        },
+        handleSubmit: () => supabaseMethods.insertSubmission(values),
         areAllFieldsValid: flags.areAllFieldsFilled,
       }}
     />

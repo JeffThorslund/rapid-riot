@@ -1,12 +1,13 @@
 import { Box, Layer } from "grommet";
 import { MessageAlert } from "./MessageAlert";
-import { FaCheckCircle } from "react-icons/fa";
-import React, { ReactNode } from "react";
+import { FaCheckCircle, FaTimesCircle } from "react-icons/fa";
+import React, { Dispatch, ReactNode, SetStateAction } from "react";
 import { FormWrapper } from "./FormWrapper";
 import { FormStep } from "../../types";
 
 export interface Props {
   formStep: FormStep;
+  setFormStep: Dispatch<SetStateAction<FormStep>>;
   form: {
     title: string;
     fields: ReactNode;
@@ -31,7 +32,14 @@ export const ModalWrapper = (props: Props) => {
               <FormWrapper
                 closeModal={props.closeModal}
                 title={props.form.title}
-                handleSubmit={props.form.handleSubmit}
+                handleSubmit={async () => {
+                  try {
+                    await props.form.handleSubmit();
+                    props.setFormStep(FormStep.Success);
+                  } catch {
+                    props.setFormStep(FormStep.Failure);
+                  }
+                }}
                 areAllFieldsValid={props.form.areAllFieldsValid}
               >
                 {props.form.fields}
@@ -51,7 +59,7 @@ export const ModalWrapper = (props: Props) => {
               <MessageAlert
                 title={"There was an issue."}
                 description={"We will look into this and get it fixed ASAP."}
-                icon={<FaCheckCircle size={80} color={"#FF4040"} />}
+                icon={<FaTimesCircle size={80} color={"#FF4040"} />}
                 closeModal={props.closeModal}
               />
             ),
