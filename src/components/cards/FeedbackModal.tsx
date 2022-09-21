@@ -1,9 +1,10 @@
 import { ActiveIndexStateMethods } from "../_utils/useActiveIndexState";
 import React from "react";
-import { actionIconSchema } from "../actionBar/_utils/actionIconSchema";
+import { ActionIconSchema } from "../actionBar/_utils/actionIconSchema";
 
 interface Props {
   modalState: ActiveIndexStateMethods;
+  actionIconSchema: ActionIconSchema[];
 }
 
 export const FeedbackModal = (props: Props) => {
@@ -11,7 +12,9 @@ export const FeedbackModal = (props: Props) => {
 
   return (
     <React.Fragment>
-      {actionIconSchema[props.modalState.value].form(props.modalState)}
+      {props.actionIconSchema[props.modalState.value].form(
+        props.modalState.reset
+      )}
     </React.Fragment>
   );
 };

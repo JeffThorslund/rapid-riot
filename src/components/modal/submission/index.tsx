@@ -1,15 +1,24 @@
-import { Box, Select, TextInput } from "grommet";
-import React from "react";
-import { ActiveIndexStateMethods } from "../../_utils/useActiveIndexState";
-import { Countries, Provinces, States } from "../../../types";
-import { Modal } from "../Modal";
-import { FormItemWrapper } from "../FormItemWrapper";
-import { useSubmissionFormState } from "./useSubmissionFormState";
-import { convertEnumToObject, GeoOption } from "../../../types/geo";
+import React, { Dispatch, SetStateAction, useState } from "react";
 import { supabaseMethods } from "../../../database/supabase";
+import { FormItemWrapper } from "../multiStepModal/FormItemWrapper";
+import { Box, Select, TextInput } from "grommet";
+import { ModalWrapper } from "../multiStepModal";
+import {
+  Countries,
+  FormStep,
+  GeoOption,
+  Provinces,
+  States,
+} from "../../../types";
+import {
+  SubmissionFormState,
+  SubmissionFormStateType,
+  useSubmissionFormState,
+} from "./useSubmissionFormState";
+import { convertEnumToObject } from "../../../types/geo";
 
-export function SubmissionForm(props: { modalState: ActiveIndexStateMethods }) {
-  if (props.modalState.value === undefined) return null;
+export const Submission = (props: { closeModal: () => void }) => {
+  const [formStep, setFormStep] = useState(FormStep.Filling);
 
   const {
     values,
@@ -19,15 +28,37 @@ export function SubmissionForm(props: { modalState: ActiveIndexStateMethods }) {
   } = useSubmissionFormState();
 
   return (
-    <Modal
-      closeModal={props.modalState.reset}
-      submitForm={async () => {
-        await supabaseMethods.insertSubmission(values);
-        props.modalState.reset();
+    <ModalWrapper
+      formStep={formStep}
+      setFormStep={setFormStep}
+      closeModal={props.closeModal}
+      form={{
+        fields: (
+          <SubmissionFormInnards
+            values={values}
+            setValue={setValue}
+            formHelpers={formHelpers}
+          />
+        ),
+        title: "Report an Issue",
+        handleSubmit: () => supabaseMethods.insertSubmission(values),
+        areAllFieldsValid: flags.areAllFieldsFilled,
       }}
-      isSubmitButtonDisabled={flags.areAllFieldsFilled}
-      title={"Submit a New Festival"}
-    >
+    />
+  );
+};
+
+const SubmissionFormInnards = ({
+  values,
+  setValue,
+  formHelpers,
+}: {
+  values: SubmissionFormState;
+  setValue: Dispatch<SetStateAction<SubmissionFormState>>;
+  formHelpers: SubmissionFormStateType["formHelpers"];
+}) => {
+  return (
+    <React.Fragment>
       <FormItemWrapper label={"Festival Name"}>
         <TextInput
           placeholder="e.g. Clearwater Kayak Festival"
@@ -87,6 +118,6 @@ export function SubmissionForm(props: { modalState: ActiveIndexStateMethods }) {
           />
         </FormItemWrapper>
       </Box>
-    </Modal>
+    </React.Fragment>
   );
-}
+};

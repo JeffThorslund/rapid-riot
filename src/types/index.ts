@@ -3,16 +3,6 @@ import React from "react";
 import { DirectionType } from "grommet/utils";
 import { definitions } from "./supabase";
 
-export interface Festival {
-  title: string;
-  location: Location;
-  link: string;
-}
-
-export interface RefFestival extends Festival {
-  ref: React.RefObject<HTMLDivElement>;
-}
-
 export type Dims = { height: string; width: string };
 
 export type SettingsPack = {
@@ -40,6 +30,27 @@ export interface Position {
   right: number;
 }
 
+export interface Festival {
+  title: string;
+  location: Location;
+  link: string;
+}
+
+export interface RefFestival extends Festival {
+  ref: React.RefObject<HTMLDivElement>;
+}
+
+// festival
+export type RawFestival = definitions["festivals"];
+
+export interface Festival {
+  id: string;
+  title: RawFestival["title"];
+  link: RawFestival["link"];
+  location: Location;
+  ref: React.RefObject<HTMLDivElement>;
+}
+
 // festival submission
 export type RawNewFestival = definitions["new_festivals"];
 export type FestivalSubmissionLite = Omit<RawNewFestival, "id" | "created_at">;
@@ -47,6 +58,13 @@ export type FestivalSubmissionLite = Omit<RawNewFestival, "id" | "created_at">;
 //report submission
 export type RawNewReport = definitions["new_reports"];
 export type ReportSubmissionLite = Omit<RawNewReport, "id" | "created_at">;
+
+//form modal
+export enum FormStep {
+  Filling,
+  Success,
+  Failure,
+}
 
 export { States, Countries, Provinces };
 

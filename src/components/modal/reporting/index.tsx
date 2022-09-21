@@ -1,36 +1,44 @@
-import { Box, TextArea } from "grommet";
 import React, { useState } from "react";
-import { ActiveIndexStateMethods } from "../../_utils/useActiveIndexState";
-import { Modal } from "../Modal";
-import { FormItemWrapper } from "../FormItemWrapper";
 import { supabaseMethods } from "../../../database/supabase";
+import { FormItemWrapper } from "../multiStepModal/FormItemWrapper";
+import { Box, TextArea } from "grommet";
+import { ModalWrapper } from "../multiStepModal";
+import { FormStep } from "../../../types";
 
-export function ReportingForm(props: { modalState: ActiveIndexStateMethods }) {
-  if (props.modalState.value === undefined) return null;
-
+export const Reporting = (props: { closeModal: () => void }) => {
   const [text, setText] = useState("");
+  const [formStep, setFormStep] = useState(FormStep.Filling);
 
   return (
-    <Modal
-      closeModal={props.modalState.reset}
-      submitForm={async () => {
-        await supabaseMethods.insertReport(text);
-        props.modalState.reset();
+    <ModalWrapper
+      formStep={formStep}
+      setFormStep={setFormStep}
+      closeModal={props.closeModal}
+      form={{
+        fields: <ReportingFormInnards text={text} setText={setText} />,
+        title: "Report an Issue",
+        handleSubmit: () => supabaseMethods.insertReport(text),
+        areAllFieldsValid: !!text,
       }}
-      isSubmitButtonDisabled={!!text}
-      title={"Report an Issue"}
-    >
-      <FormItemWrapper label={"Report"}>
-        <Box height={"small"}>
-          <TextArea
-            placeholder="e.g. BeaterFest has an updated website after the old one was hacked by squirt boaters."
-            value={text}
-            onChange={(e) => setText(e.target.value)}
-            size={"medium"}
-            style={{ height: 500 }}
-          />
-        </Box>
-      </FormItemWrapper>
-    </Modal>
+    />
   );
-}
+};
+
+const ReportingFormInnards = (props: {
+  text: string;
+  setText: (text: string) => void;
+}) => {
+  return (
+    <FormItemWrapper label={"Report"}>
+      <Box height={"small"}>
+        <TextArea
+          placeholder="e.g. BeaterFest has an updated website after the old one was hacked by squirt boaters."
+          value={props.text}
+          onChange={(e) => props.setText(e.target.value)}
+          size={"medium"}
+          style={{ height: 500 }}
+        />
+      </Box>
+    </FormItemWrapper>
+  );
+};

@@ -48,6 +48,8 @@ export const useSubmissionFormState = () => {
   };
 };
 
+export type SubmissionFormStateType = ReturnType<typeof useSubmissionFormState>;
+
 export const getStateLabelAndList = (countryValue: Countries) => {
   if (countryValue === Countries.Canada) {
     return {

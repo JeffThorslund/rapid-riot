@@ -9,14 +9,16 @@ import { Box } from "grommet";
 import { ActionIconBar } from "../actionBar";
 import { actionIconSchema } from "../actionBar/_utils/actionIconSchema";
 import { UseSelectionManagementMethods } from "../interface/_utils/useSelectionManagement";
-import { festivals } from "../../database/data";
-import { NoResultsFallbackWrapper } from "./NoResultsFallbackWrapper";
 import { FeedbackModal } from "./FeedbackModal";
 import { breakpointColumnsObj } from "./_utils/breakpointColumnsObj";
+import { getFestivalIdentifier } from "../interface/_utils/getFestivalIdentifier";
+import { NoResultsIndicator } from "./indicators/NoResultsIndicator";
+import { LoadingIndicator } from "./indicators/LoadingIndicator";
 
 interface Props {
   festivals: RefFestival[];
   selectionManagement: UseSelectionManagementMethods;
+  isDataFetching: boolean;
 }
 
 export const FestivalCards = (props: Props) => {
@@ -29,35 +31,52 @@ export const FestivalCards = (props: Props) => {
       pad={{ horizontal: "xsmall" }}
       style={{ scrollBehavior: "smooth" }}
     >
-      <FeedbackModal modalState={modalState} />
-      <ActionIconBar
-        positionPlacement={{ right: 20, bottom: 10 }}
-        modalIndex={modalState.value}
-        actionIconSchema={actionIconSchema}
-        onClick={(index: number) => modalState.set(index)}
-      />
-      <NoResultsFallbackWrapper numberOfItems={festivals.length}>
-        <Masonry
-          breakpointCols={breakpointColumnsObj}
-          className="my-masonry-grid"
-        >
-          {props.festivals.map((festival) => {
-            const { hover, select } = props.selectionManagement;
+      <React.Fragment>
+        <FeedbackModal
+          modalState={modalState}
+          actionIconSchema={actionIconSchema}
+        />
 
-            return (
-              <FestivalCard
-                key={festival.title}
-                festival={festival}
-                onClick={() => openLink(festival.link)}
-                onMouseEnter={() => hover.set(festival.title)}
-                onMouseLeave={() => hover.reset()}
-                isCardHovered={hover.isActive(festival.title)}
-                isCardSelected={select.isActive(festival.title)}
-              />
-            );
-          })}
-        </Masonry>
-      </NoResultsFallbackWrapper>
+        <ActionIconBar
+          positionPlacement={{ right: 20, bottom: 10 }}
+          modalIndex={modalState.value}
+          actionIconSchema={actionIconSchema}
+          onClick={(index: number) => modalState.set(index)}
+        />
+        {(() => {
+          if (props.isDataFetching) {
+            return <LoadingIndicator />;
+          }
+
+          if (props.festivals.length === 0) {
+            return <NoResultsIndicator />;
+          }
+
+          return (
+            <Masonry
+              breakpointCols={breakpointColumnsObj}
+              className="my-masonry-grid"
+            >
+              {props.festivals.map((festival) => {
+                const { hover, select } = props.selectionManagement;
+                const festivalIdentifier = getFestivalIdentifier(festival);
+
+                return (
+                  <FestivalCard
+                    key={festival.title}
+                    festival={festival}
+                    onClick={() => openLink(festival.link)}
+                    onMouseEnter={() => hover.set(festivalIdentifier)}
+                    onMouseLeave={() => hover.reset()}
+                    isCardHovered={hover.isActive(festivalIdentifier)}
+                    isCardSelected={select.isActive(festivalIdentifier)}
+                  />
+                );
+              })}
+            </Masonry>
+          );
+        })()}
+      </React.Fragment>
     </Box>
   );
 };
