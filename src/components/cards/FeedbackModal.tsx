@@ -11,7 +11,7 @@ export const FeedbackModal = (props: Props) => {
 
   return (
     <React.Fragment>
-      {actionIconSchema[props.modalState.value].form(props.modalState)}
+      {actionIconSchema[props.modalState.value].form(props.modalState.reset)}
     </React.Fragment>
   );
 };

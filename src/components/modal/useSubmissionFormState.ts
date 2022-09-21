@@ -1,6 +1,6 @@
-import { Countries, Provinces, States } from "../../../types";
+import { Countries, Provinces, States } from "../../types";
 import { useState } from "react";
-import { convertEnumToObject } from "../../../types/geo";
+import { convertEnumToObject } from "../../types/geo";
 
 export interface SubmissionFormState {
   title: string;
@@ -47,6 +47,8 @@ export const useSubmissionFormState = () => {
     },
   };
 };
+
+export type SubmissionFormStateType = ReturnType<typeof useSubmissionFormState>;
 
 export const getStateLabelAndList = (countryValue: Countries) => {
   if (countryValue === Countries.Canada) {

@@ -59,6 +59,13 @@ export type FestivalSubmissionLite = Omit<RawNewFestival, "id" | "created_at">;
 export type RawNewReport = definitions["new_reports"];
 export type ReportSubmissionLite = Omit<RawNewReport, "id" | "created_at">;
 
+//form modal
+export enum FormStep {
+  Filling,
+  Success,
+  Failure,
+}
+
 export { States, Countries, Provinces };
 
 export type { GeoOption };

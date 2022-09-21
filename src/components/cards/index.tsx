@@ -32,6 +32,7 @@ export const FestivalCards = (props: Props) => {
     >
       <React.Fragment>
         <FeedbackModal modalState={modalState} />
+
         <ActionIconBar
           positionPlacement={{ right: 20, bottom: 10 }}
           modalIndex={modalState.value}
