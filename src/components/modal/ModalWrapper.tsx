@@ -25,7 +25,7 @@ export const ModalWrapper = (props: Props) => {
       background={"background"}
       modal
     >
-      <Box pad={"medium"} width={"large"} height={"medium"}>
+      <Box pad={"medium"} width={"large"}>
         {
           {
             [FormStep.Filling]: (
