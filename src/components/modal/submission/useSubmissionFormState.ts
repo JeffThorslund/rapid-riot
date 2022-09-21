@@ -1,6 +1,6 @@
-import { Countries, Provinces, States } from "../../types";
+import { Countries, Provinces, States } from "../../../types";
 import { useState } from "react";
-import { convertEnumToObject } from "../../types/geo";
+import { convertEnumToObject } from "../../../types/geo";
 
 export interface SubmissionFormState {
   title: string;

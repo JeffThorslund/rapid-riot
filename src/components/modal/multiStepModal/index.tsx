@@ -3,7 +3,7 @@ import { MessageAlert } from "./MessageAlert";
 import { FaCheckCircle, FaTimesCircle } from "react-icons/fa";
 import React, { Dispatch, ReactNode, SetStateAction } from "react";
 import { FormWrapper } from "./FormWrapper";
-import { FormStep } from "../../types";
+import { FormStep } from "../../../types";
 
 export interface Props {
   formStep: FormStep;

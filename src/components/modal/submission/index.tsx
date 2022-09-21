@@ -1,15 +1,21 @@
 import React, { Dispatch, SetStateAction, useState } from "react";
-import { supabaseMethods } from "../../database/supabase";
-import { FormItemWrapper } from "./FormItemWrapper";
+import { supabaseMethods } from "../../../database/supabase";
+import { FormItemWrapper } from "../multiStepModal/FormItemWrapper";
 import { Box, Select, TextInput } from "grommet";
-import { ModalWrapper } from "./ModalWrapper";
-import { Countries, FormStep, GeoOption, Provinces, States } from "../../types";
+import { ModalWrapper } from "../multiStepModal";
+import {
+  Countries,
+  FormStep,
+  GeoOption,
+  Provinces,
+  States,
+} from "../../../types";
 import {
   SubmissionFormState,
   SubmissionFormStateType,
   useSubmissionFormState,
 } from "./useSubmissionFormState";
-import { convertEnumToObject } from "../../types/geo";
+import { convertEnumToObject } from "../../../types/geo";
 
 export const Submission = (props: { closeModal: () => void }) => {
   const [formStep, setFormStep] = useState(FormStep.Filling);

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { supabaseMethods } from "../../database/supabase";
-import { FormItemWrapper } from "./FormItemWrapper";
+import { supabaseMethods } from "../../../database/supabase";
+import { FormItemWrapper } from "../multiStepModal/FormItemWrapper";
 import { Box, TextArea } from "grommet";
-import { ModalWrapper } from "./ModalWrapper";
-import { FormStep } from "../../types";
+import { ModalWrapper } from "../multiStepModal";
+import { FormStep } from "../../../types";
 
 export const Reporting = (props: { closeModal: () => void }) => {
   const [text, setText] = useState("");
@@ -24,7 +24,7 @@ export const Reporting = (props: { closeModal: () => void }) => {
   );
 };
 
-export const ReportingFormInnards = (props: {
+const ReportingFormInnards = (props: {
   text: string;
   setText: (text: string) => void;
 }) => {
