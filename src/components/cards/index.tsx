@@ -5,14 +5,15 @@ import { FestivalCard } from "./FestivalCard";
 import Masonry from "react-masonry-css";
 import "./index.css";
 import { openLink } from "../_utils/openLink";
-import { Box, Spinner } from "grommet";
+import { Box } from "grommet";
 import { ActionIconBar } from "../actionBar";
 import { actionIconSchema } from "../actionBar/_utils/actionIconSchema";
 import { UseSelectionManagementMethods } from "../interface/_utils/useSelectionManagement";
-import { NoResultsFallbackWrapper } from "./NoResultsFallbackWrapper";
 import { FeedbackModal } from "./FeedbackModal";
 import { breakpointColumnsObj } from "./_utils/breakpointColumnsObj";
 import { getFestivalIdentifier } from "../interface/_utils/getFestivalIdentifier";
+import { NoResultsIndicator } from "./indicators/NoResultsIndicator";
+import { LoadingIndicator } from "./indicators/LoadingIndicator";
 
 interface Props {
   festivals: RefFestival[];
@@ -42,17 +43,16 @@ export const FestivalCards = (props: Props) => {
           actionIconSchema={actionIconSchema}
           onClick={(index: number) => modalState.set(index)}
         />
-        <NoResultsFallbackWrapper numberOfItems={props.festivals.length}>
-          {props.isDataFetching ? (
-            <Box
-              justify={"center"}
-              align={"center"}
-              pad={"large"}
-              style={{ overflow: "hidden" }}
-            >
-              <Spinner size={"medium"} />
-            </Box>
-          ) : (
+        {(() => {
+          if (props.isDataFetching) {
+            return <LoadingIndicator />;
+          }
+
+          if (props.festivals.length === 0) {
+            return <NoResultsIndicator />;
+          }
+
+          return (
             <Masonry
               breakpointCols={breakpointColumnsObj}
               className="my-masonry-grid"
@@ -74,8 +74,8 @@ export const FestivalCards = (props: Props) => {
                 );
               })}
             </Masonry>
-          )}
-        </NoResultsFallbackWrapper>
+          );
+        })()}
       </React.Fragment>
     </Box>
   );
