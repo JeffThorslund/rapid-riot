@@ -2,12 +2,14 @@ import React from "react";
 import { PageHeader } from "./components/PageHeader";
 import { AppWrapper } from "./components/AppWrapper";
 import { FestivalInterface } from "./components/interface";
+import { Geotagging } from "./components/modal/geotagging";
 
 const App = () => {
   return (
     <AppWrapper>
-      <PageHeader />
-      <FestivalInterface />
+      <Geotagging />
+      {/*<PageHeader />*/}
+      {/*<FestivalInterface />*/}
     </AppWrapper>
   );
 };
