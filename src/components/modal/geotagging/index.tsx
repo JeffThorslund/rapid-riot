@@ -1,7 +1,6 @@
 import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
 import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css";
 import React, { useEffect } from "react";
-import { filter } from "./_utils/filter";
 import { Countries, Provinces, States } from "../../../types";
 
 export const Geotagging = (props: {
@@ -24,10 +23,27 @@ export const Geotagging = (props: {
 
   const geocoder = new MapboxGeocoder({
     accessToken: process.env.REACT_APP_MAPBOX_ACCESS_TOKEN || "",
-    types: "region,place",
+    types: "place",
     countries: props.country,
-    filter: (result) => filter(result, props.region),
     minLength: 1,
+    limit: 7,
+    getItemValue: (result) => {
+      return result.text;
+    },
+    filter: (result) => {
+      let regionOfResult;
+
+      result.context.forEach((context) => {
+        const splitContextId = context.id.split(".");
+        if (splitContextId[0] === "region" || splitContextId[0] === "place") {
+          regionOfResult = context.short_code.split("-")[1];
+        }
+      });
+
+      if (regionOfResult !== props.region) return false;
+
+      return true;
+    },
   });
 
   return (
