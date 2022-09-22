@@ -2,9 +2,12 @@ import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
 import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css";
 import React, { useEffect } from "react";
 import { filter } from "./_utils/filter";
-import { Countries, Provinces } from "../../../types";
+import { Countries, Provinces, States } from "../../../types";
 
-export const Geotagging = () => {
+export const Geotagging = (props: {
+  country: Countries;
+  region: States | Provinces;
+}) => {
   useEffect(() => {
     geocoder.addTo("#geocoder");
 
@@ -17,13 +20,14 @@ export const Geotagging = () => {
       if (!parentContainer || !geoChild) return;
       parentContainer.removeChild(geoChild[0]);
     };
-  }, []);
+  }, [props.country, props.region]);
 
   const geocoder = new MapboxGeocoder({
     accessToken: process.env.REACT_APP_MAPBOX_ACCESS_TOKEN || "",
-    types: "country,region,place",
-    countries: "CA,US",
-    filter: (result) => filter(result, Countries["Canada"], Provinces.Ontario),
+    types: "region,place",
+    countries: props.country,
+    filter: (result) => filter(result, props.region),
+    minLength: 1,
   });
 
   return (

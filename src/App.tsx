@@ -7,9 +7,9 @@ import { Geotagging } from "./components/modal/geotagging";
 const App = () => {
   return (
     <AppWrapper>
-      <Geotagging />
-      {/*<PageHeader />*/}
-      {/*<FestivalInterface />*/}
+      {/*<Geotagging />*/}
+      <PageHeader />
+      <FestivalInterface />
     </AppWrapper>
   );
 };

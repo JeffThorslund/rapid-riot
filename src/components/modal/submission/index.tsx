@@ -16,6 +16,7 @@ import {
   useSubmissionFormState,
 } from "./useSubmissionFormState";
 import { convertEnumToObject } from "../../../types/geo";
+import { Geotagging } from "../geotagging";
 
 export const Submission = (props: { closeModal: () => void }) => {
   const [formStep, setFormStep] = useState(FormStep.Filling);
@@ -109,13 +110,14 @@ const SubmissionFormInnards = ({
         </FormItemWrapper>
 
         <FormItemWrapper label={"City"}>
-          <TextInput
-            placeholder="e.g. Clearwater"
-            value={values.city}
-            onChange={(e) =>
-              setValue((value) => ({ ...value, city: e.target.value }))
-            }
-          />
+          {/*<TextInput*/}
+          {/*  placeholder="e.g. Clearwater"*/}
+          {/*  value={values.city}*/}
+          {/*  onChange={(e) =>*/}
+          {/*    setValue((value) => ({ ...value, city: e.target.value }))*/}
+          {/*  }*/}
+          {/*/>*/}
+          <Geotagging country={values.country} region={values.state} />
         </FormItemWrapper>
       </Box>
     </React.Fragment>
