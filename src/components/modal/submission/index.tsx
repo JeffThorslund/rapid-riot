@@ -40,7 +40,7 @@ export const Submission = (props: { closeModal: () => void }) => {
             formHelpers={formHelpers}
           />
         ),
-        title: "Report an Issue",
+        title: "Submit a New Festival",
         handleSubmit: () => supabaseMethods.insertSubmission(values),
         areAllFieldsValid: flags.areAllFieldsFilled,
       }}
