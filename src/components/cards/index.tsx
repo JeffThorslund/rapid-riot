@@ -63,7 +63,7 @@ export const FestivalCards = (props: Props) => {
 
                 return (
                   <FestivalCard
-                    key={festival.title}
+                    key={festival.id}
                     festival={festival}
                     onClick={() => openLink(festival.link)}
                     onMouseEnter={() => hover.set(festivalIdentifier)}

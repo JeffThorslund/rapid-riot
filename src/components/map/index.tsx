@@ -30,7 +30,7 @@ export const MapElement = (props: Props) => {
 
         return (
           <Marker
-            key={festival.title}
+            key={festival.id}
             latitude={festival.location.coordinates.lat}
             longitude={festival.location.coordinates.lng}
             onMouseEnter={() => hover.set(festivalIdentifier)}
