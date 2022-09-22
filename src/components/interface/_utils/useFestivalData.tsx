@@ -22,7 +22,10 @@ export const useFestivalData = () => {
 
 const getFestivalData = async (): Promise<RawFestival[]> => {
   try {
-    const { data: festivals } = await supabaseMethods.readApprovedFestivals();
+    const { data: festivals } =
+      process.env.NODE_ENV === "production"
+        ? await supabaseMethods.readApprovedFestivals()
+        : await supabaseMethods.readAllFestivals();
     if (!festivals) throw new Error();
     return festivals;
   } catch {
