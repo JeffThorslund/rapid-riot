@@ -18,6 +18,7 @@ export const prepareFestivalData = (
   return festivals
     .filter(isMarkerWithinMapBounds(mapRef))
     .sort((a, b) => sortByTitle(a.title, b.title))
+    .sort((a, b) => sortByApproval(a.approved, b.approved))
     .map(shaper);
 };
 
@@ -30,6 +31,8 @@ export const isMarkerWithinMapBounds =
 
 export const sortByTitle = (a: string, b: string) => a.localeCompare(b);
 
+export const sortByApproval = (a: boolean, b: boolean) => Number(a) - Number(b);
+
 export const shaper = (festival: RawFestival): Festival => ({
   id: festival.id.toString(),
   title: festival.title,
@@ -40,5 +43,6 @@ export const shaper = (festival: RawFestival): Festival => ({
     state: festival.state as States | Provinces,
     city: festival.city,
   },
+  approved: festival.approved,
   ref: React.createRef<HTMLDivElement>(),
 });

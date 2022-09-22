@@ -48,6 +48,7 @@ export interface Festival {
   title: RawFestival["title"];
   link: RawFestival["link"];
   location: Location;
+  approved: boolean;
   ref: React.RefObject<HTMLDivElement>;
 }
 

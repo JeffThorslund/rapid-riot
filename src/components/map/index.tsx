@@ -6,6 +6,7 @@ import { Marker } from "./Marker";
 import { UseSelectionManagementMethods } from "../interface/_utils/useSelectionManagement";
 import { getColor } from "../cards/_utils/getColor";
 import { getFestivalIdentifier } from "../interface/_utils/getFestivalIdentifier";
+import { setRedIfUnapproved } from "../_utils/setRedIfUnapproved";
 
 type Props = {
   festivals: RefFestival[];
@@ -40,7 +41,11 @@ export const MapElement = (props: Props) => {
               if (festival.ref.current) festival.ref.current.scrollIntoView();
             }}
             size={isMarkerHovered ? "50px" : "40px"}
-            color={getColor("#333333", isMarkerHovered, isMarkerSelected)}
+            color={getColor(
+              setRedIfUnapproved("#333333", festival.approved),
+              isMarkerHovered,
+              isMarkerSelected
+            )}
           />
         );
       })}
