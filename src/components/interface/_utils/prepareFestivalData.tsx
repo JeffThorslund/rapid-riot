@@ -4,7 +4,6 @@ import {
   Festival,
   Provinces,
   RawFestival,
-  RefFestival,
   States,
 } from "../../../types";
 import React from "react";
@@ -12,7 +11,7 @@ import React from "react";
 export const prepareFestivalData = (
   mapRef: MapRef | undefined,
   festivals: RawFestival[]
-): RefFestival[] => {
+): Festival[] => {
   if (!mapRef) return [];
 
   return festivals

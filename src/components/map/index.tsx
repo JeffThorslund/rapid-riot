@@ -1,6 +1,6 @@
 import React from "react";
 import { ViewState } from "react-map-gl";
-import { RefFestival } from "../../types";
+import { Festival } from "../../types";
 import { CustomMapWrapper } from "./CustomMapWrapper";
 import { Marker } from "./Marker";
 import { UseSelectionManagementMethods } from "../interface/_utils/useSelectionManagement";
@@ -8,7 +8,7 @@ import { getColor } from "../cards/_utils/getColor";
 import { getFestivalIdentifier } from "../interface/_utils/getFestivalIdentifier";
 
 type Props = {
-  festivals: RefFestival[];
+  festivals: Festival[];
   viewState: ViewState;
   setViewState: React.Dispatch<React.SetStateAction<ViewState>>;
   selectionManagement: UseSelectionManagementMethods;

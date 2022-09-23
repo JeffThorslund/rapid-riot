@@ -1,4 +1,4 @@
-import { RefFestival } from "../../types";
+import { Festival } from "../../types";
 import { Box, Text } from "grommet";
 import React from "react";
 import { LocationText } from "./LocationText";
@@ -6,7 +6,7 @@ import { LinkText } from "./LinkText";
 import { getColor } from "./_utils/getColor";
 
 interface Props {
-  festival: RefFestival;
+  festival: Festival;
   onMouseEnter: () => void;
   onMouseLeave: () => void;
   onClick: () => void;

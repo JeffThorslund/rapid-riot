@@ -1,5 +1,13 @@
-import { SettingsPack } from "../../../types";
 import { isSizeSmall } from "./isSizeSmall";
+import { DirectionType } from "grommet/utils";
+
+type Dims = { height: string; width: string };
+
+type SettingsPack = {
+  direction: DirectionType;
+  map: Dims;
+  cards: Dims;
+};
 
 export const getResponsiveSettings = (size: string): SettingsPack => {
   if (isSizeSmall(size)) {

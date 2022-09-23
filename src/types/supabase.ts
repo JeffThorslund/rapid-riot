@@ -26,6 +26,7 @@ export interface paths {
           id?: parameters["rowFilter.festivals.id"];
           /** approved by moderator */
           approved?: parameters["rowFilter.festivals.approved"];
+          created_at?: parameters["rowFilter.festivals.created_at"];
           /** Filtering Columns */
           select?: parameters["select"];
           /** Ordering */
@@ -86,6 +87,7 @@ export interface paths {
           id?: parameters["rowFilter.festivals.id"];
           /** approved by moderator */
           approved?: parameters["rowFilter.festivals.approved"];
+          created_at?: parameters["rowFilter.festivals.created_at"];
         };
         header: {
           /** Preference */
@@ -110,6 +112,7 @@ export interface paths {
           id?: parameters["rowFilter.festivals.id"];
           /** approved by moderator */
           approved?: parameters["rowFilter.festivals.approved"];
+          created_at?: parameters["rowFilter.festivals.created_at"];
         };
         body: {
           /** festivals */
@@ -355,6 +358,11 @@ export interface definitions {
      * @default false
      */
     approved: boolean;
+    /**
+     * Format: timestamp with time zone
+     * @default now()
+     */
+    created_at: string;
   };
   /** @description user submissions for new festivals */
   new_festivals: {
@@ -456,6 +464,8 @@ export interface parameters {
    * @description approved by moderator
    */
   "rowFilter.festivals.approved": string;
+  /** Format: timestamp with time zone */
+  "rowFilter.festivals.created_at": string;
   /** @description new_festivals */
   "body.new_festivals": definitions["new_festivals"];
   /** Format: bigint */
