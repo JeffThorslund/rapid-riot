@@ -27,7 +27,7 @@
     "worker-loader": "^3.0.8"
   },
   "scripts": {
-    "dev": "npm run start && npm run typings",
+    "dev": "REACT_APP_ADMIN=true npm run start && npm run typings",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

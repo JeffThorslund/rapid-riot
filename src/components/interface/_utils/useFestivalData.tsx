@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { RawFestival } from "../../../types";
 import { supabaseMethods } from "../../../database/supabase";
+import { isAdminMode } from "../../_utils/isAdminMode";
 
 export const useFestivalData = () => {
   const [festivals, setFestivals] = useState<RawFestival[]>([]);
@@ -22,7 +23,10 @@ export const useFestivalData = () => {
 
 const getFestivalData = async (): Promise<RawFestival[]> => {
   try {
-    const { data: festivals } = await supabaseMethods.readApprovedFestivals();
+    const { data: festivals } = isAdminMode
+      ? await supabaseMethods.readAllFestivals()
+      : await supabaseMethods.readApprovedFestivals();
+
     if (!festivals) throw new Error();
     return festivals;
   } catch {

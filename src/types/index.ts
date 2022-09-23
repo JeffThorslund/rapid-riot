@@ -1,15 +1,13 @@
 import { Countries, Provinces, States, GeoOption } from "./geo";
 import React from "react";
-import { DirectionType } from "grommet/utils";
 import { definitions } from "./supabase";
 
-export type Dims = { height: string; width: string };
-
-export type SettingsPack = {
-  direction: DirectionType;
-  map: Dims;
-  cards: Dims;
-};
+export interface Position {
+  top: number;
+  bottom: number;
+  left: number;
+  right: number;
+}
 
 export interface Location {
   coordinates: Coordinate;
@@ -23,37 +21,21 @@ export interface Coordinate {
   lng: number;
 }
 
-export interface Position {
-  top: number;
-  bottom: number;
-  left: number;
-  right: number;
-}
-
-export interface Festival {
-  title: string;
-  location: Location;
-  link: string;
-}
-
-export interface RefFestival extends Festival {
-  ref: React.RefObject<HTMLDivElement>;
-}
-
-// festival
-export type RawFestival = definitions["festivals"];
-
 export interface Festival {
   id: string;
   title: RawFestival["title"];
   link: RawFestival["link"];
   location: Location;
+  approved: RawFestival["approved"];
   ref: React.RefObject<HTMLDivElement>;
 }
 
-// festival submission
-export type RawNewFestival = definitions["new_festivals"];
-export type FestivalSubmissionLite = Omit<RawNewFestival, "id" | "created_at">;
+// festival
+export type RawFestival = definitions["festivals"];
+export type RawFestivalLite = Omit<
+  RawFestival,
+  "id" | "created_at" | "lat" | "lng" | "approved"
+>;
 
 //report submission
 export type RawNewReport = definitions["new_reports"];
