@@ -15,7 +15,7 @@ import {
   SubmissionFormStateType,
   useSubmissionFormState,
 } from "./useSubmissionFormState";
-import { convertEnumToObject } from "../../../types/geo";
+import { convertEnumToArray } from "../../../types/geo";
 
 export const Submission = (props: { closeModal: () => void }) => {
   const [formStep, setFormStep] = useState(FormStep.Filling);
@@ -82,7 +82,7 @@ const SubmissionFormInnards = ({
       <Box direction={"row"}>
         <FormItemWrapper label={"Country"}>
           <Select
-            options={convertEnumToObject(Countries).sort()}
+            options={convertEnumToArray(Countries).sort()}
             value={values.country}
             valueKey={{ key: "abb", reduce: true }}
             labelKey={"name"}

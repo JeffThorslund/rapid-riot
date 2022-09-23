@@ -1,18 +1,30 @@
-import { Coordinate, MaxboxQueryResponse } from "../../types";
+import {
+  Coordinate,
+  Countries,
+  MaxboxQueryResponse,
+  Provinces,
+  States,
+} from "../../types";
 
 export type LocationParams = string[];
 
 export const getCoordinates = async (
-  params: LocationParams
+  city: string,
+  region: States | Provinces,
+  country: Countries
 ): Promise<Coordinate> => {
-  const requestURL = buildRequestURL(params);
+  const requestURL = buildRequestURL(city, region, country);
   const data = await fetchData(requestURL);
   return extractCoordinates(data as MaxboxQueryResponse);
 };
 
-export const buildRequestURL = (params: LocationParams): string => {
+export const buildRequestURL = (
+  city: string,
+  region: States | Provinces,
+  country: Countries
+): string => {
   const baseURL = "https://api.mapbox.com/geocoding/v5/mapbox.places/";
-  const encodedParams = getEncodedParams(params);
+  const encodedParams = getEncodedParams(city, region, country);
   const url = new URL(encodedParams, baseURL);
 
   const searchParams = {
@@ -29,8 +41,12 @@ export const buildRequestURL = (params: LocationParams): string => {
   return url.toString();
 };
 
-export const getEncodedParams = (params: LocationParams): string => {
-  return encodeURIComponent(params.join(" ")).concat(".json");
+export const getEncodedParams = (
+  city: string,
+  region: States | Provinces,
+  country: Countries
+): string => {
+  return encodeURIComponent([city, region, country].join(", ")).concat(".json");
 };
 
 export const fetchData = (url: string): Promise<MaxboxQueryResponse> => {

@@ -87,7 +87,7 @@ export type GeoOption<T> = {
   abb: T;
 };
 
-export const convertEnumToObject = <T>(geoEnum: {
+export const convertEnumToArray = <T>(geoEnum: {
   [key: string]: T;
 }): GeoOption<T>[] =>
   Object.entries(geoEnum).map((state) => {

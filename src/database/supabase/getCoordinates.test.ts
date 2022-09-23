@@ -4,13 +4,15 @@ import {
   fetchData,
   getCoordinates,
   getEncodedParams,
-  LocationParams,
 } from "./getCoordinates";
-
-const exampleParams: LocationParams = ["Ottawa", "Ontario"];
+import { Countries, Provinces } from "../../types";
 
 test("get coordinates", async () => {
-  const coords = await getCoordinates(exampleParams);
+  const coords = await getCoordinates(
+    "Ottawa",
+    Provinces.Ontario,
+    Countries.Canada
+  );
 
   expect(coords).toEqual({
     lat: 45.421143,
@@ -19,12 +21,14 @@ test("get coordinates", async () => {
 });
 
 test("encode params", () => {
-  expect(getEncodedParams(exampleParams)).toBe("Ottawa%20Ontario.json");
+  expect(getEncodedParams("Ottawa", Provinces.Ontario, Countries.Canada)).toBe(
+    "Ottawa%2C%20ON%2C%20CA.json"
+  );
 });
 
 test("build request url", () => {
-  expect(buildRequestURL(exampleParams)).toBe(
-    `https://api.mapbox.com/geocoding/v5/mapbox.places/Ottawa%20Ontario.json?limit=1&proximity=ip&types=place&access_token=${process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}`
+  expect(buildRequestURL("Ottawa", Provinces.Ontario, Countries.Canada)).toBe(
+    `https://api.mapbox.com/geocoding/v5/mapbox.places/Ottawa%2C%20ON%2C%20CA.json?limit=1&proximity=ip&types=place&access_token=${process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}`
   );
 });
 
