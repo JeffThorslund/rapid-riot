@@ -1,6 +1,6 @@
 import { Countries, Provinces, States } from "../../../types";
 import { useState } from "react";
-import { convertEnumToObject } from "../../../types/geo";
+import { convertEnumToArray } from "../../../types/geo";
 
 export interface SubmissionFormState {
   title: string;
@@ -29,7 +29,7 @@ const defaultValues: SubmissionFormState = {
 export const useSubmissionFormState = () => {
   const [values, setValues] = useState<SubmissionFormState>(defaultValues);
 
-  const { list, label } = getStateLabelAndList(values.country);
+  const { list, label } = getRegionLabelAndList(values.country);
 
   const areAllFieldsFilled = !!(values.title && values.link && values.city);
 
@@ -50,16 +50,16 @@ export const useSubmissionFormState = () => {
 
 export type SubmissionFormStateType = ReturnType<typeof useSubmissionFormState>;
 
-export const getStateLabelAndList = (countryValue: Countries) => {
+export const getRegionLabelAndList = (countryValue: Countries) => {
   if (countryValue === Countries.Canada) {
     return {
       label: "Province",
-      list: convertEnumToObject(Provinces).sort(),
+      list: convertEnumToArray(Provinces).sort(),
     };
   }
 
   return {
     label: "State",
-    list: convertEnumToObject(States).sort(),
+    list: convertEnumToArray(States).sort(),
   };
 };

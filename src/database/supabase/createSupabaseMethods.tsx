@@ -1,10 +1,7 @@
-import {
-  RawFestival,
-  RawNewReport,
-  ReportSubmissionLite,
-  RawFestivalLite,
-} from "../../types";
+import { RawFestival, RawNewReport, ReportSubmissionLite } from "../../types";
 import { SupabaseClient } from "@supabase/supabase-js";
+import { getCoordinates } from "./getCoordinates";
+import { SubmissionFormState } from "../../components/modal/submission/useSubmissionFormState";
 
 export const createSupabaseMethods = (supabase: SupabaseClient) => {
   const readAllFestivals = () => {
@@ -15,12 +12,18 @@ export const createSupabaseMethods = (supabase: SupabaseClient) => {
     return readAllFestivals().match({ approved: true });
   };
 
-  const insertSubmission = (submission: RawFestivalLite) => {
+  const insertSubmission = async (submission: SubmissionFormState) => {
+    const { lat, lng } = await getCoordinates(
+      submission.city,
+      submission.state,
+      submission.country
+    );
+
     const fullSubmission = {
       ...submission,
       approved: false,
-      lat: 0,
-      lng: 0,
+      lat: lat,
+      lng: lng,
     };
 
     return supabase.from<RawFestival>("festivals").insert([fullSubmission]);
