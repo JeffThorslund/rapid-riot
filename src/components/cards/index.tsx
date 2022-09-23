@@ -1,5 +1,5 @@
 import React from "react";
-import { RefFestival } from "../../types";
+import { Festival } from "../../types";
 import { useActiveIndexState } from "../_utils/useActiveIndexState";
 import { FestivalCard } from "./FestivalCard";
 import Masonry from "react-masonry-css";
@@ -16,7 +16,7 @@ import { NoResultsIndicator } from "./indicators/NoResultsIndicator";
 import { LoadingIndicator } from "./indicators/LoadingIndicator";
 
 interface Props {
-  festivals: RefFestival[];
+  festivals: Festival[];
   selectionManagement: UseSelectionManagementMethods;
   isDataFetching: boolean;
 }
@@ -63,7 +63,7 @@ export const FestivalCards = (props: Props) => {
 
                 return (
                   <FestivalCard
-                    key={festival.title}
+                    key={festival.id}
                     festival={festival}
                     onClick={() => openLink(festival.link)}
                     onMouseEnter={() => hover.set(festivalIdentifier)}

@@ -1,6 +1,6 @@
 import React from "react";
 import { ViewState } from "react-map-gl";
-import { RefFestival } from "../../types";
+import { Festival } from "../../types";
 import { CustomMapWrapper } from "./CustomMapWrapper";
 import { Marker } from "./Marker";
 import { UseSelectionManagementMethods } from "../interface/_utils/useSelectionManagement";
@@ -8,7 +8,7 @@ import { getColor } from "../cards/_utils/getColor";
 import { getFestivalIdentifier } from "../interface/_utils/getFestivalIdentifier";
 
 type Props = {
-  festivals: RefFestival[];
+  festivals: Festival[];
   viewState: ViewState;
   setViewState: React.Dispatch<React.SetStateAction<ViewState>>;
   selectionManagement: UseSelectionManagementMethods;
@@ -30,7 +30,7 @@ export const MapElement = (props: Props) => {
 
         return (
           <Marker
-            key={festival.title}
+            key={festival.id}
             latitude={festival.location.coordinates.lat}
             longitude={festival.location.coordinates.lng}
             onMouseEnter={() => hover.set(festivalIdentifier)}
@@ -40,7 +40,12 @@ export const MapElement = (props: Props) => {
               if (festival.ref.current) festival.ref.current.scrollIntoView();
             }}
             size={isMarkerHovered ? "50px" : "40px"}
-            color={getColor("#333333", isMarkerHovered, isMarkerSelected)}
+            color={getColor(
+              "#333333",
+              isMarkerHovered,
+              isMarkerSelected,
+              festival.approved
+            )}
           />
         );
       })}
