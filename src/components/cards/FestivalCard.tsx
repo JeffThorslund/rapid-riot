@@ -4,7 +4,6 @@ import React from "react";
 import { LocationText } from "./LocationText";
 import { LinkText } from "./LinkText";
 import { getColor } from "./_utils/getColor";
-import { setRedIfUnapproved } from "../_utils/setRedIfUnapproved";
 
 interface Props {
   festival: RefFestival;
@@ -19,9 +18,10 @@ export const FestivalCard = (props: Props) => {
   return (
     <Box
       background={getColor(
-        setRedIfUnapproved("#f2edfc", props.festival.approved),
+        "#f2edfc",
         props.isCardHovered,
-        props.isCardSelected
+        props.isCardSelected,
+        props.festival.approved
       )}
       round={"small"}
       pad={"small"}
