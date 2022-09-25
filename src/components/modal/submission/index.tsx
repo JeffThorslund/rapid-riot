@@ -97,7 +97,7 @@ const SubmissionFormInnards = ({
             />
             <LinkRecommendation
               primaryText={"Bad Link"}
-              primaryTextColor={statusError}
+              primaryTextColor={Color(statusError).hex()}
               secondaryText={"Facebook Event, Facebook Post, News Article"}
             />
           </Box>

@@ -61,7 +61,9 @@ export const ModalWrapper = (props: Props) => {
               <MessageAlert
                 title={"There was an issue."}
                 description={"We will look into this and get it fixed ASAP."}
-                icon={<FaTimesCircle size={80} color={statusError} />}
+                icon={
+                  <FaTimesCircle size={80} color={Color(statusError).hex()} />
+                }
                 closeModal={props.closeModal}
               />
             ),
