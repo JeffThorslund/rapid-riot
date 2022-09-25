@@ -14,6 +14,8 @@ import { breakpointColumnsObj } from "./_utils/breakpointColumnsObj";
 import { getFestivalIdentifier } from "../interface/_utils/getFestivalIdentifier";
 import { NoResultsIndicator } from "./indicators/NoResultsIndicator";
 import { LoadingIndicator } from "./indicators/LoadingIndicator";
+import Color from "color";
+import { light } from "../_utils/colors";
 
 interface Props {
   festivals: Festival[];
@@ -27,7 +29,7 @@ export const FestivalCards = (props: Props) => {
   return (
     <Box
       overflow={"auto"}
-      background={"#ffffff"}
+      background={Color(light).hex()}
       pad={{ horizontal: "xsmall" }}
       style={{ scrollBehavior: "smooth" }}
     >

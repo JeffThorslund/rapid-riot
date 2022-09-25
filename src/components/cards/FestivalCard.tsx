@@ -4,6 +4,8 @@ import React from "react";
 import { LocationText } from "./LocationText";
 import { LinkText } from "./LinkText";
 import { getColor } from "./_utils/getColor";
+import { brand } from "../_utils/colors";
+import Color from "color";
 
 interface Props {
   festival: Festival;
@@ -18,7 +20,7 @@ export const FestivalCard = (props: Props) => {
   return (
     <Box
       background={getColor(
-        "#f2edfc",
+        Color(brand).lighten(0.6).hex(),
         props.isCardHovered,
         props.isCardSelected,
         props.festival.approved

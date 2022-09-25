@@ -1,7 +1,7 @@
 import React, { Dispatch, SetStateAction, useState } from "react";
 import { supabaseMethods } from "../../../database/supabase";
 import { FormItemWrapper } from "../multiStepModal/FormItemWrapper";
-import { Box, Select, TextInput } from "grommet";
+import { Box, Select, Text, TextInput } from "grommet";
 import { ModalWrapper } from "../multiStepModal";
 import {
   Countries,
@@ -16,6 +16,8 @@ import {
   useSubmissionFormState,
 } from "./useSubmissionFormState";
 import { convertEnumToArray } from "../../../types/geo";
+import { statusError, statusOk } from "../../_utils/colors";
+import Color from "color";
 
 export const Submission = (props: { closeModal: () => void }) => {
   const [formStep, setFormStep] = useState(FormStep.Filling);
@@ -48,6 +50,21 @@ export const Submission = (props: { closeModal: () => void }) => {
   );
 };
 
+function LinkRecommendation(props: {
+  primaryText: string;
+  primaryTextColor: string;
+  secondaryText: string;
+}) {
+  return (
+    <Box direction={"row"}>
+      <Text color={props.primaryTextColor} size={"small"} weight={"bold"}>
+        {props.primaryText}
+      </Text>
+      <Text size={"small"}>: {props.secondaryText}</Text>
+    </Box>
+  );
+}
+
 const SubmissionFormInnards = ({
   values,
   setValue,
@@ -69,7 +86,23 @@ const SubmissionFormInnards = ({
         />
       </FormItemWrapper>
 
-      <FormItemWrapper label={"Link"}>
+      <FormItemWrapper
+        label={"Link"}
+        description={
+          <Box>
+            <LinkRecommendation
+              primaryText={"Good Link"}
+              primaryTextColor={Color(statusOk).hex()}
+              secondaryText={"Festival Website, Facebook Page, Facebook Group"}
+            />
+            <LinkRecommendation
+              primaryText={"Bad Link"}
+              primaryTextColor={statusError}
+              secondaryText={"Facebook Event, Facebook Post, News Article"}
+            />
+          </Box>
+        }
+      >
         <TextInput
           placeholder="e.g. https://www.facebook.com/ClearwaterKayakFestival"
           value={values.link}

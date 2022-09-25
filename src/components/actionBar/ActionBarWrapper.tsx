@@ -1,6 +1,8 @@
 import React from "react";
 import { Position } from "../../types";
 import { Box } from "grommet";
+import { dark } from "../_utils/colors";
+import Color from "color";
 
 export const ActionBarWrapper = (props: {
   children: React.ReactNode;
@@ -9,7 +11,7 @@ export const ActionBarWrapper = (props: {
 }) => {
   return (
     <Box
-      background={"#444444"}
+      background={Color(dark).hex()}
       round={"large"}
       elevation={"medium"}
       style={{

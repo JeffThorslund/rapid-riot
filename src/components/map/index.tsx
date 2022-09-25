@@ -6,6 +6,8 @@ import { Marker } from "./Marker";
 import { UseSelectionManagementMethods } from "../interface/_utils/useSelectionManagement";
 import { getColor } from "../cards/_utils/getColor";
 import { getFestivalIdentifier } from "../interface/_utils/getFestivalIdentifier";
+import Color from "color";
+import { dark } from "../_utils/colors";
 
 type Props = {
   festivals: Festival[];
@@ -41,7 +43,7 @@ export const MapElement = (props: Props) => {
             }}
             size={isMarkerHovered ? "50px" : "40px"}
             color={getColor(
-              "#333333",
+              Color(dark).hex(),
               isMarkerHovered,
               isMarkerSelected,
               festival.approved
