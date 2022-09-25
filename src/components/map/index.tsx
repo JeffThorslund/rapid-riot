@@ -8,6 +8,7 @@ import { getColor } from "../cards/_utils/getColor";
 import { getFestivalIdentifier } from "../interface/_utils/getFestivalIdentifier";
 import Color from "color";
 import { dark } from "../_utils/colors";
+import { Box } from "grommet";
 
 type Props = {
   festivals: Festival[];
@@ -42,12 +43,14 @@ export const MapElement = (props: Props) => {
               if (festival.ref.current) festival.ref.current.scrollIntoView();
             }}
             size={isMarkerHovered ? "50px" : "40px"}
+            header={isMarkerHovered && <Box>{festival.title}</Box>}
             color={getColor(
               Color(dark).hex(),
               isMarkerHovered,
               isMarkerSelected,
               festival.approved
             )}
+            zIndex={isMarkerHovered ? Number.MAX_SAFE_INTEGER : "auto"}
           />
         );
       })}

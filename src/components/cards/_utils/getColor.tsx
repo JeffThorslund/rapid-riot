@@ -9,7 +9,7 @@ export const getColor = (
   isApproved: boolean
 ): string => {
   if (isSelected) return Color(neutral).hex();
-  if (isHovered) return Color(brand).darken(0.5).hex();
+  if (isHovered) return Color(brand).darken(0.3).hex();
   if (isAdminMode && !isApproved) return Color(statusError).lighten(0.3).hex();
   return baseColor;
 };
