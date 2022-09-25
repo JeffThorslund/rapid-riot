@@ -8,7 +8,6 @@ import { getColor } from "../cards/_utils/getColor";
 import { getFestivalIdentifier } from "../interface/_utils/getFestivalIdentifier";
 import Color from "color";
 import { dark } from "../_utils/colors";
-import { Box } from "grommet";
 
 type Props = {
   festivals: Festival[];
@@ -34,8 +33,7 @@ export const MapElement = (props: Props) => {
         return (
           <Marker
             key={festival.id}
-            latitude={festival.location.coordinates.lat}
-            longitude={festival.location.coordinates.lng}
+            coordinates={festival.location.coordinates}
             onMouseEnter={() => hover.set(festivalIdentifier)}
             onMouseLeave={() => hover.reset()}
             onClick={() => {
@@ -43,14 +41,14 @@ export const MapElement = (props: Props) => {
               if (festival.ref.current) festival.ref.current.scrollIntoView();
             }}
             size={isMarkerHovered ? "50px" : "40px"}
-            header={isMarkerHovered && <Box>{festival.title}</Box>}
+            label={isMarkerHovered ? festival.title : undefined}
+            zIndex={isMarkerHovered ? Number.MAX_SAFE_INTEGER : "auto"}
             color={getColor(
               Color(dark).hex(),
               isMarkerHovered,
               isMarkerSelected,
               festival.approved
             )}
-            zIndex={isMarkerHovered ? Number.MAX_SAFE_INTEGER : "auto"}
           />
         );
       })}
