@@ -1,7 +1,7 @@
 import React, { Dispatch, SetStateAction, useState } from "react";
 import { supabaseMethods } from "../../../database/supabase";
 import { FormItemWrapper } from "../multiStepModal/FormItemWrapper";
-import { Box, Select, Text, TextInput } from "grommet";
+import { Box, Select, TextInput } from "grommet";
 import { ModalWrapper } from "../multiStepModal";
 import {
   Countries,
@@ -18,6 +18,8 @@ import {
 import { convertEnumToArray } from "../../../types/geo";
 import { statusError, statusOk } from "../../_utils/colors";
 import Color from "color";
+import { LinkRecommendation } from "./LinkRecommendation";
+import { useSmallScreenDetection } from "../../interface/_utils/useSmallScreenDetection";
 
 export const Submission = (props: { closeModal: () => void }) => {
   const [formStep, setFormStep] = useState(FormStep.Filling);
@@ -50,21 +52,6 @@ export const Submission = (props: { closeModal: () => void }) => {
   );
 };
 
-function LinkRecommendation(props: {
-  primaryText: string;
-  primaryTextColor: string;
-  secondaryText: string;
-}) {
-  return (
-    <Box direction={"row"}>
-      <Text color={props.primaryTextColor} size={"small"} weight={"bold"}>
-        {props.primaryText}
-      </Text>
-      <Text size={"small"}>: {props.secondaryText}</Text>
-    </Box>
-  );
-}
-
 const SubmissionFormInnards = ({
   values,
   setValue,
@@ -74,6 +61,8 @@ const SubmissionFormInnards = ({
   setValue: Dispatch<SetStateAction<SubmissionFormState>>;
   formHelpers: SubmissionFormStateType["formHelpers"];
 }) => {
+  const isScreenSmall = useSmallScreenDetection();
+
   return (
     <React.Fragment>
       <FormItemWrapper label={"Festival Name"}>
@@ -92,12 +81,12 @@ const SubmissionFormInnards = ({
           <Box>
             <LinkRecommendation
               primaryText={"Good Link"}
-              primaryTextColor={Color(statusOk).hex()}
+              primaryTextColor={Color(statusOk).darken(0.3).hex()}
               secondaryText={"Festival Website, Facebook Page, Facebook Group"}
             />
             <LinkRecommendation
               primaryText={"Bad Link"}
-              primaryTextColor={Color(statusError).hex()}
+              primaryTextColor={Color(statusError).darken(0.3).hex()}
               secondaryText={"Facebook Event, Facebook Post, News Article"}
             />
           </Box>
@@ -112,7 +101,7 @@ const SubmissionFormInnards = ({
         />
       </FormItemWrapper>
 
-      <Box direction={"row"}>
+      <Box direction={isScreenSmall ? "column" : "row"}>
         <FormItemWrapper label={"Country"}>
           <Select
             options={convertEnumToArray(Countries).sort()}
