@@ -28,7 +28,8 @@ export const Marker = (props: MarkerProps) => {
       <Box direction={"column"} align={"center"}>
         {props.header && (
           <Box
-            background={Color(brand).lighten(0.8).hex()}
+            background={Color(brand).lighten(0.7).hex()}
+            elevation={"xsmall"}
             round={"xsmall"}
             pad={"xsmall"}
             margin={"xxsmall"}
