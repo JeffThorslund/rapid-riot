@@ -1,8 +1,10 @@
 import { FaExclamationCircle, FaPlusCircle } from "react-icons/fa";
 import { IconType } from "react-icons";
 import React from "react";
-import { Reporting } from "../../modal/reporting/index";
-import { Submission } from "../../modal/submission/index";
+import { Reporting } from "../../modal/reporting";
+import { Submission } from "../../modal/submission";
+import { statusError, statusOk } from "../../_utils/colors";
+import Color from "color";
 
 enum ActionIconEnum {
   ADD = "ADD",
@@ -28,7 +30,7 @@ export const actionIconSchema: ActionIconSchema[] = [
     icon: {
       component: FaPlusCircle,
       props: {
-        color: "#00C781",
+        color: Color(statusOk).hex(),
         key: ActionIconEnum.ADD,
       },
     },
@@ -39,7 +41,7 @@ export const actionIconSchema: ActionIconSchema[] = [
     icon: {
       component: FaExclamationCircle,
       props: {
-        color: "#FF4040",
+        color: Color(statusError).hex(),
         key: ActionIconEnum.DELETE,
       },
     },

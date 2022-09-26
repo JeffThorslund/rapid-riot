@@ -1,4 +1,6 @@
 import { isAdminMode } from "../../_utils/isAdminMode";
+import { brand, neutral, statusError } from "../../_utils/colors";
+import Color from "color";
 
 export const getColor = (
   baseColor: string,
@@ -6,8 +8,8 @@ export const getColor = (
   isSelected: boolean,
   isApproved: boolean
 ): string => {
-  if (isSelected) return "#A2423D";
-  if (isHovered) return "#3D138D";
-  if (isAdminMode && !isApproved) return "#ff5555";
+  if (isSelected) return Color(neutral).hex();
+  if (isHovered) return Color(brand).darken(0.3).hex();
+  if (isAdminMode && !isApproved) return Color(statusError).lighten(0.3).hex();
   return baseColor;
 };

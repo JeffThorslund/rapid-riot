@@ -4,6 +4,8 @@ import { FaCheckCircle, FaTimesCircle } from "react-icons/fa";
 import React, { Dispatch, ReactNode, SetStateAction } from "react";
 import { FormWrapper } from "./FormWrapper";
 import { FormStep } from "../../../types";
+import { statusError, statusOk } from "../../_utils/colors";
+import Color from "color";
 
 export interface Props {
   formStep: FormStep;
@@ -51,7 +53,7 @@ export const ModalWrapper = (props: Props) => {
                 description={
                   "It will be reviewed and visible on the map shortly."
                 }
-                icon={<FaCheckCircle size={80} color={"#00C781"} />}
+                icon={<FaCheckCircle size={80} color={Color(statusOk).hex()} />}
                 closeModal={props.closeModal}
               />
             ),
@@ -59,7 +61,9 @@ export const ModalWrapper = (props: Props) => {
               <MessageAlert
                 title={"There was an issue."}
                 description={"We will look into this and get it fixed ASAP."}
-                icon={<FaTimesCircle size={80} color={"#FF4040"} />}
+                icon={
+                  <FaTimesCircle size={80} color={Color(statusError).hex()} />
+                }
                 closeModal={props.closeModal}
               />
             ),

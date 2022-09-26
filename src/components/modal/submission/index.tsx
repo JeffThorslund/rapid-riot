@@ -16,6 +16,10 @@ import {
   useSubmissionFormState,
 } from "./useSubmissionFormState";
 import { convertEnumToArray } from "../../../types/geo";
+import { statusError, statusOk } from "../../_utils/colors";
+import Color from "color";
+import { LinkRecommendation } from "./LinkRecommendation";
+import { useSmallScreenDetection } from "../../interface/_utils/useSmallScreenDetection";
 
 export const Submission = (props: { closeModal: () => void }) => {
   const [formStep, setFormStep] = useState(FormStep.Filling);
@@ -57,6 +61,8 @@ const SubmissionFormInnards = ({
   setValue: Dispatch<SetStateAction<SubmissionFormState>>;
   formHelpers: SubmissionFormStateType["formHelpers"];
 }) => {
+  const isScreenSmall = useSmallScreenDetection();
+
   return (
     <React.Fragment>
       <FormItemWrapper label={"Festival Name"}>
@@ -69,7 +75,23 @@ const SubmissionFormInnards = ({
         />
       </FormItemWrapper>
 
-      <FormItemWrapper label={"Link"}>
+      <FormItemWrapper
+        label={"Link"}
+        description={
+          <Box>
+            <LinkRecommendation
+              primaryText={"Good Link"}
+              primaryTextColor={Color(statusOk).darken(0.3).hex()}
+              secondaryText={"Festival Website, Facebook Page, Facebook Group"}
+            />
+            <LinkRecommendation
+              primaryText={"Bad Link"}
+              primaryTextColor={Color(statusError).darken(0.3).hex()}
+              secondaryText={"Facebook Event, Facebook Post, News Article"}
+            />
+          </Box>
+        }
+      >
         <TextInput
           placeholder="e.g. https://www.facebook.com/ClearwaterKayakFestival"
           value={values.link}
@@ -79,7 +101,7 @@ const SubmissionFormInnards = ({
         />
       </FormItemWrapper>
 
-      <Box direction={"row"}>
+      <Box direction={isScreenSmall ? "column" : "row"}>
         <FormItemWrapper label={"Country"}>
           <Select
             options={convertEnumToArray(Countries).sort()}
