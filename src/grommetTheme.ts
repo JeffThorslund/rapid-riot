@@ -1,4 +1,5 @@
 import { ThemeType } from "grommet";
+import { accent } from "./components/_utils/colors";
 
 export const theme: ThemeType = {
   global: {
@@ -15,6 +16,14 @@ export const theme: ThemeType = {
     },
     container: {
       elevation: "large",
+    },
+  },
+  anchor: {
+    hover: {
+      textDecoration: "none",
+      extend: {
+        color: accent,
+      },
     },
   },
 };
