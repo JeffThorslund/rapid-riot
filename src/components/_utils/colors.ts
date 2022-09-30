@@ -1,6 +1,7 @@
 // colors
 export const brand = "#7D4CDB";
 export const neutral = "#A2423D";
+export const accent = "#6FFFB0";
 
 // status
 export const statusError = "#FF4040";

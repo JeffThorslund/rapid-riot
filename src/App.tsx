@@ -1,5 +1,5 @@
 import React from "react";
-import { PageHeader } from "./components/PageHeader";
+import { PageHeader } from "./components/header";
 import { AppWrapper } from "./components/AppWrapper";
 import { FestivalInterface } from "./components/interface";
 
