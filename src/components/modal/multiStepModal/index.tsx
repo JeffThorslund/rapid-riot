@@ -24,7 +24,6 @@ export const ModalWrapper = (props: Props) => {
     <Layer
       onEsc={props.closeModal}
       onClickOutside={props.closeModal}
-      background={"background"}
       modal
     >
       <Box pad={"medium"} width={"large"}>
