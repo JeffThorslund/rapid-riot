@@ -1,1 +1,1 @@
-export const isAdminMode = process.env.REACT_APP_ADMIN === "true";
+export const isAdminMode = process.env.NEXT_PUBLIC_ADMIN === "true";

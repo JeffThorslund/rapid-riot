@@ -3,7 +3,6 @@ import { Festival } from "../../types";
 import { useActiveIndexState } from "../_utils/useActiveIndexState";
 import { FestivalCard } from "./FestivalCard";
 import Masonry from "react-masonry-css";
-import "./index.css";
 import { openLink } from "../_utils/openLink";
 import { Box } from "grommet";
 import { ActionIconBar } from "../actionBar";

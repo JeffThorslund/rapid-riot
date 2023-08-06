@@ -18,22 +18,22 @@
     "dotenv": "^16.0.2",
     "grommet": "^2.25.3",
     "mapbox-gl": "^2.10.0",
+    "next": "^13.4.12",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.4.0",
     "react-map-gl": "^7.0.19",
     "react-masonry-css": "^1.0.16",
-    "react-scripts": "5.0.1",
     "styled-components": "^5.3.5",
     "web-vitals": "^2.1.4",
     "worker-loader": "^3.0.8"
   },
   "scripts": {
-    "dev": "BROWSER=none WDS_SOCKET_PORT=0 REACT_APP_ADMIN=true npm run start && npm run typings",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
+    "dev": "BROWSER=none WDS_SOCKET_PORT=0 NEXT_PUBLIC_ADMIN=true next dev && npm run typings",
+    "start": "next start",
+    "build": "next build",
+    "test": "next test",
+    "eject": "next eject",
     "typings": "npx openapi-typescript https://stfgvlsypyfagayfvchx.supabase.co/rest/v1/?apikey=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYyMzgwMTI3NiwiZXhwIjoxOTM5Mzc3Mjc2fQ.SdKp-fWPim9DFYQQFUVMDr6WOXbAxDCMtxnPbkbuGVA --output src/types/supabase.ts"
   },
   "browserslist": {
