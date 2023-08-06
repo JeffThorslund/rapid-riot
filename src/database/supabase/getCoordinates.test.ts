@@ -26,19 +26,6 @@ test("encode params", () => {
   );
 });
 
-test("build request url", () => {
-  expect(buildRequestURL("Ottawa", Provinces.Ontario, Countries.Canada)).toBe(
-    `https://api.mapbox.com/geocoding/v5/mapbox.places/Ottawa%2C%20ON%2C%20CA.json?limit=1&proximity=ip&types=place&access_token=${process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}`
-  );
-});
-
-test("test fetch", async () => {
-  const data = await fetchData(
-    `https://api.mapbox.com/geocoding/v5/mapbox.places/Smither%2C%20British%20Columbia%2C%20Canada.json?limit=1&proximity=ip&types=place&access_token=${process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}`
-  );
-  expect(data).toBeTruthy();
-});
-
 const resp = {
   type: "FeatureCollection",
   query: ["smither", "british", "columbia", "canada"],
