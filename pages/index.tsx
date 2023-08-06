@@ -1,6 +1,8 @@
 import React from "react"
 import App from "../src/App"
 
-export default () => {
+const Index = () => {
     return <App />
 }
+
+export default Index
