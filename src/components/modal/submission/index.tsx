@@ -20,7 +20,7 @@ import { statusError, statusOk } from "../../_utils/colors";
 import Color from "color";
 import { LinkRecommendation } from "./LinkRecommendation";
 import { useSmallScreenDetection } from "../../interface/_utils/useSmallScreenDetection";
-import { useMutation } from "@tanstack/react-query"
+import { useMutation } from "@tanstack/react-query";
 import { getCoordinates } from "../../../database/supabase/getCoordinates";
 import { supabase } from "../../../database/supabase";
 
@@ -35,8 +35,8 @@ export const Submission = (props: { closeModal: () => void }) => {
   } = useSubmissionFormState();
 
   const mutation = useMutation({
-    mutationFn: insertSubmission
-  })
+    mutationFn: insertSubmission,
+  });
 
   return (
     <ModalWrapper

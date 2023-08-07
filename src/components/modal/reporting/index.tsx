@@ -11,8 +11,8 @@ export const Reporting = (props: { closeModal: () => void }) => {
   const [formStep, setFormStep] = useState(FormStep.Filling);
 
   const mutation = useMutation({
-    mutationFn: insertReport
-  })
+    mutationFn: insertReport,
+  });
 
   return (
     <ModalWrapper
