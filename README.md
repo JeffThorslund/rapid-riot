@@ -25,5 +25,3 @@ You will also see any lint errors in the console.
 ## CI Status
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/384a30be-e059-4044-9268-64f3935f3f09/deploy-status)](https://app.netlify.com/sites/rapidriot/deploys)
-
-

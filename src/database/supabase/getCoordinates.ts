@@ -31,7 +31,7 @@ export const buildRequestURL = (
     limit: "1",
     proximity: "ip",
     types: "place",
-    access_token: process.env.REACT_APP_MAPBOX_ACCESS_TOKEN || "",
+    access_token: process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN || "",
   };
 
   Object.entries(searchParams).forEach(([key, val]) => {
