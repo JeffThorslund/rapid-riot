@@ -3,6 +3,8 @@ import { Box, ResponsiveContext } from "grommet";
 import { Resizable } from "re-resizable";
 import { useMap } from "react-map-gl";
 import { useLocalStorage } from "@mantine/hooks";
+import { FaGripLinesVertical } from "react-icons/fa";
+import { dark } from "../_utils/colors";
 
 interface ResponsiveContainerProps {
   map: React.ReactNode;
@@ -41,6 +43,7 @@ const LargeContainer = (props: ResponsiveContainerProps & { resizeMapToParent: (
         ...defaultFalseDirections,
         right: true,
       }}
+      handleComponent={{ right: <Handle /> }}
     >
       {props.map}
     </Resizable>
@@ -49,6 +52,10 @@ const LargeContainer = (props: ResponsiveContainerProps & { resizeMapToParent: (
     </Box>
   </Box>
 }
+
+const Handle = () => <Box height="100%" justify="center" align="center">
+  <FaGripLinesVertical size={24} color={dark} />
+</Box>
 
 const defaultFalseDirections = {
   top: false,
