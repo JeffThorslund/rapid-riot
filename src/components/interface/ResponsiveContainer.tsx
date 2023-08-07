@@ -1,7 +1,8 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { Box, ResponsiveContext } from "grommet";
 import { Resizable } from "re-resizable";
 import { useMap } from "react-map-gl";
+import { useLocalStorage } from "@mantine/hooks";
 
 interface ResponsiveContainerProps {
   map: React.ReactNode;
@@ -24,7 +25,7 @@ export const ResponsiveContainer = (props: ResponsiveContainerProps) => {
 };
 
 const LargeContainer = (props: ResponsiveContainerProps & { resizeMapToParent: (() => void) | undefined }) => {
-  const [mapWidth, setMapWidth] = useState<number>(600);
+  const [mapWidth, setMapWidth] = useLocalStorage({ key: 'map-width', defaultValue: 600 });
 
   return <Box direction={"row"} height={"100%"}>
     <Resizable
