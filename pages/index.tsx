@@ -1,8 +1,8 @@
-import React from "react"
-import App from "../src/App"
+import React from "react";
+import App from "../src/App";
 
 const Index = () => {
-    return <App />
-}
+  return <App />;
+};
 
-export default Index
+export default Index;

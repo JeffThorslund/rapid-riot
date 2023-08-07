@@ -1,5 +1,5 @@
 import React, { Dispatch, SetStateAction, useState } from "react";
-import { supabaseMethods } from "../../../database/supabase";
+import { insertSubmission } from "../../../database/supabase/methods";
 import { FormItemWrapper } from "../multiStepModal/FormItemWrapper";
 import { Box, Select, TextInput } from "grommet";
 import { ModalWrapper } from "../multiStepModal";
@@ -45,7 +45,7 @@ export const Submission = (props: { closeModal: () => void }) => {
           />
         ),
         title: "Submit a New Festival",
-        handleSubmit: () => supabaseMethods.insertSubmission(values),
+        handleSubmit: () => insertSubmission(values),
         areAllFieldsValid: flags.areAllFieldsFilled,
       }}
     />

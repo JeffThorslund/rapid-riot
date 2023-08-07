@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { supabaseMethods } from "../../../database/supabase";
+import { insertReport } from "../../../database/supabase/methods"
 import { FormItemWrapper } from "../multiStepModal/FormItemWrapper";
 import { Box, TextArea } from "grommet";
 import { ModalWrapper } from "../multiStepModal";
@@ -17,7 +17,7 @@ export const Reporting = (props: { closeModal: () => void }) => {
       form={{
         fields: <ReportingFormInnards text={text} setText={setText} />,
         title: "Report an Issue",
-        handleSubmit: () => supabaseMethods.insertReport(text),
+        handleSubmit: () => insertReport(text),
         areAllFieldsValid: !!text,
       }}
     />

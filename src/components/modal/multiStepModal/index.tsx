@@ -21,11 +21,7 @@ export interface Props {
 
 export const ModalWrapper = (props: Props) => {
   return (
-    <Layer
-      onEsc={props.closeModal}
-      onClickOutside={props.closeModal}
-      modal
-    >
+    <Layer onEsc={props.closeModal} onClickOutside={props.closeModal} modal>
       <Box pad={"medium"} width={"large"}>
         {
           {

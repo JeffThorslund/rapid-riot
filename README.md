@@ -13,8 +13,9 @@ Typescript / React / Mapbox / Supabase / Netlify
 
 To run the project in development mode:
 
- #### `npm install`
- #### `npm start`
+#### `npm install`
+
+#### `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.

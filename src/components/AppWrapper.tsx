@@ -8,8 +8,8 @@ interface Props {
 
 export const AppWrapper = (props: Props) => {
   return (
-      <MapProvider>
-        <Box height={"100vh"}>{props.children}</Box>
-      </MapProvider>
+    <MapProvider>
+      <Box height={"100vh"}>{props.children}</Box>
+    </MapProvider>
   );
 };

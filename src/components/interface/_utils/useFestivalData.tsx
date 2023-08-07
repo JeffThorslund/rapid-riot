@@ -1,35 +1,35 @@
-import { useEffect, useState } from "react";
 import { RawFestival } from "../../../types";
-import { supabaseMethods } from "../../../database/supabase";
 import { isAdminMode } from "../../_utils/isAdminMode";
+import { useQuery } from "@tanstack/react-query";
+import { supabase } from "../../../database/supabase";
 
 export const useFestivalData = () => {
-  const [festivals, setFestivals] = useState<RawFestival[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-
-  const fetchData = async () => {
-    setIsLoading(true);
-    const festivals = await getFestivalData();
-    setIsLoading(false);
-    setFestivals(festivals);
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  return { festivals, isDataFetching: isLoading };
+  return useQuery({
+    queryKey: ["festivals"],
+    queryFn: getFestivalData,
+  });
 };
 
 const getFestivalData = async (): Promise<RawFestival[]> => {
   try {
-    const { data: festivals } = isAdminMode
-      ? await supabaseMethods.readAllFestivals()
-      : await supabaseMethods.readApprovedFestivals();
+    const { data: festivals, error } = isAdminMode
+      ? await readAllFestivals()
+      : await readApprovedFestivals();
 
-    if (!festivals) throw new Error();
+    if (error) throw new Error(error.message);
+
+    if (!festivals) throw new Error("No festivals returned");
+
     return festivals;
   } catch {
-    return [];
+    throw new Error("500 error");
   }
+};
+
+const readAllFestivals = () => {
+  return supabase.from<RawFestival>("festivals").select("*");
+};
+
+const readApprovedFestivals = () => {
+  return readAllFestivals().match({ approved: true });
 };
