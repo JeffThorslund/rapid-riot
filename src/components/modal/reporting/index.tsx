@@ -1,13 +1,18 @@
 import React, { useState } from "react";
-import { insertReport } from "../../../database/supabase/methods"
 import { FormItemWrapper } from "../multiStepModal/FormItemWrapper";
 import { Box, TextArea } from "grommet";
 import { ModalWrapper } from "../multiStepModal";
-import { FormStep } from "../../../types";
+import { FormStep, RawNewReport, ReportSubmissionLite } from "../../../types";
+import { supabase } from "../../../database/supabase";
+import { useMutation } from "@tanstack/react-query";
 
 export const Reporting = (props: { closeModal: () => void }) => {
   const [text, setText] = useState("");
   const [formStep, setFormStep] = useState(FormStep.Filling);
+
+  const mutation = useMutation({
+    mutationFn: insertReport
+  })
 
   return (
     <ModalWrapper
@@ -17,7 +22,7 @@ export const Reporting = (props: { closeModal: () => void }) => {
       form={{
         fields: <ReportingFormInnards text={text} setText={setText} />,
         title: "Report an Issue",
-        handleSubmit: () => insertReport(text),
+        handleSubmit: () => mutation.mutate(text),
         areAllFieldsValid: !!text,
       }}
     />
@@ -41,4 +46,9 @@ const ReportingFormInnards = (props: {
       </Box>
     </FormItemWrapper>
   );
+};
+
+export const insertReport = async (report: string) => {
+  const dataToSend: ReportSubmissionLite = { report };
+  return supabase.from<RawNewReport>("new_reports").insert([dataToSend]);
 };

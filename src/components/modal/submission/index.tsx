@@ -1,5 +1,4 @@
 import React, { Dispatch, SetStateAction, useState } from "react";
-import { insertSubmission } from "../../../database/supabase/methods";
 import { FormItemWrapper } from "../multiStepModal/FormItemWrapper";
 import { Box, Select, TextInput } from "grommet";
 import { ModalWrapper } from "../multiStepModal";
@@ -8,6 +7,7 @@ import {
   FormStep,
   GeoOption,
   Provinces,
+  RawFestival,
   States,
 } from "../../../types";
 import {
@@ -20,6 +20,9 @@ import { statusError, statusOk } from "../../_utils/colors";
 import Color from "color";
 import { LinkRecommendation } from "./LinkRecommendation";
 import { useSmallScreenDetection } from "../../interface/_utils/useSmallScreenDetection";
+import { useMutation } from "@tanstack/react-query"
+import { getCoordinates } from "../../../database/supabase/getCoordinates";
+import { supabase } from "../../../database/supabase";
 
 export const Submission = (props: { closeModal: () => void }) => {
   const [formStep, setFormStep] = useState(FormStep.Filling);
@@ -30,6 +33,10 @@ export const Submission = (props: { closeModal: () => void }) => {
     formHelpers,
     flags,
   } = useSubmissionFormState();
+
+  const mutation = useMutation({
+    mutationFn: insertSubmission
+  })
 
   return (
     <ModalWrapper
@@ -45,7 +52,7 @@ export const Submission = (props: { closeModal: () => void }) => {
           />
         ),
         title: "Submit a New Festival",
-        handleSubmit: () => insertSubmission(values),
+        handleSubmit: () => mutation.mutate(values),
         areAllFieldsValid: flags.areAllFieldsFilled,
       }}
     />
@@ -142,4 +149,21 @@ const SubmissionFormInnards = ({
       </Box>
     </React.Fragment>
   );
+};
+
+export const insertSubmission = async (submission: SubmissionFormState) => {
+  const { lat, lng } = await getCoordinates(
+    submission.city,
+    submission.state,
+    submission.country
+  );
+
+  const fullSubmission = {
+    ...submission,
+    approved: false,
+    lat: lat,
+    lng: lng,
+  };
+
+  return supabase.from<RawFestival>("festivals").insert([fullSubmission]);
 };

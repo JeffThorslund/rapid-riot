@@ -11,19 +11,15 @@ export const useFestivalData = () => {
 };
 
 const getFestivalData = async (): Promise<RawFestival[]> => {
-  try {
-    const { data: festivals, error } = isAdminMode
-      ? await readAllFestivals()
-      : await readApprovedFestivals();
+  const { data: festivals, error } = isAdminMode
+    ? await readAllFestivals()
+    : await readApprovedFestivals();
 
-    if (error) throw new Error(error.message);
+  if (error) throw new Error(error.message);
 
-    if (!festivals) throw new Error("No festivals returned");
+  if (!festivals) throw new Error("No festivals returned");
 
-    return festivals;
-  } catch {
-    throw new Error("500 error");
-  }
+  return festivals;
 };
 
 const readAllFestivals = () => {
