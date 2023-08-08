@@ -59,6 +59,7 @@
     "@typescript-eslint/eslint-plugin": "^5.36.2",
     "@typescript-eslint/parser": "^5.36.2",
     "babel-plugin-styled-components": "^2.1.4",
+    "encoding": "^0.1.13",
     "eslint": "^8.23.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-react": "^7.31.7",
