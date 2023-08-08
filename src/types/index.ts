@@ -21,7 +21,7 @@ export interface Coordinate {
   lng: number;
 }
 
-export interface Festival {
+export interface Fesival {
   id: string;
   title: RawFestival["title"];
   link: RawFestival["link"];

@@ -58,16 +58,19 @@ const useFilterAndSearch = (
   festivals: Festival[];
 } => {
   const mapRef = useMap();
+
   const [searchQuery, setSearchQuery] = useState("");
 
   const visibleFestivals = festivals
-    .filter(
-      mapRef.current ? isMarkerWithinMapBounds(mapRef.current) : () => true
-    )
+    .filter((festival) => {
+      return mapRef.default
+        ? isMarkerWithinMapBounds(festival, mapRef.default)
+        : true;
+    })
     .sort((a, b) => sortByApproval(a.approved, b.approved));
 
-  const fuse = new Fuse(festivals || [], {
-    keys: ["title"],
+  const fuse = new Fuse(visibleFestivals || [], {
+    keys: ["title", "city"],
     threshold: 0.6,
   });
 
@@ -83,12 +86,17 @@ const useFilterAndSearch = (
   };
 };
 
-export const isMarkerWithinMapBounds =
-  (mapRef: MapRef) => (festival: RawFestival) =>
-    mapRef.getMap().getBounds().contains({
-      lat: festival.lat,
-      lng: festival.lng,
-    });
+export const isMarkerWithinMapBounds = (
+  festival: RawFestival,
+  mapRef: MapRef
+) => {
+  console.log(mapRef.getMap().getBounds().contains);
+
+  return mapRef.getMap().getBounds().contains({
+    lat: festival.lat,
+    lng: festival.lng,
+  });
+};
 
 export const sortByTitle = (a: string, b: string) => a.localeCompare(b);
 
