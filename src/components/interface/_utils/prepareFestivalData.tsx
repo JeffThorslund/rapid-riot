@@ -7,18 +7,24 @@ import {
   States,
 } from "../../../types";
 import React from "react";
+import Fuse from "fuse.js";
 
-export const prepareFestivalData = (
-  mapRef: MapRef | undefined,
-  festivals: RawFestival[]
-): Festival[] => {
-  if (!mapRef) return [];
+export const prepareFestivalData = ({
+  mapRef,
+  festivals,
+}: {
+  mapRef: MapRef | undefined;
+  festivals: RawFestival[];
+}): Festival[] => {
+  if (!mapRef?.getMap().getBounds().contains) return [];
 
-  return festivals
-    .filter(isMarkerWithinMapBounds(mapRef))
-    .sort((a, b) => sortByTitle(a.title, b.title))
-    .sort((a, b) => sortByApproval(a.approved, b.approved))
-    .map(shaper);
+  return (
+    festivals
+      .filter(isMarkerWithinMapBounds(mapRef))
+      //.sort((a, b) => sortByTitle(a.title, b.title))
+      .sort((a, b) => sortByApproval(a.approved, b.approved))
+      .map(shaper)
+  );
 };
 
 export const isMarkerWithinMapBounds =

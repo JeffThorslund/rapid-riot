@@ -1,10 +1,10 @@
-import React from "react";
+import React, { Dispatch, ReactNode, SetStateAction } from "react";
 import { Festival } from "../../types";
 import { useActiveIndexState } from "../_utils/useActiveIndexState";
 import { FestivalCard } from "./FestivalCard";
 import Masonry from "react-masonry-css";
 import { openLink } from "../_utils/openLink";
-import { Box } from "grommet";
+import { Box, Stack, TextInput } from "grommet";
 import { ActionIconBar } from "../actionBar";
 import { actionIconSchema } from "../actionBar/_utils/actionIconSchema";
 import { UseSelectionManagementMethods } from "../interface/_utils/useSelectionManagement";
@@ -15,11 +15,13 @@ import { NoResultsIndicator } from "./indicators/NoResultsIndicator";
 import { LoadingIndicator } from "./indicators/LoadingIndicator";
 import Color from "color";
 import { light } from "../_utils/colors";
+//import { TextInput } from '@mantine/core';
 
 interface Props {
   festivals: Festival[];
   selectionManagement: UseSelectionManagementMethods;
   isDataFetching: boolean;
+  searchBar: ReactNode;
 }
 
 export const FestivalCards = (props: Props) => {
@@ -44,6 +46,9 @@ export const FestivalCards = (props: Props) => {
           actionIconSchema={actionIconSchema}
           onClick={(index: number) => modalState.set(index)}
         />
+
+        {props.searchBar}
+
         {(() => {
           if (props.isDataFetching) {
             return <LoadingIndicator />;
@@ -79,5 +84,25 @@ export const FestivalCards = (props: Props) => {
         })()}
       </React.Fragment>
     </Box>
+  );
+};
+
+export const SearchAndFilter = (props: {
+  setSearchQuery: Dispatch<SetStateAction<string>>;
+  searchQuery: string;
+}) => {
+  return (
+    <Stack
+      margin={{
+        top: "small",
+        horizontal: "small",
+      }}
+    >
+      <TextInput
+        placeholder="Search for a festival, location, or website"
+        value={props.searchQuery}
+        onChange={(e) => props.setSearchQuery(e.target.value)}
+      />
+    </Stack>
   );
 };

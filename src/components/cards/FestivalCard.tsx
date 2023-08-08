@@ -41,7 +41,8 @@ export const FestivalCard = (props: Props) => {
     >
       <Text size={"medium"}>{props.festival.title}</Text>
       <LocationText location={props.festival.location} />
-      <LinkText link={props.festival.link} />
+      {/* <LinkText link={props.festival.link} /> */}
+      www.fakelink.com
     </Box>
   );
 };
