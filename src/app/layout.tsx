@@ -2,6 +2,7 @@ import React from "react";
 import Providers from "./providers";
 import "../components/cards/index.css";
 import "../index.css";
+import { NavBar } from "../components/header";
 
 export const metadata = {
   title: "Rapid Riot",
@@ -51,7 +52,10 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <Providers>{children}</Providers>
+        <Providers>
+          <NavBar />
+          {children}
+        </Providers>
       </body>
     </html>
   );

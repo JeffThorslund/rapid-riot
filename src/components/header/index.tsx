@@ -1,12 +1,13 @@
+"use client";
+
 import { Anchor, Header, Nav } from "grommet";
 import React from "react";
 import { useSmallScreenDetection } from "../interface/_utils/useSmallScreenDetection";
 import Color from "color";
 import { brand, light } from "../_utils/colors";
 import { BrandText } from "./BrandText";
-import Link from "next/link";
 
-export const PageHeader = () => {
+export const NavBar = () => {
   const isSmall = useSmallScreenDetection();
 
   if (isSmall) return null;

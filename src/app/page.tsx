@@ -1,10 +1,5 @@
 "use client";
 
-import React from "react";
-import App from "../App";
+import { FestivalInterface } from "../components/interface";
 
-const Index = () => {
-  return <App />;
-};
-
-export default Index;
+export default FestivalInterface;

@@ -90,8 +90,6 @@ export const isMarkerWithinMapBounds = (
   festival: RawFestival,
   mapRef: MapRef
 ) => {
-  console.log(mapRef.getMap().getBounds().contains);
-
   return mapRef.getMap().getBounds().contains({
     lat: festival.lat,
     lng: festival.lng,
