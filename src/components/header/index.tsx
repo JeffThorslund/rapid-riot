@@ -4,6 +4,7 @@ import { useSmallScreenDetection } from "../interface/_utils/useSmallScreenDetec
 import Color from "color";
 import { brand, light } from "../_utils/colors";
 import { BrandText } from "./BrandText";
+import Link from "next/link";
 
 export const PageHeader = () => {
   const isSmall = useSmallScreenDetection();

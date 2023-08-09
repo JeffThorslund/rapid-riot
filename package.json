@@ -35,7 +35,7 @@
     "worker-loader": "^3.0.8"
   },
   "scripts": {
-    "dev": "BROWSER=none WDS_SOCKET_PORT=0 NEXT_PUBLIC_ADMIN=true next dev && npm run typings",
+    "dev": "NEXT_PUBLIC_ADMIN=true next dev && npm run typings",
     "start": "next start",
     "build": "next build",
     "test": "next test",

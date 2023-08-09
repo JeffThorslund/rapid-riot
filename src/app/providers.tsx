@@ -3,7 +3,7 @@
 import React from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Grommet } from "grommet";
-import { theme } from "../src/grommetTheme";
+import { theme } from "../grommetTheme";
 
 export default function Providers(props: { children: React.ReactNode }) {
   const [queryClient] = React.useState(() => new QueryClient());
